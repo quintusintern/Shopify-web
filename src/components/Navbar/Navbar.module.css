@@ -1,5 +1,3 @@
-/* Navbar.module.css */
-
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -67,7 +65,7 @@
     color: #00bcd4;
   }
   
-  /* Heart Icon Specific Badge */
+  
   .heartContainer {
     position: relative;
     display: inline-block;
@@ -88,7 +86,7 @@
     font-size: 12px;
   }
   
-  /* Shopping Cart Icon Specific Badge */
+  
   .cartContainer {
     position: relative;
     display: inline-block;
@@ -136,11 +134,20 @@
     justify-content: space-between;
     align-items: center;
   }
+
+  .popupHeader h2{
+    font-size: 14px; 
+  }
+
+  .HeadingLogin{
+    font-size: 2px;
+  }
   
   .closeIcon {
     cursor: pointer;
-  }
-  
+    transition: transform 0.3s ease-in-out;
+}
+
   .loginForm {
     display: flex;
     flex-direction: column;
@@ -155,38 +162,46 @@
   .loginForm input {
     padding: 10px;
     margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 1px solid #ccc; 
     width: 100%;
+    outline: none; 
   }
   
+ 
+  .emailInput{
+    margin-bottom: 15px;
+  }
   .forgotPassword {
+    font-size: 15px;
     margin-top: 10px;
-    color: #00bcd4;
-    text-decoration: none;
+    color: #878787;
+    text-decoration: underline;
   }
-  
+
+  .forgotPassword:hover{
+    color: #00bcd4;
+  }
+
   .signInButton {
-    margin-top: 15px;
-    background-color: #00bcd4;
+    margin-top: 25px;
+    background-color: #56cfe1;
     color: white;
     padding: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
     width: 100%;
   }
   
   .createAccount {
-    margin-top: 15px;
-    text-align: center;
-    color: #333;
-    text-decoration: none;
+    margin-top: 25px;
+    text-align: left;
+    color: #878787;
+    text-decoration: underline;
+  }
+
+  .createAccount:hover{
+    color: #00bcd4;
   }
   
-  /* Responsive */
-  @media (max-width: 768px) {
-    .wishlistContent {
-        width: 90%;
-    }
-  }
+  

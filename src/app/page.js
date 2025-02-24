@@ -14,7 +14,7 @@ export default function Home() {
       <Headertop/>
       <Header/>
       <Navbar/>
-      <Hero/>
+    
       <CategoryGrid/>
     </div>
   );

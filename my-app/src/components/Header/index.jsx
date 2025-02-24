@@ -1,65 +1,50 @@
-'use client';
+"use client"; 
 
-import { useState } from 'react';
-import { ShoppingCart, User, Heart, Search } from 'lucide-react';
-import { Phone, Mail, MapPin } from 'lucide-react';
-import Link from 'next/link';
-import styles from '@/app/page.module.css'; 
+import React, { useState } from "react";
+import styles from './Header.module.css'; 
+import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa"; 
+const Header = () => {
+ 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev); 
+  };
 
-export default function Navbar() {
   return (
-    <>
-      <div className={styles.topbar}>
-        <div className={styles.contactInfo}>
-          <span><Phone size={14} /> +01 23456789</span>
-          <span><Mail size={13} /> Kalles@domain.com</span>
-        </div>
-        <div className={styles.announcement}>
-          Summer sale discount off <span className={styles.discount}>50%</span>! 
-          <Link href="#">Shop Now</Link>
-        </div>
-        <div className={styles.settings}>
-          <span><MapPin size={14} /> Location</span>
-          <span>English ▼</span>
-          <span>🇺🇸 USD ▼</span>
-        </div>
+    <div className={styles.topBar}>
+      <div className={styles.left}>
+        <FaPhone className={styles.contacticon} /> <span className={styles.contact}>+01 23456789</span>
+        <FaEnvelope className={styles.mailicon} /> <span className={styles.mail}>Kalles@domain.com</span>
       </div>
+      <div className={styles.center}>
+        Summer sale discount off <span className={styles.highlight}>50%!</span> 
+        <a href="#" className={styles.shopNow}>Shop Now</a>
+      </div>
+      <div className={styles.right}>
+        <FaMapMarkerAlt className={styles.icon} /> <span className={styles.location}>Location</span>
+        <span className={styles.dropdown}>English&#9662;</span>
+        <span className={styles.flag} onClick={toggleDropdown}>
+          USD&#9662;
+        </span>
 
-      <nav className={styles.navbar}>
-        <div className={styles.logo}>kalles</div>
-        <ul className={styles.navLinks}>
-          <li><Link href="#">Demo</Link></li>
-          <li className={styles.relative}>
-            <Link href="#" className={styles.relative}>Shop
-              <span className={`${styles.badge} ${styles.new}`}>New</span>
-            </Link>
-          </li>
-          <li><Link href="#">Product</Link></li>
-          <li className={styles.relative}>
-            <Link href="#" className={styles.relative}>Sale
-              <span className={`${styles.badge} ${styles.sale}`}>Sale</span>
-            </Link>
-          </li>
-          <li><Link href="#">Pages</Link></li>
-          <li><Link href="#">Lookbook</Link></li>
-          <li><Link href="#">Blog</Link></li>
-          <li><Link href="#">Buy Theme</Link></li>
-        </ul>
-
-        <div className={styles.icons}>
-          <Search className={styles.icon} />
-          <User className={styles.icon} />
-          <div className={styles.heartContainer}>
-            <Heart className={styles.icon}/>
-            <span className={styles.heartCount}>0</span>
-          </div>
-          <div className={styles.cartContainer}>
-            <ShoppingCart className={styles.icon} />
-            <span className={styles.cartCount}>0</span>
-          </div>
-        </div>
-      </nav>
-    </>
+        {/* Dropdown list for currencies */}
+        {isDropdownOpen && (
+          <ul className={styles.dropdownList}>
+            <li className={styles.dropdownItem}>Canada-CAD</li>
+            <li className={styles.dropdownItem}>France-EUR</li>
+            <li className={styles.dropdownItem}>Germany-EUR</li>
+            <li className={styles.dropdownItem}>Japan-JPY</li>
+            <li className={styles.dropdownItem}>New zealand</li>
+            <li className={styles.dropdownItem}>United kingdom</li> 
+            <li className={styles.dropdownItem}>United states</li>
+            <li className={styles.dropdownItem}>Vietnam-VND</li>
+          </ul>
+        )}
+      </div>
+    </div>
   );
-}
+};
+
+export default Header;

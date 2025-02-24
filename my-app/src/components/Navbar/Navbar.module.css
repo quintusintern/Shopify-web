@@ -1,0 +1,192 @@
+/* Navbar.module.css */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .menu li {
+    position: relative;
+  }
+  
+  .menu li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .menu li a:hover,
+  .menu li a:focus {
+    color: #00bcd4;
+  }
+  
+  .newBadge, .saleBadge {
+    position: absolute;
+    top: -8px;
+    right: -15px;
+    background-color: #00bcd4;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 10px;
+  }
+  
+  .saleBadge {
+    background-color: #ff9800;
+  }
+  
+  .icons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .icon {
+    position: relative;
+    font-size: 30px;
+  }
+  
+  .iconHover:hover {
+    color: #00bcd4;
+  }
+  
+  /* Heart Icon Specific Badge */
+  .heartContainer {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .heartBadge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+  }
+  
+  /* Shopping Cart Icon Specific Badge */
+  .cartContainer {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .cartBadge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+  }
+  
+  /* Login Popup */
+  .popupOverlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .popupRight {
+    background-color: white;
+    width: 350px;
+    padding: 20px;
+    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.2);
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .popupHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .closeIcon {
+    cursor: pointer;
+  }
+  
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .loginForm label {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .loginForm input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .forgotPassword {
+    margin-top: 10px;
+    color: #00bcd4;
+    text-decoration: none;
+  }
+  
+  .signInButton {
+    margin-top: 15px;
+    background-color: #00bcd4;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .createAccount {
+    margin-top: 15px;
+    text-align: center;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .wishlistContent {
+        width: 90%;
+    }
+  }

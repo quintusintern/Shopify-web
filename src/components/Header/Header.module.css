@@ -29,6 +29,12 @@
   font-size: 12px;
 }
 
+.contact:hover{
+  color: #00bcd4;
+}
+
+
+
 .mailicon {
   color: lightgrey;
   margin-right: -4px;
@@ -40,6 +46,10 @@
   font-size: 12px;
 }
 
+.mail:hover{
+  color:#00bcd4;
+}
+
 .icon {
   color: lightgrey;
   margin-right: -2px;
@@ -48,7 +58,11 @@
 
 .highlight {
   font-weight: bold;
-  color: #ff6347; /* Color for the highlighted text */
+  color: #ff6347; 
+}
+
+.shopNow:hover{
+  color:#00bcd4;
 }
 
 .arrow {
@@ -59,6 +73,10 @@
 .location {
   margin-left: 12px;
   font-size: 12px;
+}
+
+.location:hover{
+  color:#00bcd4;
 }
 
 .dropdown {

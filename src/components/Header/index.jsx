@@ -24,7 +24,7 @@ const Header = () => {
       </div>
       <div className={styles.right}>
         <FaMapMarkerAlt className={styles.icon} /> <span className={styles.location}>Location</span>
-        <span className={styles.dropdown}>English&#9662;</span>
+        <span className={styles.language}>English&#9662;</span>
         <span className={styles.flag} onClick={toggleDropdown}>
           USD&#9662;
         </span>

@@ -5,7 +5,7 @@ import { ShoppingCart, User, Heart, Search } from 'lucide-react';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import styles from '@/app/page.module.css'; 
-import styles from './'
+
 
 export default function Navbar() {
   return (

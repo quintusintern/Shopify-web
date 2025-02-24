@@ -79,10 +79,14 @@
   color:#00bcd4;
 }
 
-.dropdown {
+.language {
   margin-left: 12px;
   font-size: 12px;
   cursor: pointer;
+}
+
+.language:hover{
+  color:#00bcd4;
 }
 
 .flag {
@@ -90,6 +94,10 @@
   font-size: 12px;
   cursor: pointer;
   position: relative; /* Important for positioning the dropdown relative to the flag */
+}
+
+.flag:hover{
+  color:#00bcd4
 }
 
 /* Fix for dropdown positioning */
@@ -115,13 +123,15 @@
   text-align: left; /* Align text to the left inside the dropdown */
 }
 
+
 .dropdownItem {
-  padding: 10px;
+  padding: 3px;
   font-size: 10px;
   cursor: pointer;
-  gap:5px;
+  gap:2px;
 }
 
-.dropdownItem:hover {
-  background-color: #f4f4f4;
+.dropdownItem:hover{
+  color: #00bcd4
 }
+

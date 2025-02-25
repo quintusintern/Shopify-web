@@ -46,10 +46,10 @@ const Navbar = () => {
           <div onClick={handleUserClick}>
             <User className={`${styles.icon} ${styles.iconHover}`} />
           </div>
-          <div className={styles.heartContainer}> 
-            <Heart className={`${styles.icon} ${styles.iconHover}`} />
-            <span className={styles.heartBadge}>0</span> 
-          </div>
+        <Link href="/User" className={styles.heartContainer}>
+  <Heart className={`${styles.icon} ${styles.iconHover}`} />
+  <span className={styles.heartBadge}>0</span>
+</Link>
           <div className={styles.cartContainer}>
             <ShoppingCart className={`${styles.icon} ${styles.iconHover}`} />
             <span className={styles.cartBadge}>{cartCount}</span> 

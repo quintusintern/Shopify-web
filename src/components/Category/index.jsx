@@ -1,7 +1,13 @@
 import Image from "next/image";
 import styles from './Category.module.css';
+const categories = [
+  { src: "/assets/category/women.jpg", label: "Women" },
+  { src: "/assets/category/accessories.jpg", label: "Accessories" },
+  { src: "/assets/category/footwear.jpg", label: "Footwear" },
+  { src: "/assets/category/watches.jpg", label: "Watches" },
+];
 
-export default function CategoryGrid() {
+const CategoryGrid = () => {
   return (
     <div className={styles.container}>
       <div className={styles.grid}>
@@ -32,3 +38,4 @@ export default function CategoryGrid() {
     </div>
   );
 }
+export default CategoryGrid;

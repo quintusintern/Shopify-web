@@ -7,15 +7,15 @@ import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const [showLogin, setShowLogin] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
-  const [isRotated, setIsRotated] = useState(false); // ✅ Keep rotation state persistent
+  const [cartCount, setCartCount] = useState(0); // Initialize cartCount
 
   useEffect(() => {
+    // Retrieve cartCount from localStorage on component mount
     const storedCartCount = localStorage.getItem("cartCount");
     if (storedCartCount) {
-      setCartCount(parseInt(storedCartCount, 10));
+      setCartCount(parseInt(storedCartCount));
     }
-  }, []);
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   const handleUserClick = () => {
     setShowLogin(true);
@@ -25,6 +25,13 @@ const Navbar = () => {
     if (e.target.classList.contains(styles.popupOverlay)) {
       setShowLogin(false);
     }
+  };
+
+  // Example function to increment the cart count (you'll need to adapt this to your actual add-to-cart logic)
+  const handleAddToCart = () => {
+    const newCartCount = cartCount + 1;
+    setCartCount(newCartCount);
+    localStorage.setItem("cartCount", newCartCount.toString()); // Store in localStorage
   };
 
   return (
@@ -54,6 +61,8 @@ const Navbar = () => {
             <ShoppingCart className={`${styles.icon} ${styles.iconHover}`} />
             <span className={styles.cartBadge}>{cartCount}</span> 
           </div>
+          {/* Example button to increment cart count */}
+         
         </div>
       </div>
 
@@ -62,20 +71,13 @@ const Navbar = () => {
           <div className={styles.popupRight}>
             <div className={styles.popupHeader}>
               <h2>LOGIN</h2>
-              <X
-                className={`${styles.closeIcon} ${isRotated ? styles.rotated : ""}`}
-                onClick={() => {
-                  setIsRotated(!isRotated); // ✅ Rotate button
-                  setShowLogin(false);
-                }}
-              />
-              
+              <X className={styles.closeIcon} onClick={() => setShowLogin(false)} />
             </div>
             <form className={styles.loginForm}>
-             
-            <input type="password" className={styles.emailInput}placeholder="Email *" required />
-             
-              <input type="password"   placeholder="Password *"required />
+              <label>Email *</label>
+              <input type="email" required />
+              <label>Password *</label>
+              <input type="password" required />
               <Link href="#" className={styles.forgotPassword}>Forgot your password?</Link>
               <button type="submit" className={styles.signInButton}>Sign In</button>
               <Link href="#" className={styles.createAccount}>New customer? Create your account</Link>

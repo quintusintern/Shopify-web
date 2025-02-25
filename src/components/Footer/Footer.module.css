@@ -1,0 +1,150 @@
+.footer {
+    background-color: #f8f8f8;
+    padding: 90px 20px;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; 
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: flex-start;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.footerBrand,
+.footerLinks,
+.footerNewsletter {
+    text-align: center; 
+}
+
+.brand {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 12px; 
+}
+.address{
+    font-size: 14px;
+    color: #666;
+    margin: 8px 0; /* Proper spacing */
+    line-height: 1.6; /* Improve readability */
+   text-align: left;
+   margin-top: -8px;
+  
+}
+.email,
+.phone {
+    font-size: 14px;
+    color: #666;
+    margin: 8px 0; /* Proper spacing */
+    line-height: 1.6; /* Improve readability */
+   text-align: left;
+   margin-bottom: 6px;
+  
+}
+.socialIcons {
+    display: flex;
+    gap: 12px; /* Proper spacing between icons */
+    font-size: 18px;
+    color: #333;
+    margin-top: 15px; /* Space above social icons */
+    align-items: center;
+}
+.footerBrand {
+    width: 25%;
+    margin-left: 20px; 
+  
+}
+
+
+.footerLinks {
+    display: flex;
+   justify-content: space-between;
+    width: 45%;
+   
+}
+
+.footerLinks h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px; /* Space below heading */
+    text-align: start;
+}
+
+.footerLinks div {
+   width: 30%;
+}
+
+.footerLinks ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Remove default margin */
+}
+
+.footerLinks li {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 6px;
+    cursor: pointer;
+    text-align: start;
+}
+
+.footerNewsletter {
+    width: 25%;
+    text-align: left;
+}
+
+.footerNewsletter h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footerNewsletter p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.newsletterBox {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.newsletterBox input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    outline: none;
+    font-size: 14px;
+}
+
+.newsletterBox button {
+    background: black;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.paymentMethods {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.paymentMethods img {
+    width: 50px;
+}

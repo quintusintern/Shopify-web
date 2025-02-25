@@ -1,9 +1,9 @@
 import CategoryGrid from "@/components/Category";
 import Header from "@/components/Header";
-
 import Headertop from "@/components/Headertop";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 
 import Image from "next/image";
@@ -17,7 +17,7 @@ export default function Home() {
       <Navbar/>
       <Hero/>
       <CategoryGrid/>
-      
+      <Footer/>
     </div>
   );
 }

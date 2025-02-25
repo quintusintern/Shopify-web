@@ -150,6 +150,11 @@
     transition: transform 0.3s ease-in-out;
 }
 
+  
+.closeIcon:hover {
+  transform: rotate(20deg);
+}
+
   .loginForm {
     display: flex;
     flex-direction: column;

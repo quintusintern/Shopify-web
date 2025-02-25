@@ -7,6 +7,7 @@
     align-items: center;
     font-size: 14px;
     position: relative;
+    height: 45px;
     width: 100%;
   }
   
@@ -16,7 +17,7 @@
     background: none;
     border: none;
     color: white;
-    font-size: 16px;
+    font-size: 12px;
     cursor: pointer;
   }
   

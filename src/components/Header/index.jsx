@@ -17,10 +17,10 @@ const currencies = [
 ];
 
 const languages = [
-  { code: "en", name: "English", flag: "/assets/Flags/us.svg" },
-  { code: "fr", name: "Français", flag: "/assets/Flags/fr.svg" },
-  { code: "de", name: "Deutsch", flag: "/assets/Flags/de.svg" },
-  { code: "jp", name: "日本語", flag: "/assets/Flags/jp.svg" },
+  { code: "en", name: "English" },
+  { code: "fr", name: "Français" },
+  { code: "de", name: "Deutsch" },
+  { code: "jp", name: "日本語" },
 ];
 
 const Header = () => {
@@ -94,14 +94,6 @@ const Header = () => {
                 className={styles.dropdownItem}
                 onClick={() => selectLanguage(language)}
               >
-                <Image
-                  height={16}
-                  width={16}
-                  loading="lazy"
-                  decoding="async"
-                  src={language.flag}
-                  alt={language.name}
-                />{" "}
                 {language.name}
               </li>
             ))}

@@ -1,61 +1,92 @@
 .hero {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .textContainer {
-    width: 100%;
-    max-width: 500px;
-    z-index: 5;
-    padding: 170px;
-  }
-  
-  .subheading {
-    font-size: 14px;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  
-  .heading {
-    font-size: 36px;
-    font-weight: bold;
-    margin: 10px 0;
-  }
-  
-  .button {
-    background-color: #222;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .button:hover {
-    background-color: #444;
-  }
-  
-  .imageContainer {
-    position: absolute;
-    top: 0;
-    width: 2000px;
-    height: 500px;
-    overflow: hidden;
-    z-index: 0;
-  }
-  
-  .slide {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 715px;
+}
 
-  .slideImg {
-    object-fit: cover;
-    width: 100%;
-    height: auto;
-  }
+.textContainer {
+  width: 100%;
+  max-width: 500px;
+  z-index: 5;
+  padding: 170px;
+}
+
+.subheading {
+  font-size: 14px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.heading {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.button {
+  background-color: #222;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #444;
+}
+
+.imageContainer {
+  position: absolute;
+  top: 0;
+  width: 2000px;
+  height: 700px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  z-index: 0;
+}
+
+.slideImg {
+  object-fit: cover;
+  height: 100%;
+  width: 100vw;
+  z-index: 0;
+}
+
+
+.dotsContainer {
+  position: absolute;
+  bottom: 50px;
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 10;
+  gap: 20px;
+}
+
+.dot {
+  z-index: 15;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: gray;
+}
+
+.activeDot {
+  z-index: 15;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: black;
+}

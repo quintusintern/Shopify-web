@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect, useRef } from "react";
 import styles from "./Hero.module.css";
 
@@ -90,6 +89,15 @@ const HeroCarousel = () => {
             />
           </div>
         ))}
+        
+        <div className={styles.dotsContainer}>
+          {images.map((_, index) => (
+            <span
+              key={index}
+              className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ""}`}
+            ></span>
+          ))}
+        </div>
       </div>
     </section>
   );

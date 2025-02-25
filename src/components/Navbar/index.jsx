@@ -1,21 +1,21 @@
-"use client";
+"use client"; // 👈 Add this at the top
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ShoppingCart, User, Search, Heart, X } from "lucide-react";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const [showLogin, setShowLogin] = useState(false);
-  const [cartCount, setCartCount] = useState(0); // Initialize cartCount
+  const [showSearch, setShowSearch] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
-    // Retrieve cartCount from localStorage on component mount
     const storedCartCount = localStorage.getItem("cartCount");
     if (storedCartCount) {
       setCartCount(parseInt(storedCartCount));
     }
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, []);
 
   const handleUserClick = () => {
     setShowLogin(true);
@@ -25,13 +25,6 @@ const Navbar = () => {
     if (e.target.classList.contains(styles.popupOverlay)) {
       setShowLogin(false);
     }
-  };
-
-  // Example function to increment the cart count (you'll need to adapt this to your actual add-to-cart logic)
-  const handleAddToCart = () => {
-    const newCartCount = cartCount + 1;
-    setCartCount(newCartCount);
-    localStorage.setItem("cartCount", newCartCount.toString()); // Store in localStorage
   };
 
   return (
@@ -49,20 +42,20 @@ const Navbar = () => {
           <li><Link href="#">Buy Theme</Link></li>
         </ul>
         <div className={styles.icons}>
-          <Search className={`${styles.icon} ${styles.iconHover}`} />
+          <div onClick={() => setShowSearch(true)}>
+            <Search className={`${styles.icon} ${styles.iconHover}`} />
+          </div>
           <div onClick={handleUserClick}>
             <User className={`${styles.icon} ${styles.iconHover}`} />
           </div>
-        <Link href="/User" className={styles.heartContainer}>
-  <Heart className={`${styles.icon} ${styles.iconHover}`} />
-  <span className={styles.heartBadge}>0</span>
-</Link>
+          <div className={styles.heartContainer}>
+            <Heart className={`${styles.icon} ${styles.iconHover}`} />
+            <span className={styles.heartBadge}>0</span>
+          </div>
           <div className={styles.cartContainer}>
             <ShoppingCart className={`${styles.icon} ${styles.iconHover}`} />
-            <span className={styles.cartBadge}>{cartCount}</span> 
+            <span className={styles.cartBadge}>{cartCount}</span>
           </div>
-          {/* Example button to increment cart count */}
-         
         </div>
       </div>
 
@@ -82,6 +75,47 @@ const Navbar = () => {
               <button type="submit" className={styles.signInButton}>Sign In</button>
               <Link href="#" className={styles.createAccount}>New customer? Create your account</Link>
             </form>
+          </div>
+        </div>
+      )}
+
+      {showSearch && (
+        <div className={styles.overlay}>
+          <div className={styles.container}>
+           
+            <h2>SEARCH OUR SITE</h2>
+           
+           
+            <select className={styles.select}>
+              <option>All Categories</option>
+            </select>
+            <div className={styles.searchBox}>
+           <input type="text" placeholder="Search" className={styles.searchInput} />
+            <Search size={18} className={styles.searchIcon} />
+            </div>
+           
+         
+            <p className={styles.quickSearch}>
+              Quick search: <span>Women, Men, New</span>
+            </p>
+            <h3>Need some inspiration?</h3>
+            <div className={styles.suggestions}>
+              <div className={styles.item}>
+                <img src="/img1.jpg" alt="Product 1" className={styles.image} />
+                <div>
+                  <p>Analogue Resin Strap</p>
+                  <p>$30.00</p>
+                </div>
+              </div>
+              <div className={styles.item}>
+                <img src="/img2.jpg" alt="Product 2" className={styles.image} />
+                <div>
+                  <p>Ridley High Waist</p>
+                  <p>$36.00</p>
+                </div>
+              </div>
+            </div>
+            <button className={styles.viewAll}>View All →</button>
           </div>
         </div>
       )}

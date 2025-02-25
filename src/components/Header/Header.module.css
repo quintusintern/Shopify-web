@@ -91,11 +91,16 @@
   color:#00bcd4;
 }
 
+.currencySelect {
+  bottom: -12px;
+}
+
 .flag {
   margin-left: 12px;
   font-size: 12px;
   cursor: pointer;
-  position: relative; /* Important for positioning the dropdown relative to the flag */
+  position: relative;
+  top: 4px;
 }
 
 .flag:hover{

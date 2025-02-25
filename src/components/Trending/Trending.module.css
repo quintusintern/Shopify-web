@@ -107,6 +107,10 @@
   z-index: 6;
 }
 
+.overlayContent {
+  z-index: 7;
+}
+
 .imageWrapper:hover .overlay {
   opacity: 1;
 }
@@ -181,8 +185,8 @@
     transform: translateY(0);
   }
 }
-
 .btn {
+  position: relative;
   padding: 8px 16px;
   border: 2px solid white;
   background: transparent;
@@ -190,7 +194,19 @@
   font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease-in-out;
+  overflow: hidden;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.btn::after {
+  content: attr(data-hover);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -100%;
+  color: black;
+  font-weight: bold;
+  transition: transform 0.3s ease-in-out;
 }
 
 .btn:hover {
@@ -198,12 +214,15 @@
   color: black;
 }
 
+.btn:hover::after {
+  transform: translateY(-100%);
+}
+
+
 /* Light Blue Button */
 .lightBlueBtn {
   padding: 8px 16px;
-  border: 2px solid white;
-  background: transparent;
-  color: white;
+  border: 2px solid transparent;
   font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
@@ -213,11 +232,6 @@
   border-color: lightblue;
 }
 
-.lightBlueBtn:hover {
-  background: white;
-  color: black;
-  border-color: white;
-}
 
 /* Footer Text */
 .footerText {
@@ -248,7 +262,7 @@
 .btn {
   padding: 8px 16px;
   border: 2px solid white;
-  background: transparent;
+  background: white;
   color: white;
   font-weight: bold;
   border-radius: 8px;
@@ -269,18 +283,9 @@
   font-size: 12px;
   font-weight: bold;
   text-align: center;
+  justify-self: center;
   width: 100%;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -309,7 +314,6 @@
 .imgCard p {
   margin: 10px;
   text-align: center;
-  color: gray;
 }
 
 .LoadMoreBtn {

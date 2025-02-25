@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import CategoryGrid from "@/components/Category";
 import Trending from "@/components/Trending";
+import TwoCards from "@/components/TwoCards";
 import BestSeller from "@/components/BestSeller";
 import Footer from "@/components/Footer";
 
@@ -20,6 +21,7 @@ export default function Home() {
       <Hero/>
       <CategoryGrid/>
       <Trending/>
+      <TwoCards/>
       <BestSeller/>
       <Footer/>
     </div>

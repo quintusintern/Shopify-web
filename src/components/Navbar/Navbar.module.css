@@ -211,4 +211,139 @@
     color: #00bcd4;
   }
   
+  .overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 20;
+  }
+
+  .container {
+    background-color: white;
+    width: 350px;
+    padding: 20px;
+    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.2);
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 25;
+  }
+
+  .container h2{
+    font-size: 12px; 
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
   
+  .searchBox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+  }
+  
+  .input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .searchButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .suggestions {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+  }
+  
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  .viewAll {
+    background: none;
+    border: none;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+.select{
+  width:100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  margin-top: 22px;
+  background-color: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.select:focus {
+  border-color: #000;
+}
+
+.searchBox{
+  width:100%;
+  padding: 5px 8px;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  margin-top: 22px;
+  background-color: #fff;
+  outline: none;
+  cursor: pointer;
+  height: 35px;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+  padding: 10px;
+}
+
+.searchButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+ 
+  padding: 5px; /* Adjust padding for proper alignment */
+}
+
+
+.quickSearch{
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.quickSearch span {
+  color:lightgrey;
+  cursor: pointer; 
+}
+

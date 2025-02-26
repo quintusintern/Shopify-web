@@ -1,0 +1,21 @@
+.wishlistContainer {
+    background-image: url("/footwear.jpg"); /* Ensure this image exists in /public */
+    background-size: cover;
+    background-position: center;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+  }
+  
+  .wishlistContent h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .wishlistContent p {
+    font-size: 14px;
+  }
+  

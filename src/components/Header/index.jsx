@@ -92,7 +92,7 @@ const Header = () => {
           </ul>
         )}
         {/* Currency Selector */}
-        <span className={styles.flag} onClick={toggleCurrencyDropdown}>
+        <span className={styles.currencySelect} onClick={toggleCurrencyDropdown}>
           <img
             height={16}
             width={20}

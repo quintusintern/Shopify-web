@@ -1,0 +1,115 @@
+/* Section main content */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 100px auto;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 40px auto;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.line {
+  width: 40px;
+  height: 2px;
+  background-color: black; /* Adjust color as needed */
+}
+
+
+/* Cards content */
+
+.cardsContainer {
+    margin-left: auto;
+    margin-right: auto;
+  max-width: 1160px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.imgCard {
+  height: 420px;
+  min-width: 250px;
+  background-color: rgb(246, 246, 248);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 270px;
+  height: 345px;
+}
+
+.imageDefault,
+.imageHover {
+  width: 270px;
+  height: 345px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.imageDefault {
+  position: absolute;
+  z-index: 1;
+  width: 270px;
+  height: 345px;
+  opacity: 1;
+}
+
+.imageHover {
+  position: absolute;
+  z-index: 2;
+  width: 270px;
+  height: 345px;
+  opacity: 0;
+}
+
+.imageWrapper:hover .imageDefault {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  width: 270px;
+  height: 345px;
+  opacity: 0;
+}
+
+.imageWrapper:hover .imageHover {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  width: 270px;
+  height: 345px;
+  opacity: 1;
+}
+
+.imgCard h3 {
+  margin: 10px;
+  text-align: center;
+}
+
+.imgCard p {
+  margin: 10px;
+  text-align: center;
+  color: gray;
+}

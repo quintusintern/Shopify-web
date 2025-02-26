@@ -21,6 +21,7 @@ export default function Home() {
       <Navbar/>
       <Hero/>
       <CategoryGrid/>
+      <BlogSection/>
       <Footer/>
      
     </div>

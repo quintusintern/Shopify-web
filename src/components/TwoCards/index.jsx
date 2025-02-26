@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client"; // 👈 Add this at the top
+
+import React from "react";
 import styles from "./TwoCards.module.css";
 
 const cardsData = [
@@ -28,6 +30,7 @@ export default function TwoCards() {
           />
           <h3>{card.title}</h3>
           <p>{card.description}</p>
+          <p className={styles.sizes}>Available Sizes: {card.sizes}</p>
         </div>
       ))}
     </div>

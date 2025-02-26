@@ -1,10 +1,9 @@
+
 import CategoryGrid from "@/components/Category";
 import Header from "@/components/Header";
 import Headertop from "@/components/Headertop";
 import Hero from "@/components/Hero";
-import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
-import CategoryGrid from "@/components/Category";
 import Trending from "@/components/Trending";
 import TwoCards from "@/components/TwoCards";
 import BestSeller from "@/components/BestSeller";
@@ -26,6 +25,7 @@ export default function Home() {
       <BestSeller/>
       <BlogSection/>
       <Footer/>
+     
     </div>
   );
 }

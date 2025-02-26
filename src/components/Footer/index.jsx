@@ -9,7 +9,7 @@ const Footer = () => {
         <div className={styles.footerBrand}>
           <h2 className={styles.brand}>kalles</h2>
           <p className={styles.address}>
-            📍 184 Main Rd E, St Albans VIC 3021, Australia
+         184 Main Rd E, St Albans VIC 3021, Australia
           </p>
           <p className={styles.email}>✉️ contact@company.com</p>
           <p className={styles.phone}>📞 +001 2233 456</p>

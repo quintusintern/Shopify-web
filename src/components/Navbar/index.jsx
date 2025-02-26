@@ -98,7 +98,7 @@ const Navbar = () => {
             <p className={styles.quickSearch}>
               Quick search: <span>Women, Men, New</span>
             </p>
-            <h3>Need some inspiration?</h3>
+            <h3 className={styles.Heading}>Need some inspiration?</h3>
             <div className={styles.suggestions}>
               <div className={styles.item}>
                 <img src="/img1.jpg" alt="Product 1" className={styles.image} />

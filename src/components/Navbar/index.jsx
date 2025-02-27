@@ -121,47 +121,24 @@ const Navbar = () => {
         </div>
       )}
 
-      {showSearch && (
-        <div className={styles.overlay}>
-          <div className={styles.container}>
-            <h2>SEARCH OUR SITE</h2>
-
-            <select className={styles.select}>
-              <option>All Categories</option>
-            </select>
-            <div className={styles.searchBox}>
-              <input
-                type="text"
-                placeholder="Search"
-                className={styles.searchInput}
-              />
-              <Search size={18} className={styles.searchIcon} />
-            </div>
-
-            <p className={styles.quickSearch}>
-              Quick search: <span>Women, Men, New</span>
-            </p>
-            <h3 className={styles.Heading}>Need some inspiration?</h3>
-            <div className={styles.suggestions}>
-              <div className={styles.item}>
-                <img src="/img1.jpg" alt="Product 1" className={styles.image} />
-                <div>
-                  <p>Analogue Resin Strap</p>
-                  <p>$30.00</p>
-                </div>
-              </div>
-              <div className={styles.item}>
-                <img src="/img2.jpg" alt="Product 2" className={styles.image} />
-                <div>
-                  <p>Ridley High Waist</p>
-                  <p>$36.00</p>
-                </div>
-              </div>
-            </div>
-            <button className={styles.viewAll}>View All →</button>
-          </div>
+<div className={`${styles.cartPopup} ${showSearch ? styles.open : ""}`}>
+<div className={styles.searchContainer}>
+<div className={styles.header}>
+          <span className={styles.title}>SEARCH OUR SITE</span>
+          <button className={styles.closeButton}>&times;</button>
         </div>
-      )}
+    </div>
+
+    <div className={styles.searchInputContainer}>
+            <input type="text" placeholder="Search" className={styles.searchInput} />
+            <button className={styles.searchButton}>🔍</button>
+          </div>
+          <div className={styles.quickSearch}>
+            Quick search: <span>Women, Men, New</span>
+          </div>
+ </div>
+
+      {cartOpen && <div className={styles.overlay} onClick={() => setShowSearch(false)} />}
 
       <div className={`${styles.cartPopup} ${cartOpen ? styles.open : ""}`}>
         <div className={styles.cartHeader}>

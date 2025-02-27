@@ -1,4 +1,4 @@
-"use client"; // 👈 Add this at the top
+"use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -89,8 +89,12 @@ const Navbar = () => {
             <User className={`${styles.icon} ${styles.iconHover}`} />
           </div>
           <div className={styles.heartContainer}>
+            <Link href="/User">
+            <div className={styles.heartContainer}>
             <Heart className={`${styles.icon} ${styles.iconHover}`} />
             <span className={styles.heartBadge}>0</span>
+          </div>
+            </Link>
           </div>
           <div
             className={styles.cartContainer}

@@ -56,7 +56,7 @@
 }
 
 .parentContainer {
-  max-height: 446px;
+  max-height: 277px;
   width: 370px;
   background: #fff;
   text-align: left;
@@ -65,18 +65,15 @@
 }
 
 .imageContainer {
-  position: relative;
-  display: flex;
-  /* align-items: center; */
-  justify-content: center;
-  max-height: 278px;
+  max-height: 446px;
   width: 370px;
   overflow: hidden;
 }
 
 .imageContainer img {
-  width: 130%;
-  height: 130%;
+  position: relative;
+  height: 535px;
+  width: 444px;
   object-fit: cover;
   transition: transform 1s ease;
   z-index: 1;
@@ -86,9 +83,40 @@
   transform: translateY(-30px);
 }
 
+.parentContainer {
+  max-height: 277px;
+  width: 370px;
+  background: #fff;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.imageContainer {
+  max-height: 446px;
+  width: 370px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.imageContainer img {
+  position: relative;
+  height: 130%;
+  width: 130%;
+  object-fit: cover;
+  transition: transform 1s ease;
+  z-index: 1;
+}
+
+.parentContainer:hover .imageContainer img {
+  transform: translateY(-30px);
+}
+
 .effectOverlay {
   position: absolute;
-  height: 278px;
+  height: 277px;
   width: 370px;
   z-index: 3;
   background-color: rgba(0, 0, 0, 0.4);
@@ -133,19 +161,19 @@
   transform-origin: top;
 }
 
-.blogCard:hover .top {
+.effectOverlay:hover .top {
   width: calc(100% - 30px);
 }
 
-.blogCard:hover .right {
+.effectOverlay:hover .right {
   height: calc(100% - 30px);
 }
 
-.blogCard:hover .bottom {
+.effectOverlay:hover .bottom {
   width: calc(100% - 30px);
 }
 
-.blogCard:hover .left {
+.effectOverlay:hover .left {
   height: calc(100% - 30px);
 }
 

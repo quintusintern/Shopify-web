@@ -21,28 +21,28 @@ const cardsData = [
 export default function TwoCards() {
   return (
     <div className={styles.cardsContainer}>
-      <div className={styles.imageWrapper}>
+      <div className={styles.leftImageWrapper}>
+        <div className={styles.overlay}>
+          <h3>lOOKBOOK 2025</h3>
+          <p>MAKE LOVE THIS LOOK</p>
+        </div>
         <img
           src="/slider-01.jpg"
           alt="slider-01"
           className={styles.imageLeft}
         />
-        <div className="twoOverlay">
-          <h3>lOOKBOOK 2025</h3>
-          <p>MAKE LOVE THIS LOOK</p>
-        </div>
       </div>
 
-      <div className={styles.imageWrapper}>
+      <div className={styles.rightImageWrapper}>
+      <div className={styles.overlay}>
+          <p>SUMMER SALE</p>
+          <h2>UP TO 70%</h2>
+        </div>
         <img
           src="/slider-02.jpg"
           alt="slider-02"
           className={styles.imageRight}
         />
-        <div className="twoOverlay">
-          <p>SUMMER SALE</p>
-          <h2>UP TO 70%</h2>
-        </div>
       </div>
     </div>
   );

@@ -1,220 +1,334 @@
 .footer {
-    background-color: #f8f8f8;
-    padding: 120px 0;
-    min-height: 400px;
-    text-align: center;
-  }
-  
-  .container {
-    width: 99%;
-    margin: 0 auto;
-   
-  }
-  
-  .footerTop {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 40px;
-    text-align: center;
-    padding-left: 100px;
-    margin-left: 60px;
-    
-  }
-  
-  .footerHeading{
-    text-align: left;
-    display: block; 
-    width: 100%; 
-    font-size:34px;
+  min-height: 400px;
+  text-align: center;
+  justify-content: center;
+}
 
-  }
-  .footerSection {
-    flex: 1;
-    min-width: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center content vertically */
-  }
-  .footerSection p {
-    text-align: left; /* Left align all paragraph texts */
-    margin: 5px 0; /* Adjust spacing */
-    width: 100%; /* Ensure proper alignment */
-   color:rgb(135, 135, 135);
-  font-family:Poppins;
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footerTop {
+  width: 100%;
+  height: auto;
+  background-color: #f8f8f8;
+}
+
+.footerTopContainer {
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 75px 0px;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footerSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 0px 15px;
+  margin-top: 30px;
+}
+
+.footerLogo {
+  position: relative;
+  top: -15px;
+  text-align: left;
+  width: 100%;
+  font-size: 34px;
+  height: 50px;
+}
+
+.sectionHeader {
+  text-align: left;
+  width: 100%;
+  font-size: 34px;
+  height: 50px;
+}
+
+
+.sectionBig {
+  min-width: 300px;
+  max-width: 300px;
+}
+
+.sectionSmall {
+  min-width: 200px;
+  max-width: 200px;
+}
+
+.footerSection p {
+  text-align: left;
+  margin: 5px 0;
+  width: 100%;
+  color: rgb(135, 135, 135);
+  font-family: Poppins;
   font-size: 14px;
   font-weight: 400;
 }
 
-
-.SocialIcons{
-    
-    margin-top: 5px;
-    display: flex;
-    justify-content: flex-start; 
-    gap: 12px; 
-    width: 100%;
-    margin-right: 10px;
-    color:rgb(135, 135, 135);
-}
-
 .iconContainer {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .iconContainer:hover {
-    transform: translateY(-5px); /* Icon moves up on hover */
-  }
-
-  .iconContainer svg {
-    font-size: 15px;
-    color: #333;
-    transition: color 0.3s ease-in-out;
-    cursor: pointer;
-  }
-
-.facebook:hover{
-    color:#1877F2;
+  position: relative;
+  max-width: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
 }
 
-.twitter:hover{
-    color:#1877F2;
+.SocialIcons {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
 }
 
-.instagram:hover{
-   color: aquamarine;
+.SocialIcons:hover {
+  transform: translateY(-5px); /* Icon moves up on hover */
 }
 
-.linkedin:hover{
-    color: #1877F2;
+.SocialIcons svg {
+  font-size: 20px;
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
 }
 
-.pinterest:hover{
-    color:red
+.facebook {
+  color: rgb(135, 135, 135);
+}
+
+.twitter {
+  color: rgb(135, 135, 135);
+}
+
+.instagram {
+  color: rgb(135, 135, 135);
+}
+
+.linkedin {
+  color: rgb(135, 135, 135);
+}
+
+.pinterest {
+  color: rgb(135, 135, 135);
+}
+
+.facebook:hover {
+  color: rgb(24, 119, 242);
+}
+
+.twitter:hover {
+  color: #1877f2;
+}
+
+.instagram:hover {
+  color: rgb(193, 53, 132);
+}
+
+.linkedin:hover {
+  color: rgb(10, 102, 194);
+}
+
+.pinterest:hover {
+  color: rgb(230, 0, 35);
 }
 
 .tooltip {
-    position: absolute;
-    bottom: 40px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 5px 12px;
-    font-size: 12px;
-    border-radius: 2px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  }
+  position: absolute;
+  bottom: 40px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 12px;
+  font-size: 12px;
+  border-radius: 2px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
 
-  .tooltip::after {
-    content: "";
-    position: absolute;
-    bottom: -6px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 4px;
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
-  }
-  .iconContainer:hover .tooltip {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(-5px); /* Moves tooltip up */
-  }
+.tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+}
+.iconContainer:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-5px); /* Moves tooltip up */
+}
 
-  .footerSection h4 {
-    font-weight: 600;
-    color:rgb(34, 34, 34);
-    display: block;
-    margin-bottom: 12px;
-    font-family: Poppins;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  .footerSection ul {
-    list-style: none;
-    padding: 0;
-    text-align: center; /* Center list items */
-  }
-  
-  .footerSection ul li{
-    color:rgb(135, 135, 135);
-    box-sizing: border-box;
-    display: list-item;
-    font-family: Poppins;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 23.8px;
-    margin-bottom: 10px;
-    text-align: left;
-  }
-  
-  .column {
-    flex: 1;
-    min-width: 200px;
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .address, .email, .phone {
-    font-size: 14px;
-    margin: 5px 0;
-  }
-  
-  .socialIcons {
-    display: flex;
-    gap: 10px;
-  }
-  
-  
-  .newsletter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap:10px;
-  }
-  .footerSection p {
-    font-size: 14px;
-    color: rgb(135, 135, 135);
-    box-sizing: border-box;
-    display: block;
-    font-family: Poppins;
-    margin-bottom: 18px;
-    font-weight: 400;
-    line-height: 24px;
-    max-width: 300px; 
-  }
-  .newsletter input {
+.footerSection h4 {
+  font-weight: 600;
+  color: rgb(34, 34, 34);
+  display: block;
+  margin-bottom: 12px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+}
+.footerSection ul {
+  list-style: none;
+  padding: 0;
+  text-align: center; /* Center list items */
+}
+
+.footerSection ul li {
+  color: rgb(135, 135, 135);
+  box-sizing: border-box;
+  display: list-item;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 23.8px;
+  margin-bottom: 10px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.footerSection ul li:hover {
+  color: rgb(86, 207, 225);
+}
+
+.column {
+  flex: 1;
+  min-width: 200px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.address,
+.email,
+.phone {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 10px;
+}
+
+
+.inputContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.emailInput {
+  height: 46px;
+  width: 270px;
+  padding: 10px 120px 10px 15px;
+  border-radius: 25px;
+  border: 1px solid rgb(34, 34, 34);
+  font-size: 13px;
+  font-weight: 400;
+  color: rgb(135, 135, 135);
+  outline: none;
+  margin-bottom: 20px;
+}
+
+.subscribeButton {
+  position: absolute;
+  height: 40px;
+  width: 111px;
+  right: 3px;
+  top: 23px;
+  transform: translateY(-50%);
+  background: rgb(34, 34, 34);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.subscribeButton:hover {
+  background: rgb(86, 207, 225);
+}
+
+
+
+
+
+.footerSection p {
+  font-size: 14px;
+  color: rgb(135, 135, 135);
+  box-sizing: border-box;
+  display: block;
+  font-family: Poppins;
+  margin-bottom: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  max-width: 300px;
+}
+.newsletter input {
   text-align: center;
-  }
-  
-  .newsletter button {
-    padding: 8px 15px;
-    background-color: black;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .paymentMethods {
-    display: flex;
-    gap:10px;
-    justify-content: center;
-  }
-  
-  .footerBottom {
-    margin-top: 20px;
-    font-size: 14px;
-    text-align: center;
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
-  }
-  
+}
+
+.newsletter button {
+  padding: 8px 15px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.paymentMethods {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.footerBottom {
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+  padding-top: 10px;
+  margin-top: 15px;
+  margin-right: auto;
+  margin-bottom: 10px;
+  margin-left: auto;
+  color: rgb(135, 135, 135);
+}
+
+.footerBottom > p > a {
+  color: rgb(86, 207, 225);
+  cursor: pointer;
+}
+
+.footerLinks a {
+  cursor: pointer;
+}
+
+.footerLinks a:hover {
+  color: rgb(86, 207, 225);
+}

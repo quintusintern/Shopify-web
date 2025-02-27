@@ -1,12 +1,23 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background-color: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.menu li {
+  position: relative;
+}
+
   .logo {
     font-size: 24px;
     font-weight: bold;
@@ -243,56 +254,151 @@
     flex-direction: column;
   }
 
-  .cartPopup.open {
-    right: 0; /* Slide-in effect */
-  }
+.menu li a {
+  text-decoration: none;
+  color: #222222 ;
+  font-size: 14px;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
 
-  .cartHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
-  }
+.menu li a:hover,
+.menu li a:focus {
+  color: #00bcd4;
+}
 
-  .cartHeader h3{
-    color:black;
-    box-sizing: border-box;
-    display: block;
-    flex-basis: auto;
-    flex-grow: 1;
-    font-family: Poppins;
-    font-kerning: auto;
-    font-size: 16px;
-    font-stretch: 100%;
-    font-weight: 500;
-    line-height: 27.2px;
-    text-transform: uppercase;
-    visibility: visible;
-  }
+.newBadge,
+.saleBadge {
+  position: absolute;
+  top: -8px;
+  right: -15px;
+  background-color: #00bcd4;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
 
-  .closeIcon {
-    cursor: pointer;
-  }
+.saleBadge {
+  background-color: #ff9800;
+}
 
-  
+.icons {
+  display: flex;
+  gap: 15px;
+}
 
-  
-  .cartContent p{
-   box-sizing: border-box;
-   display: block;
-   font-family: Poppins;
-   font-size: 13px;
-   font-weight: 500;
-   color:rgb(135, 135, 135)
-  }
- 
-  .cartContent span {
-    color:rgb(235, 0, 27);
-    border-bottom-color: rgb(235, 0, 27);
-  }
+.icon {
+  position: relative;
+  font-size: 30px;
+}
 
-  .progressContainer {
+.iconHover:hover {
+  color: #00bcd4;
+}
+
+.heartContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.heartBadge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.cartContainer {
+  position: relative;
+  cursor: pointer;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.cartPopup {
+  position: fixed;
+  top: 0;
+  right: -350px; /* Initially hidden */
+  width: 300px;
+  height: 100vh;
+  background: white;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.cartPopup.open {
+  right: 0; /* Slide-in effect */
+}
+
+.cartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.cartHeader h3 {
+  color: black;
+  box-sizing: border-box;
+  display: block;
+  flex-basis: auto;
+  flex-grow: 1;
+  font-family: Poppins;
+  font-kerning: auto;
+  font-size: 16px;
+  font-stretch: 100%;
+  font-weight: 500;
+  line-height: 27.2px;
+  text-transform: uppercase;
+  visibility: visible;
+}
+
+.closeIcon {
+  cursor: pointer;
+}
+
+.cartContent p {
+  box-sizing: border-box;
+  display: block;
+  font-family: Poppins;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(135, 135, 135);
+}
+
+.cartContent span {
+  color: rgb(235, 0, 27);
+  border-bottom-color: rgb(235, 0, 27);
+}
+
+.progressContainer {
   position: relative;
   width: 100%;
   height: 8px;
@@ -300,30 +406,18 @@
   margin-top: 13px;
   display: flex;
   align-items: center;
- 
-  }
-  .card {
-    box-sizing: border-box;
-    display: block;
-    padding-bottom: 4px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    visibility: visible;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  .progressBox {
-  
-    padding: 12px;
-    border-radius: 8px;
-    margin-top: 10px;
-  }
+}
+.card {
+  box-sizing: border-box;
+  display: block;
+  padding-bottom: 4px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  visibility: visible;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   .truckIcon {
     background: #f9f9f9;
@@ -463,89 +557,42 @@
     transition: transform 0.3s ease-in-out;
 }
 
-  
 .closeIcon:hover {
   transform: rotate(20deg);
 }
 
-  .loginForm {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .loginForm label {
-    margin-top: 10px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  
-  .loginForm input {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc; 
-    width: 100%;
-    outline: none; 
-  }
-  
- 
-  .emailInput{
-    margin-bottom: 15px;
-  }
-  .forgotPassword {
-    font-size: 15px;
-    margin-top: 10px;
-    color: #878787;
-    text-decoration: underline;
-  }
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
 
-  .forgotPassword:hover{
-    color: #00bcd4;
-  }
+.loginForm label {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
 
-  .signInButton {
-    margin-top: 25px;
-    background-color: #56cfe1;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    width: 100%;
-  }
-  
-  .createAccount {
-    margin-top: 25px;
-    text-align: left;
-    color: #878787;
-    text-decoration: underline;
-  }
+.loginForm input {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+  outline: none;
+}
 
-  .createAccount:hover{
-    color: #00bcd4;
-  }
-  
-  .overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    z-index: 20;
-  }
+.emailInput {
+  margin-bottom: 15px;
+}
+.forgotPassword {
+  font-size: 15px;
+  margin-top: 10px;
+  color: #878787;
+  text-decoration: underline;
+}
 
-  .container {
-    background-color: white;
-    width: 350px;
-    padding: 20px;
-    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.2);
-    height: 100vh;
-    overflow-y: auto;
-    z-index: 25;
-  }
+.forgotPassword:hover {
+  color: #00bcd4;
+}
 
   .container h2{
     font-size: 12px; 
@@ -609,8 +656,8 @@
   border-color: #000;
 }
 
-.searchBox{
-  width:100%;
+.searchBox {
+  width: 100%;
   padding: 5px 8px;
   font-size: 12px;
   border: 1px solid #ddd;
@@ -632,18 +679,12 @@
 }
 
 
-
-
-.quickSearch{
+.quickSearch {
   margin-top: 10px;
   font-size: 13px;
 }
 
 .quickSearch span {
-  color:lightgrey;
-  cursor: pointer; 
+  color: lightgrey;
+  cursor: pointer;
 }
-
-
-
-

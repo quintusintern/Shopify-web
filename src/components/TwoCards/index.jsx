@@ -21,18 +21,29 @@ const cardsData = [
 export default function TwoCards() {
   return (
     <div className={styles.cardsContainer}>
-      {cardsData.map((card, index) => (
-        <div key={index} className={styles.imageWrapper}>
-          <img
-            src={card.defaultImage}
-            alt={card.title}
-            className={styles.imageDefault}
-          />
-          <h3>{card.title}</h3>
-          <p>{card.description}</p>
-          <p className={styles.sizes}>Available Sizes: {card.sizes}</p>
+      <div className={styles.imageWrapper}>
+        <img
+          src="/slider-01.jpg"
+          alt="slider-01"
+          className={styles.imageLeft}
+        />
+        <div className="twoOverlay">
+          <h3>lOOKBOOK 2025</h3>
+          <p>MAKE LOVE THIS LOOK</p>
         </div>
-      ))}
+      </div>
+
+      <div className={styles.imageWrapper}>
+        <img
+          src="/slider-02.jpg"
+          alt="slider-02"
+          className={styles.imageRight}
+        />
+        <div className="twoOverlay">
+          <p>SUMMER SALE</p>
+          <h2>UP TO 70%</h2>
+        </div>
+      </div>
     </div>
   );
 }

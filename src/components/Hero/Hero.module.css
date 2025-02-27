@@ -14,14 +14,17 @@
 }
 
 .subheading {
-  font-size: 14px;
-  color: #888;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(34, 34, 34);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .heading {
-  font-size: 36px;
+  font-size: 55px;
+  font-weight: 600;
+  color: rgb(34, 34, 34);
   font-weight: bold;
   margin: 10px 0;
 }

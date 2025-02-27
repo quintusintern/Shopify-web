@@ -14,7 +14,7 @@ const BlogSection = () => {
     {
       id: 2,
       image: "/Top.jpg",
-      title: "The Easi0est Way to Break Out on Top",
+      title: "The Easiest Way to Break Out on Top",
       date: "May 11, 2022",
       author: "admin",
       description:
@@ -32,11 +32,15 @@ const BlogSection = () => {
   ];
 
   return (
-    <div className={styles.blogSection}>
-      <h2 className={styles.blogHeading}>LATEST FROM BLOG</h2>
-      <p className={styles.blogSubheading}>
-        The freshest and most exciting news
-      </p>
+    <div className={styles.container}>
+      <div className={styles.titleContainer}>
+        <div className={styles.title}>
+          <div className={styles.line}></div>
+          <h2>LATEST FROM BLOG</h2>
+          <div className={styles.line}></div>
+        </div>
+        <p>The freshest and most exciting news</p>
+      </div>
       <div className={styles.blogContainer}>
         {blogPosts.map((post) => (
           <div key={post.id} className={styles.blogCard}>

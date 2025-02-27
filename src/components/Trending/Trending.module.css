@@ -25,6 +25,20 @@
   text-transform: uppercase;
 }
 
+.title h2 {
+  color: rgb(34, 34, 34);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+
+.titleContainer p {
+  color: rgb(135, 135, 135);
+  font-family: "Libre Baskerville";
+  font-size: 14px;
+  font-weight: 400;
+  font-style: italic;
+}
 
 .line {
   width: 40px;
@@ -320,9 +334,9 @@
 }
 
 .LoadMoreBtn {
-  height: 40px;
+  height: 50px;
   width: 160px;
-  border-radius: 20px;
+  border-radius: 25px;
   background-color: white;
   color: black;
   border: 2px solid black;

@@ -3,12 +3,15 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ShoppingCart, User, Search, Heart, X } from "lucide-react";
+import { FaShippingFast } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [cartOpen, setCartOpen] = useState(false);
 
   useEffect(() => {
     const storedCartCount = localStorage.getItem("cartCount");
@@ -52,7 +55,7 @@ const Navbar = () => {
             <Heart className={`${styles.icon} ${styles.iconHover}`} />
             <span className={styles.heartBadge}>0</span>
           </div>
-          <div className={styles.cartContainer}>
+          <div className={styles.cartContainer} onClick={() => setCartOpen(true)}>
             <ShoppingCart className={`${styles.icon} ${styles.iconHover}`} />
             <span className={styles.cartBadge}>{cartCount}</span>
           </div>
@@ -119,6 +122,35 @@ const Navbar = () => {
           </div>
         </div>
       )}
+
+<div className={`${styles.cartPopup} ${cartOpen ? styles.open : ""}`}>
+        <div className={styles.cartHeader}>
+          <h3>SHOPPING CART</h3>
+          <X className={styles.closeIcon} onClick={() => setCartOpen(false)} />
+        </div>
+
+        <div className={styles.card}>
+  <div className={styles.cartContent}>
+    <p>Free Shipping for all orders over <span>$100.00</span></p>
+  </div>
+  <div className={styles.progressContainer}>
+    <FaShippingFast className={styles.truckIcon} />
+    <div className={styles.progressBar}></div>
+  </div>
+</div>
+
+        <div className={styles.emptyCartContainer}>
+      <FaShoppingCart className={styles.cartIcon} />
+      <p className={styles.emptyText}>Your cart is empty.</p>
+      <button className={styles.returnButton}>RETURN TO SHOP</button>
+    </div>
+        
+      </div>
+
+      {/* Overlay (Click to Close) */}
+      {cartOpen && <div className={styles.overlay} onClick={() => setCartOpen(false)} />}
+
+
     </>
   );
 };

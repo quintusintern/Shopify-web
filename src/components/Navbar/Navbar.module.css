@@ -144,20 +144,88 @@
   
   
   
-  .searchBtn {
-    background: none;
-    border: none;
-    padding: 8px;
-    cursor: pointer;
-  }
-  .searchContainer {
-    padding: 5px 0 5px 20px;;
+  .SearchHeader{
+    padding:5px 0 5px 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(129, 129, 129, .2);
-    min-height: 50px;
   }
+
+  .SearchHeader span{
+    font-weight: 500;
+    flex:1 1 auto;
+    font-size: 16px;
+    color:var(--t4s-dark-color);
+    text-transform: uppercase;
+    font-family: Poppins;
+    line-height: 27.2px;
+   
+  }
+
+  .SearchcloseIcon {
+    cursor: pointer;
+    color: black;
+    transition: color 0.2s ease-in-out;
+    width: 50px;
+  }
+  
+  .Search {
+    padding:30px 10px;
+    position: relative;
+    width: 100%;
+    max-width: 300px; /* Adjust width as needed */
+    border-bottom: 1px solid rgba(var(--border-color-rgb), .8);;
+  }
+  
+  .SearchInput {
+    width: 100%;
+    padding: 0 50px 0 20px; 
+    line-height: 18px;;
+    border: 1px solid #ccc;
+    border-radius: 25px; /* Rounded edges */
+    font-size: 16px;
+    outline: none;
+    background-color: white;
+    height: 40px;
+    font-size: 13px;
+    font-family: Poppins;
+  }
+
+  
+  .SearchIcon {
+    position: absolute;
+    right: 15px; /* Moves icon inside the input box */
+    top: 50%;
+    transform: translateY(-50%);
+    color: black;
+    font-size: 15px;
+    pointer-events: none; /* Prevents interaction with the icon */
+    width: 50px;
+    background-color: transparent;
+  }
+  .MiniSearch {
+  font-size: 12px;
+  margin-top: 10px;
+  display:flex;
+ 
+}
+
+
+  
+.Searchkey{
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap:10px;
+  list-style: none;
+}
+
+.Searchkey .Searchlist a{
+  font-weight: 400;
+  color:var(--text-color);
+}
+
+.Searchlist{
+  display: inline-block;
+}
   
   
   
@@ -202,28 +270,21 @@
       border-radius: 9px; 
       overflow: hidden; 
       border: 1px solid #ccc; 
+      margin-top: 20px;
+      padding:0 50px 0 20px;
+      line-height: 18px;
+      height: 40px;
+      font-size: 13px;
+      max-width: 100%;
+      width: 100%;
+      border-bottom: 1px solid rgba(var(--border-color-rgb),.8);
   }
 
    .searchInput {
-    padding: 10px 50px 10px 20px; /* Adjusted padding */
-    line-height: 18px;
-    color: var(--secondary-color);
-    background-color: #878787;
-    flex: 1;
-    border: none;
-    outline: none;
-    font-size: 14px;
-    border-radius: 9px; /* Ensures rounded corners */
+   padding: 0 50px 0 20px;
 }
 
-    .searchButton {
-      position: relative;
-      background: none;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-      font-size: 16px;
-    }
+    
 
     .quickSearch {
       font-size: 12px;
@@ -418,7 +479,7 @@
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
+}
   .truckIcon {
     background: #f9f9f9;
     color: red;

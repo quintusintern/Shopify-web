@@ -6,9 +6,13 @@ import Link from "next/link";
 import { ShoppingCart, User, Search, Heart, X } from "lucide-react";
 import { FaShippingFast } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
+import { FiSearch } from "react-icons/fi";
+import { IoMdClose } from "react-icons/io";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
+  const [searchValue, setSearchValue] = useState(""); // State for input value
+  const [isFocused, setIsFocused] = useState(false)
   const [showLogin, setShowLogin] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [cartCount, setCartCount] = useState(0);
@@ -29,6 +33,12 @@ const Navbar = () => {
     if (e.target.classList.contains(styles.popupOverlay)) {
       setShowLogin(false);
     }
+  };
+
+  // Function to set input value when clicking on a suggestion
+  const handleSuggestionClick = (value) => {
+    setSearchValue(value);  // Set the input value
+    setIsFocused(false);    // Hide suggestions after selection
   };
 
   return (
@@ -122,20 +132,28 @@ const Navbar = () => {
       )}
 
 <div className={`${styles.cartPopup} ${showSearch ? styles.open : ""}`}>
-<div className={styles.searchContainer}>
-<div className={styles.header}>
-          <span className={styles.title}>SEARCH OUR SITE</span>
-          <button className={styles.closeButton}>&times;</button>
-        </div>
+<div className={styles.SearchHeader}>
+  <span className={styles.SearchHeading}>Search our site</span>
+  <X className={styles.SearchcloseIcon} onClick={() => setCartOpen(false)} />
     </div>
-
-    <div className={styles.searchInputContainer}>
-            <input type="text" placeholder="Search" className={styles.searchInput} />
-            <button className={styles.searchButton}>🔍</button>
-          </div>
-          <div className={styles.quickSearch}>
-            Quick search: <span>Women, Men, New</span>
-          </div>
+    <hr className={styles.SearchDivider} />
+  <div className={styles.Search}>
+  
+   <input type="text" placeholder="Search" className={styles.SearchInput}   value={searchValue}    onChange={(e) => setSearchValue(e.target.value)}  onFocus={() => setIsFocused(true)} onBlur={() => setTimeout(() => setIsFocused(false), 200)}/>
+   <FiSearch className={styles.SearchIcon} />
+  </div> 
+  <div className={styles.MiniSearch}>
+   <span>Quick Search:</span>
+   <ul className={styles.Searchkey}>
+    <li className={styles.Searchlist}>
+      <a onClick={() => handleSuggestionClick("Women")}>Women</a>
+    </li>
+    <li onClick={() => handleSuggestionClick("Men")}>Men,</li>
+    <li onClick={() => handleSuggestionClick("New")}>New</li>
+   </ul>
+  </div>
+   
+          
  </div>
 
       {cartOpen && <div className={styles.overlay} onClick={() => setShowSearch(false)} />}

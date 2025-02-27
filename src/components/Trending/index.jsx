@@ -6,8 +6,8 @@ const initialCards = [
   {
     title: "Card 1",
     description: "Description for Card 1",
-    defaultImage: "/slider-01.jpg",
-    hoverImage: "/slider-02.jpg",
+    defaultImage: "/Resin Strap.jpg",
+    hoverImage: "/Resin Strap02.jpg",
     sizes: "XS, S, M, L",
   },
   {

@@ -127,7 +127,7 @@
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 4px; 
     overflow: hidden;
   }
   
@@ -186,10 +186,12 @@
   }
     */
     .searchInputContainer {
-      padding:30px 20px;
-      border-bottom: 1px solid rgba(var(--border-color-rgb), .8);
-      border-radius: 18px;
-    }
+      display: flex;
+      align-items: center;
+      border-radius: 9px; 
+      overflow: hidden; 
+      border: 1px solid #ccc; 
+  }
 
    .searchInput {
     padding: 10px 50px 10px 20px; /* Adjusted padding */

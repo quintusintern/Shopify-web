@@ -1,25 +1,25 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./Trending.module.css";
-
+import { CiHeart } from "react-icons/ci";
 const initialCards = [
   {
-    title: "Card 1",
-    description: "Description for Card 1",
+    title: "Analogue Resin Strap",
+    description: "$ 30.00",
     defaultImage: "/Resin Strap.jpg",
     hoverImage: "/Resin Strap02.jpg",
     sizes: "XS, S, M, L",
   },
   {
-    title: "Card 2",
-    description: "Description for Card 2",
-    defaultImage: "/slider-01.jpg",
-    hoverImage: "/slider-02.jpg",
+    title: "Ridley High Waist",
+    description: "$36.00",
+    defaultImage: "/Ridley01.jpg",
+    hoverImage: "/Ridley02.jpg",
     sizes: "S, M, L",
   },
   {
-    title: "Card 3",
-    description: "Description for Card 3",
+    title: "Blush Beanie",
+    description: "$15.00",
     defaultImage: "/slider-01.jpg",
     hoverImage: "/slider-02.jpg",
     sizes: "XS, S, M, L",
@@ -101,7 +101,7 @@ export default function Trending() {
                 <div className={styles.overlayContent}>
                   <div className={styles.topLeftButtons}>
                     <button className={`${styles.smallBtn} ${styles.btn1}`}>
-                      🔍
+                    <CiHeart className={styles.icon}/>
                     </button>
                     <button className={`${styles.smallBtn} ${styles.btn2}`}>
                       ❤️
@@ -117,12 +117,14 @@ export default function Trending() {
                 </div>
               </div>
             </div>
-
-            <h3>{card.title}</h3>
-            <p>{card.description}</p>
+            <div className={styles.textContainer}>
+        <h3 className={styles.cardTitle}>{card.title}</h3>
+        <p className={styles.cardPrice}>{card.description}</p>
+      </div>
           </div>
         ))}
       </div>
+      <div></div>
       <button className={styles.LoadMoreBtn} onClick={loadMoreCards}>
         Load More
       </button>

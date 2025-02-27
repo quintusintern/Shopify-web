@@ -45,10 +45,12 @@
   flex-wrap: wrap;
 }
 
+
+
 .imgCard {
   height: 420px;
   min-width: 250px;
-  background-color: rgb(246, 246, 248);
+  
   border-radius: 5px;
   display: flex;
   justify-content: center;
@@ -127,12 +129,14 @@
   flex-direction: column;
   gap: 5px;
 }
-
+.icon{
+  font-size: 20px;
+}
 .smallBtn {
   padding: 5px;
-  border: 1px solid white;
+  border: none;
   background: transparent;
-  color: white;
+ color: aliceblue;
   font-size: 12px;
   border-radius: 4px;
   cursor: pointer;
@@ -143,11 +147,57 @@
 
 .imageWrapper:hover .btn1 {
   animation: slideInLeft 0.4s forwards 0.2s;
+  border: none;
 }
+
+
+.btn1:hover,
+.btn1:focus {
+  background: transparent !important; /* Hover background remove */
+  border: none !important; /* Hover border remove */
+  outline: none !important; /* Focus outline remove */
+}
+
+
 
 .imageWrapper:hover .btn2 {
   animation: slideInLeft 0.4s forwards 0.4s;
 }
+
+
+
+.textContainer {
+  box-sizing: border-box;
+  display: flex;  /* ✅ Ensure flexbox is used */
+  flex-direction: column;  /* ✅ Stack items vertically */
+  align-items: flex-start;  /* ✅ Left align all items */
+  justify-content: flex-start;
+  width: 100%;  /* ✅ Take full width */
+}
+
+.cardTitle {
+  font-family: Poppins, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: rgb(34, 34, 34);
+  text-align: left; 
+  margin: 0;  
+}
+
+.cardPrice{
+  box-sizing: border-box;
+  display: block;
+  height: 23px;
+  width: 270px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-stretch: 100%;
+  font-weight: 400;
+  color:rgb(105, 105, 105)
+}
+
 
 @keyframes slideInLeft {
   from {
@@ -167,11 +217,16 @@
 
 /* Center Buttons */
 .centerButtons {
-  display: flex;
+  top:50%;
+  margin: auto;
   flex-direction: column;
-  gap: 10px;
-  opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(-100%);
+  justify-content: center;
+  z-index: 3;
+  transition: .5sease 0s;
+ display: inline-flex;
+  text-align: center;
+  align-items: center;
 }
 
 .imageWrapper:hover .centerButtons {
@@ -236,18 +291,7 @@
 }
 
 
-/* Footer Text */
-.footerText {
-  position: absolute;
-  bottom: 10px;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  text-align: center;
-  width: 100%;
-  opacity: 0;
-  transform: translateY(-20px);
-}
+
 
 .imageWrapper:hover .footerText {
   animation: slideInTop 0.5s forwards 0.5s;
@@ -309,15 +353,9 @@
   color: black;
 }
 
-.imgCard h3 {
-  margin: 10px;
-  text-align: center;
-}
 
-.imgCard p {
-  margin: 10px;
-  text-align: center;
-}
+
+
 
 .LoadMoreBtn {
   height: 40px;

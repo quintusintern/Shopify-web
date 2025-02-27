@@ -90,17 +90,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className={styles.footerBottom}>
-          <p>All Rights Reserved © 2025 Kalles - Developed by The4</p>
-          <div className={styles.footerLinks}>
-            <a href="#">Shop</a>
-            <a href="#">About Us</a>
-            <a href="#">Contact Us</a>
-            <a href="#">Blog</a>
-          </div>
-        </div>
+        
       </div>
-      <div className={styles.scrollTop}>⬆</div>
+    
     </footer>
   );
 }

@@ -213,7 +213,9 @@
  
 }
 
-
+.minisearchTitle{
+  font-weight: 600;
+}
   
 .Searchkey{
   padding: 0;

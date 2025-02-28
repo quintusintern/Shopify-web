@@ -66,9 +66,9 @@ const Header = () => {
         <span className={styles.mail}>Kalles@domain.com</span>
       </div>
       <div className={styles.center}>
-        Summer sale discount off <span className={styles.highlight}>50%!</span>
+        Summer sale discount off <span className={styles.highlight}> 50% </span>
         <a href="#" className={styles.shopNow}>
-          Shop Now
+          Shop Now!
         </a>
       </div>
       <div className={styles.right}>

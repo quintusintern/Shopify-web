@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Header from "@/components/Header";
+import Headertop from "@/components/Headertop";
 import Image from "next/image";
 import Link from "next/link";
 import { ShoppingCart, User, Search, Heart, X } from "lucide-react";
@@ -29,8 +31,6 @@ const Navbar = () => {
     setShowLogin(true);
   };
 
-  
-
   // Function to set input value when clicking on a suggestion
   const handleSuggestionClick = (value) => {
     setSearchValue(value); // Set the input value
@@ -39,6 +39,8 @@ const Navbar = () => {
 
   return (
     <>
+      <Headertop />
+      <Header />
       <div className={styles.navbar}>
         <Image
           src="/Kalles.webp"
@@ -103,33 +105,50 @@ const Navbar = () => {
       </div>
 
       <div className={`${styles.cartPopup} ${showLogin ? styles.open : ""}`}>
-      <div className={styles.loginHeader}>
-       <span className={styles.loginTitle}>Login</span>
-       <X className={styles.logincloseIcon} onClick={() => setCartOpen(false)} />
-      </div>
-      <div className={styles.loginForm}>
-        <div className={styles.loginSidebar}>
-          <div className={styles.inputContainer}>
-          <input type="email" placeholder=" " required className={styles.inputEmail}/>
-          <label>Email <span className={styles.required}>*</span></label>
-          </div>
-          <div className={styles.inputContainer}>
-          <input type="email" placeholder=" " required className={styles.inputEmail}/>
-          <label>Password <span className={styles.required}>*</span></label>
-          </div>
-          <a href=""className={styles.forgotPassword}>Forgot your password?</a>
-          <div className={styles.signInButton}>
-          <button className={styles.button}>Sign In</button>
-          <a className={styles.customer}>New customer?Create your account</a>
-          </div>
+        <div className={styles.loginHeader}>
+          <span className={styles.loginTitle}>Login</span>
+          <X
+            className={styles.logincloseIcon}
+            onClick={() => setCartOpen(false)}
+          />
         </div>
+        <div className={styles.loginForm}>
+          <div className={styles.loginSidebar}>
+            <div className={styles.inputContainer}>
+              <input
+                type="email"
+                placeholder=" "
+                required
+                className={styles.inputEmail}
+              />
+              <label>
+                Email <span className={styles.required}>*</span>
+              </label>
+            </div>
+            <div className={styles.inputContainer}>
+              <input
+                type="email"
+                placeholder=" "
+                required
+                className={styles.inputEmail}
+              />
+              <label>
+                Password <span className={styles.required}>*</span>
+              </label>
+            </div>
+            <a href="" className={styles.forgotPassword}>
+              Forgot your password?
+            </a>
+            <div className={styles.signInButton}>
+              <button className={styles.button}>Sign In</button>
+              <a className={styles.customer}>
+                New customer?Create your account
+              </a>
+            </div>
+          </div>
 
-      <div>
-
-      </div>
-      </div>
-
-       
+          <div></div>
+        </div>
       </div>
 
       <div className={`${styles.cartPopup} ${showSearch ? styles.open : ""}`}>

@@ -108,21 +108,18 @@
 }
 
   
-.Searchkey{
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 10px;
-  list-style: none;
-}
-
-.Searchkey .Searchlist a {
+.Searchlist a {
   font-weight: 400;
   color: var(--text-color);
 }
 
 .Searchlist {
   display: inline-block;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  list-style: none;
 }
 
 .header {
@@ -170,12 +167,15 @@
 
 .quickSearch {
   font-size: 12px;
-  color: #777;
+  font-weight: 400;
+  color: rgb(34, 34, 34);
 }
 
 .quickSearch span {
-  font-weight: bold;
-  color: #555;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgb(135, 135, 135)
+  ;
 }
 
 .cartPopup {
@@ -447,7 +447,7 @@
 }
 
 /* login*/
-.loginHeader {
+.theHeader {
   padding: 5px 20px;
   border-bottom: solid 1px var(--border-color);
   display: flex;
@@ -457,7 +457,7 @@
   border-bottom: 1px solid rgba(129, 129, 129, 0.2);
 }
 
-.loginTitle {
+.theTitle {
   display: block;
   font-weight: 500;
   line-height: 1.428;
@@ -467,8 +467,19 @@
 }
 
 .loginForm {
+  width: 100%;
   display: flex;
-  flex: 1 1 auto;
+}
+
+.sidebarContainer {
+  width: 100%;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-color);
+  display: block;
 }
 
 .inputContainer {
@@ -524,21 +535,24 @@
   margin-bottom: 30px;
 }
 
-.signInButton {
+.signIn {
   margin-bottom: 20px;
   text-align: left;
 }
 
-.button {
+.signInButton {
+  height: 40px;
   margin-top: 30px;
   width: 100%;
-  padding: 12px 16px;
-  background-color: #44c8f5; /* Light blue color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(86, 207, 225);
   color: white;
   font-size: 16px;
   font-weight: bold;
   border: none;
-  border-radius: 20px; /* Rounded corners */
+  border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   text-align: center;
@@ -558,16 +572,6 @@
   height: 50px;
   display: flex;
   justify-content: center;
-}
-
-.loginSidebar {
-  padding: 20px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--text-color);
-  display: block;
 }
 
 .closeIcon {
@@ -650,21 +654,13 @@
   height: 35px;
 }
 
-.searchInput {
+.searchBar {
   flex: 1;
   border: none;
   outline: none;
   font-size: 14px;
   background: transparent;
   padding: 10px;
-}
-
-.quickSearch {
-  margin-top: 10px;
-  font-size: 13px;
-}
-
-.quickSearch span {
-  color: lightgrey;
-  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 20px;
 }

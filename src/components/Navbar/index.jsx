@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ShoppingCart, User, Search, Heart, X } from "lucide-react";
 import { FaShippingFast } from "react-icons/fa";
-import { FaShoppingCart } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import styles from "./Navbar.module.css";
@@ -24,6 +23,9 @@ const Navbar = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const [value, setValue] = useState("");
 
+  // To track any popup
+  const [showPopup, setShowPopup] = useState(false);
+
   useEffect(() => {
     const storedCartCount = localStorage.getItem("cartCount");
     if (storedCartCount) {
@@ -33,17 +35,47 @@ const Navbar = () => {
 
   const handleUserClick = () => {
     setShowLogin(true);
+    setShowPopup(true); // Any popup open
   };
 
   // Function to set input value when clicking on a suggestion
   const handleSuggestionClick = (value) => {
     setSearchValue(value); // Set the input value
-    setIsFocused(false); // Hide suggestions after selection
+    setShowSearch(false); // Hide suggestions after selection
+    setShowPopup(true); // Any popup open
   };
+
   const products = [
-    { id: 1, name: 'Analogue Resin Strap', price: '$30.00', image: '/Resin Strap.jpg' },
-    { id: 2, name: 'Ridley High Waist', price: '$36.00', image: '/images/product2.jpg' }
+    {
+      id: 1,
+      name: "Analogue Resin Strap",
+      price: "$30.00",
+      image: "/Resin Strap.jpg",
+    },
+    {
+      id: 2,
+      name: "Ridley High Waist",
+      price: "$36.00",
+      image: "/images/product2.jpg",
+    },
   ];
+
+  // Toggle popups
+  const toggleSearchPopup = () => {
+    setShowSearch(!showSearch);
+    setShowPopup(!showSearch); // Toggle the state for overlay
+  };
+
+  const toggleCartPopup = () => {
+    setCartOpen(!cartOpen);
+    setShowPopup(!cartOpen); // Toggle the state for overlay
+  };
+
+  const toggleLoginPopup = () => {
+    setShowLogin(!showLogin);
+    setShowPopup(!showLogin); // Toggle the state for overlay
+  };
+
   return (
     <>
       <Headertop />
@@ -58,10 +90,10 @@ const Navbar = () => {
         />
         <ul className={styles.menu}>
           <li>
-            <Link href="#">Demo</Link>
+            <Link href="/">Demo</Link>
           </li>
           <li>
-            <Link href="#">
+            <Link href="/">
               Shop <span className={styles.newBadge}>New</span>
             </Link>
           </li>
@@ -69,28 +101,28 @@ const Navbar = () => {
             <Link href="#">Product</Link>
           </li>
           <li>
-            <Link href="#">
+            <Link href="/">
               Sale <span className={styles.saleBadge}>Sale</span>
             </Link>
           </li>
           <li>
-            <Link href="#">Pages</Link>
+            <Link href="/">Pages</Link>
           </li>
           <li>
-            <Link href="#">Lookbook</Link>
+            <Link href="/">Lookbook</Link>
           </li>
           <li>
-            <Link href="#">Blog</Link>
+            <Link href="/">Blog</Link>
           </li>
           <li>
-            <Link href="#">Buy Theme</Link>
+            <Link href="/">Buy Theme</Link>
           </li>
         </ul>
         <div className={styles.icons}>
-          <div onClick={() => setShowSearch(true)}>
+          <div onClick={toggleSearchPopup}>
             <Search className={`${styles.icon} ${styles.iconHover}`} />
           </div>
-          <div onClick={handleUserClick}>
+          <div onClick={toggleLoginPopup}>
             <User className={`${styles.icon} ${styles.iconHover}`} />
           </div>
           <div className={styles.heartContainer}>
@@ -101,23 +133,75 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
-          <div
-            className={styles.cartContainer}
-            onClick={() => setCartOpen(true)}
-          >
+          <div className={styles.cartContainer} onClick={toggleCartPopup}>
             <ShoppingCart className={`${styles.icon} ${styles.iconHover}`} />
             <span className={styles.cartBadge}>{cartCount}</span>
           </div>
         </div>
       </div>
 
+      <div className={`${styles.cartPopup} ${showSearch ? styles.open : ""}`}>
+        <div className={styles.theHeader}>
+          <span className={styles.theTitle}>Search our site</span>
+          <X className={styles.closeIcon} onClick={toggleSearchPopup} />
+        </div>
+        <hr className={styles.SearchDivider} />
+        <div className={styles.sidebarContainer}>
+          <input
+            type="text"
+            placeholder="Search"
+            className={styles.searchBar}
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setTimeout(() => setIsFocused(false), 200)}
+          />
+          <button className={styles.SearchBtn}>
+            <FiSearch />
+          </button>
+
+          <div>
+            <span className={styles.quickSearch}>Quick Search:</span>
+            <ul className={styles.Searchlist}>
+              <li>
+                <a onClick={() => handleSuggestionClick("Women")}>Women</a>
+              </li>
+              <li onClick={() => handleSuggestionClick("Men")}>Men,</li>
+              <li onClick={() => handleSuggestionClick("New")}>New</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className={styles.minisearchTitle}>Need some inspiration</div>
+        <div className={styles.productList}>
+          <div className={styles.scrollContainer}>
+            {products.map((product) => (
+              <div key={product.id} className={styles.productItem}>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className={styles.productImage}
+                />
+                <div className={styles.productInfo}>
+                  <p className={styles.productName}>{product.name}</p>
+                  <p className={styles.productPrice}>{product.price}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className={styles.viewAll}>
+            <Link href="/products">View All →</Link>
+          </div>
+        </div>
+      </div>
+
       <div className={`${styles.cartPopup} ${showLogin ? styles.open : ""}`}>
-        <div className={styles.loginHeader}>
-          <span className={styles.loginTitle}>Login</span>
-          <X className={styles.closeIcon} onClick={() => setShowLogin(false)} />
+        <div className={styles.theHeader}>
+          <span className={styles.theTitle}>Login</span>
+          <X className={styles.closeIcon} onClick={toggleLoginPopup} />
         </div>
         <div className={styles.loginForm}>
-          <div className={styles.loginSidebar}>
+          <div className={styles.sidebarContainer}>
             {/* Email Input */}
             <div className={styles.inputContainer}>
               <label
@@ -155,12 +239,11 @@ const Navbar = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-
             <a href="#" className={styles.forgotPassword}>
               Forgot your password?
             </a>
-            <div className={styles.signInButton}>
-              <button className={styles.button}>Sign In</button>
+            <div className={styles.signIn}>
+              <button className={styles.signInButton}>Sign In</button>
               <a className={styles.customer}>
                 New customer? Create your account
               </a>
@@ -169,68 +252,17 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className={`${styles.cartPopup} ${showSearch ? styles.open : ""}`}>
-        <div className={styles.SearchHeader}>
-          <span className={styles.SearchHeading}>Search our site</span>
-          <X
-            className={styles.SearchcloseIcon}
-            onClick={() => setShowSearch(false)}
-          />
-        </div>
-        <hr className={styles.SearchDivider} />
-        <div className={styles.Search}>
-          <input
-            type="text"
-            placeholder="Search"
-            className={styles.SearchInput}
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setTimeout(() => setIsFocused(false), 200)}
-          />
-          <FiSearch className={styles.SearchIcon} />
-        </div>
-        <div className={styles.MiniSearch}>
-          <span>Quick Search:</span>
-          <ul className={styles.Searchkey}>
-            <li className={styles.Searchlist}>
-              <a onClick={() => handleSuggestionClick("Women")}>Women</a>
-            </li>
-            <li onClick={() => handleSuggestionClick("Men")}>Men,</li>
-            <li onClick={() => handleSuggestionClick("New")}>New</li>
-          </ul>
-        </div>
-       
-        <div className={styles.minisearchTitle}>
-        Need some inspiration
-        </div>
-        <div className={styles.productList}>
-      <div className={styles.scrollContainer}>
-        {products.map((product) => (
-          <div key={product.id} className={styles.productItem}>
-            <img src={product.image} alt={product.name} className={styles.productImage} />
-            <div className={styles.productInfo}>
-              <p className={styles.productName}>{product.name}</p>
-              <p className={styles.productPrice}>{product.price}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className={styles.viewAll}>
-        <Link href="/products">View All →</Link>
-      </div>
-    </div>
-        </div>
-      
-
-      {cartOpen && (
-        <div className={styles.overlay} onClick={() => setShowSearch(false)} />
+      {showPopup && (
+        <div
+          className={styles.overlay}
+          onClick={() => setShowPopup(false)} // Close any open popup
+        />
       )}
 
       <div className={`${styles.cartPopup} ${cartOpen ? styles.open : ""}`}>
         <div className={styles.cartHeader}>
           <h3>SHOPPING CART</h3>
-          <X className={styles.closeIcon} onClick={() => setCartOpen(false)} />
+          <X className={styles.closeIcon} onClick={toggleCartPopup} />
         </div>
 
         <div className={styles.card}>
@@ -248,7 +280,7 @@ const Navbar = () => {
         <div className={styles.emptyCartContainer}>
           <svg
             id="icon-cart-emty"
-            widht="50"
+            width="50"
             height="50"
             fill="rgb(135, 135, 135)"
             xmlns="http://www.w3.org/2000/svg"
@@ -262,8 +294,11 @@ const Navbar = () => {
       </div>
 
       {/* Overlay (Click to Close) */}
-      {cartOpen && (
-        <div className={styles.overlay} onClick={() => setCartOpen(false)} />
+      {showPopup && (
+        <div
+          className={styles.overlay}
+          onClick={() => setShowPopup(false)} // Close any open popup
+        />
       )}
     </>
   );

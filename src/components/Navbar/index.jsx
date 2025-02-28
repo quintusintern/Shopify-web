@@ -114,10 +114,7 @@ const Navbar = () => {
       <div className={`${styles.cartPopup} ${showLogin ? styles.open : ""}`}>
         <div className={styles.loginHeader}>
           <span className={styles.loginTitle}>Login</span>
-          <X
-            className={styles.logincloseIcon}
-            onClick={() => setShowLogin(false)}
-          />
+          <X className={styles.closeIcon} onClick={() => setShowLogin(false)} />
         </div>
         <div className={styles.loginForm}>
           <div className={styles.loginSidebar}>

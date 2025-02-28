@@ -28,7 +28,6 @@
   max-width: 400px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 16px;
   overflow: hidden;
 }
@@ -42,7 +41,6 @@
   display: flex;
   align-items: center;
   padding: 8px 0;
-  border-bottom: 1px solid #ddd;
 }
 
 .productItem:last-child {
@@ -50,13 +48,13 @@
 }
 
 .productImage {
-  width: 50px;
-  height: 50px;
-  border-radius: 4px;
+  width: 80px;
+  height: 100px;
   margin-right: 12px;
 }
 
 .productInfo {
+  padding: 15px;
   flex: 1;
 }
 
@@ -87,7 +85,7 @@
 }
 
 .scrollContainer {
-  max-height: 400px; /* Adjust height as needed */
+  max-height: 550px;
   overflow-y: auto;
   scrollbar-width: thin; /* Firefox */
   scrollbar-color: #ccc transparent; /* Firefox */
@@ -107,19 +105,40 @@
   border-radius: 3px;
 }
 
+.searchlistContainer {
+  margin-top: 30px;
+  width: 280px;
+  display: flex;
+}
+
   
 .Searchlist a {
+  font-size: 12px;
   font-weight: 400;
-  color: var(--text-color);
+  color: rgb(135, 135, 135);
+}
+
+.Searchlist a:hover {
+  color:rgb(86, 207, 225);
+  cursor: pointer;
 }
 
 .Searchlist {
+  font-size: 12px;
+  font-weight: 400;
+  max-width: 150px;
+  color: rgb(135, 135, 135);
   display: inline-block;
   padding: 0;
-  margin: 0;
+  margin-left: 5px;
   display: flex;
   gap: 10px;
   list-style: none;
+}
+
+.Searchlist li:hover {
+  color:rgb(86, 207, 225);
+  cursor: pointer;
 }
 
 .header {
@@ -181,11 +200,10 @@
 .cartPopup {
   position: fixed;
   top: 0;
-  right: -350px; /* Initially hidden */
+  right: -350px;
   width: 300px;
   height: 100vh;
   background: white;
-  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
   transition: right 0.3s ease-in-out;
   z-index: 1000;
   display: flex;
@@ -292,30 +310,6 @@
 
 .cartPopup.open {
   right: 0; /* Slide-in effect */
-}
-
-.cartHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  border-bottom: 1px solid #ddd;
-}
-
-.cartHeader h3 {
-  color: black;
-  box-sizing: border-box;
-  display: block;
-  flex-basis: auto;
-  flex-grow: 1;
-  font-family: Poppins;
-  font-kerning: auto;
-  font-size: 16px;
-  font-stretch: 100%;
-  font-weight: 500;
-  line-height: 27.2px;
-  text-transform: uppercase;
-  visibility: visible;
 }
 
 .cartContent p {
@@ -479,7 +473,6 @@
   font-size: 14px;
   font-weight: 400;
   color: var(--text-color);
-  display: block;
 }
 
 .inputContainer {
@@ -533,6 +526,7 @@
 .forgotPassword {
   text-decoration: underline;
   margin-bottom: 30px;
+  color: rgb(135, 135, 135);
 }
 
 .signIn {
@@ -541,16 +535,17 @@
 }
 
 .signInButton {
-  height: 40px;
+  height: 35px;
   margin-top: 30px;
+  margin-bottom: 20px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgb(86, 207, 225);
   color: white;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 400;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -565,6 +560,7 @@
 .customer {
   margin-top: 20px;
   text-decoration: underline;
+  color: rgb(135, 135, 135);
 }
 
 .logincloseIcon {
@@ -591,6 +587,7 @@
 
 .input {
   flex-grow: 1;
+  font-size: 13px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -600,6 +597,15 @@
   display: flex;
   flex-direction: column;
   margin-top: 15px;
+}
+
+.inspiration {
+  height: 45px;
+  width: 100%;
+  padding: 10px;
+  border-top: 1px solid rgb(200, 200, 200);
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
+  z-index: 3;
 }
 
 .item {
@@ -625,6 +631,18 @@
   margin-top: 10px;
 }
 
+.viewAll a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.viewAll a:hover {
+  color: rgb(67, 186, 204);
+  text-decoration: none;
+}
+
 .select {
   width: 100%;
   padding: 10px;
@@ -641,26 +659,37 @@
   border-color: #000;
 }
 
-.searchBox {
-  width: 100%;
-  padding: 5px 8px;
-  font-size: 12px;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  margin-top: 22px;
-  background-color: #fff;
-  outline: none;
-  cursor: pointer;
-  height: 35px;
+.search {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  max-width: 300px;
+  position: relative;
 }
 
 .searchBar {
-  flex: 1;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  background: transparent;
-  padding: 10px;
+  height: 40px;
+  width: 100%;
   border: 1px solid #ccc;
   border-radius: 20px;
+  padding: 10px 40px 10px 20px;
+  font-size: 14px;
+  background: transparent;
+  outline: none;
+}
+
+.searchButton {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  cursor: pointer; 
+}
+
+.searchIcon {
+  font-size: 20px;
+  color: #333;
 }

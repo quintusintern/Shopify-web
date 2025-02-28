@@ -21,8 +21,14 @@
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  color:#222222;
+  color: #222222;
   text-transform: uppercase;
+}
+
+.line {
+  width: 40px;
+  height: 2px;
+  background-color: black; /* Adjust color as needed */
 }
 
 .title h2 {
@@ -37,12 +43,6 @@
   font-size: 14px;
   font-weight: 400;
   font-style: italic;
-}
-
-.line {
-  width: 40px;
-  height: 2px;
-  background-color: black; /* Adjust color as needed */
 }
 
 /* Cards content */
@@ -61,7 +61,6 @@
 .imgCard {
   height: 420px;
   min-width: 250px;
-  background-color: rgb(246, 246, 248);
   border-radius: 5px;
   display: flex;
   justify-content: center;
@@ -70,7 +69,6 @@
   cursor: pointer;
   margin: 10px;
 }
-
 
 .imageWrapper {
   position: relative;
@@ -140,12 +138,14 @@
   flex-direction: column;
   gap: 5px;
 }
-
+.icon {
+  font-size: 20px;
+}
 .smallBtn {
   padding: 5px;
-  border: 1px solid white;
+  border: none;
   background: transparent;
-  color: white;
+  color: aliceblue;
   font-size: 12px;
   border-radius: 4px;
   cursor: pointer;
@@ -156,10 +156,25 @@
 
 .imageWrapper:hover .btn1 {
   animation: slideInLeft 0.4s forwards 0.2s;
+  border: none;
+}
+
+.btn1:hover,
+.btn1:focus {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
 }
 
 .imageWrapper:hover .btn2 {
   animation: slideInLeft 0.4s forwards 0.4s;
+}
+
+.btn2:hover,
+.btn2:focus {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
 }
 
 @keyframes slideInLeft {
@@ -173,22 +188,103 @@
   }
 }
 
+/* Center Buttons */
+.centerButtons {
+  top: 50%;
+  margin: auto;
+  flex-direction: column;
+  transform: translateY(-20px);
+  justify-content: center;
+  z-index: 3;
+  transition: 0.5s ease 0s;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+}
+
+.btn {
+  position: relative;
+  height: 40px;
+  width: 136px;
+  padding: 8px 16px;
+  border: 2px solid white;
+  background: white;
+  color: black;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 20px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background: white;
+  color: black;
+}
+
+/* Light Blue Button */
+.lightBlueBtn {
+  height: 40px;
+  width: 136px;
+  padding: 8px 16px;
+  border: 2px solid transparent;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  background: lightblue;
+  color: black;
+  border-color: lightblue;
+}
+
+.imageWrapper:hover .footerText {
+  animation: slideInTop 0.5s forwards 0.5s;
+}
+
+/* Text container */
+.textContainer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.cardTitle {
+  font-family: Poppins, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: rgb(34, 34, 34);
+  text-align: left;
+  margin: 0;
+}
+
+.cardPrice {
+  box-sizing: border-box;
+  display: block;
+  height: 23px;
+  width: 270px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-stretch: 100%;
+  font-weight: 400;
+  color: rgb(105, 105, 105);
+}
+
 .smallBtn:hover {
   background: white;
   color: black;
 }
 
-/* Center Buttons */
-.centerButtons {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  opacity: 0;
-  transform: translateY(-20px);
-}
-
 .imageWrapper:hover .centerButtons {
-  animation: slideInTop 0.5s forwards 0.3s;
+  animation: slideInTop 0.4s forwards 0.2s;
 }
 
 @keyframes slideInTop {
@@ -201,95 +297,7 @@
     transform: translateY(0);
   }
 }
-.btn {
-  position: relative;
-  padding: 8px 16px;
-  border: 2px solid white;
-  background: transparent;
-  color: white;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  overflow: hidden;
-  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-}
 
-.btn::after {
-  content: attr(data-hover);
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -100%;
-  color: black;
-  font-weight: bold;
-  transition: transform 0.3s ease-in-out;
-}
-
-.btn:hover {
-  background: white;
-  color: black;
-}
-
-.btn:hover::after {
-  transform: translateY(-100%);
-}
-
-
-/* Light Blue Button */
-.lightBlueBtn {
-  padding: 8px 16px;
-  border: 2px solid transparent;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-  background: lightblue;
-  color: black;
-  border-color: lightblue;
-}
-
-
-/* Footer Text */
-.footerText {
-  position: absolute;
-  bottom: 10px;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  text-align: center;
-  width: 100%;
-  opacity: 0;
-  transform: translateY(-20px);
-}
-
-.imageWrapper:hover .footerText {
-  animation: slideInTop 0.5s forwards 0.5s;
-}
-
-
-
-/* Center Buttons */
-.centerButtons {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.btn {
-  padding: 8px 16px;
-  border: 2px solid white;
-  background: white;
-  color: white;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-}
-
-.btn:hover {
-  background: white;
-  color: black;
-}
 
 /* Footer Text */
 .footerText {
@@ -304,30 +312,48 @@
 }
 
 
-
-/* Button Styling */
-.btn {
-  padding: 8px 16px;
-  border: 2px solid white;
-  background: transparent;
-  color: white;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-}
-
-.btn:hover {
-  background: white;
+.LoadMoreBtn {
+  height: 50px;
+  width: 160px;
+  border-radius: 25px;
+  background-color: white;
   color: black;
+  border: 2px solid black;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
 
-.imgCard h3 {
-  margin: 10px;
-  text-align: center;
+.LoadMoreBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #56cfe1;
+  transition: left 0.3s ease-in-out;
+  border-radius: 20px;
+  z-index: -1;
 }
 
-.imgCard p {
-  margin: 10px;
-  text-align: center;
+.LoadMoreBtn:hover::before {
+  left: 0;
+}
+
+.LoadMoreBtn:hover {
+  color: white;
+  border-color: #56cfe1;
+  z-index: 3;
+}
+
+.LoadMoreBtn:hover span {
+  position: relative;
+  color: white;
+  border-color: #56cfe1;
+  z-index: 3;
 }

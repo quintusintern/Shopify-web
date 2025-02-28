@@ -22,8 +22,6 @@ const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
   const [value, setValue] = useState("");
-
-  // To track any popup
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
@@ -49,14 +47,32 @@ const Navbar = () => {
     {
       id: 1,
       name: "Analogue Resin Strap",
-      price: "$30.00",
+      price: "$ 30.00",
       image: "/Resin Strap.jpg",
     },
     {
       id: 2,
       name: "Ridley High Waist",
       price: "$36.00",
-      image: "/images/product2.jpg",
+      image: "/Ridley01.jpg",
+    },
+    {
+      id: 3,
+      name: "Blush Beanie",
+      price: "$15.00",
+      image: "/Blush Beanie01.jpg",
+    },
+    {
+      id: 4,
+      name: "Cluse La Baheme Rose Gold",
+      price: "$45.00",
+      image: "/Gold01.jpg",
+    },
+    {
+      id: 5,
+      name: "Mercury Tee",
+      price: "$68.00",
+      image: "/Mercury01.jpg",
     },
   ];
 
@@ -147,32 +163,32 @@ const Navbar = () => {
         </div>
         <hr className={styles.SearchDivider} />
         <div className={styles.sidebarContainer}>
-          <input
-            type="text"
-            placeholder="Search"
-            className={styles.searchBar}
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setTimeout(() => setIsFocused(false), 200)}
-          />
-          <button className={styles.SearchBtn}>
-            <FiSearch />
-          </button>
+          <div className={styles.search}>
+            <input
+              type="text"
+              placeholder="Search"
+              className={styles.searchBar}
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setTimeout(() => setIsFocused(false), 200)}
+            />
+            <button className={styles.searchButton}>
+              <FiSearch className={styles.searchIcon} />
+            </button>
+          </div>
 
-          <div>
+          <div className={styles.searchlistContainer}>
             <span className={styles.quickSearch}>Quick Search:</span>
             <ul className={styles.Searchlist}>
-              <li>
-                <a onClick={() => handleSuggestionClick("Women")}>Women</a>
-              </li>
+              <li onClick={() => handleSuggestionClick("Women")}>Women,</li>
               <li onClick={() => handleSuggestionClick("Men")}>Men,</li>
               <li onClick={() => handleSuggestionClick("New")}>New</li>
             </ul>
           </div>
         </div>
 
-        <div className={styles.minisearchTitle}>Need some inspiration</div>
+        <div className={styles.inspiration}>Need some inspiration</div>
         <div className={styles.productList}>
           <div className={styles.scrollContainer}>
             {products.map((product) => (
@@ -260,8 +276,8 @@ const Navbar = () => {
       )}
 
       <div className={`${styles.cartPopup} ${cartOpen ? styles.open : ""}`}>
-        <div className={styles.cartHeader}>
-          <h3>SHOPPING CART</h3>
+        <div className={styles.theHeader}>
+          <span>SHOPPING CART</span>
           <X className={styles.closeIcon} onClick={toggleCartPopup} />
         </div>
 

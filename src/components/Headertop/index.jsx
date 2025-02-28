@@ -14,14 +14,12 @@ export default function Headertop() {
       <p>
         Today deal sale off 70%. End in · 
         <span 
-          className={hover ? styles.hurryUpHover : styles.hurryUp}
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
+          className={styles.hurryUp}
         >
-          Hurry Up →
+          Hurry Up <span className={styles.arrow}> →</span>
         </span>
       </p>
-      <button className={styles.close} onClick={() => setVisible(false)}>× close</button>
+      <button className={styles.close} onClick={() => setVisible(false)}><inline className={styles.cross}>× </inline> close</button>
     </div>
   );
 }

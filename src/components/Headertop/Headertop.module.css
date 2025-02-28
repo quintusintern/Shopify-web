@@ -28,6 +28,10 @@
   }
   
   .close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     position: absolute;
     right: 15px;
     background: none;
@@ -35,6 +39,17 @@
     color: white;
     font-size: 12px;
     cursor: pointer;
+  }
+
+  .cross {
+    position: relative;
+    right: 15px;
+    top: -7px;
+    left: 0px;
+    height: 15px;
+    width: 15px;
+    font-size: 20px;
+    font-weight: 100;
   }
   
   /* Default Hurry Up style */
@@ -44,11 +59,13 @@
     transition: all 0.3s ease;
     cursor: pointer;
   }
-  
-  /* Hover effect */
-  .hurryUpHover {
-    color: yellow;  /* ✅ Color Change */
-    margin-left: 10px;  /* ✅ Arrow Move */
+  .hurryUp:hover {
+    color: rgb(221, 221, 221);
+    transition: all 0.3s ease;
+  }
+
+  .hurryUp:hover .arrow{
+    margin-left: 5px;
     transition: all 0.3s ease;
   }
   

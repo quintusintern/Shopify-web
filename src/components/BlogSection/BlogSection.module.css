@@ -85,7 +85,7 @@
   z-index: 1;
 }
 
-.blogCard:hover .imageContainer img {
+.parentContainer:hover .imageContainer img {
   transform: translateY(-30px);
 }
 

@@ -94,11 +94,11 @@ const Header = () => {
         {/* Currency Selector */}
         <span className={styles.currencySelect} onClick={toggleCurrencyDropdown}>
           <img
-            height={16}
-            width={20}
+            height={12}
+            width={16}
             src={selectedCurrency.flag}
             alt={selectedCurrency.country}
-            className={styles.flag}
+            style={{ marginTop: 10 }}
           />{" "}
           {selectedCurrency.code} &#9662;
         </span>

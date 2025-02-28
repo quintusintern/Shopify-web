@@ -200,6 +200,10 @@ const Navbar = () => {
             <li onClick={() => handleSuggestionClick("New")}>New</li>
           </ul>
         </div>
+        <hr/>
+        <div className={styles.minisearchTitle}>
+        Need some inspiration
+        </div>
       </div>
 
       {cartOpen && (

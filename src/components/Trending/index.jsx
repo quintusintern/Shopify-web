@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 import styles from "./Trending.module.css";
 import { CiHeart } from "react-icons/ci";
+import { TbArrowsCross } from "react-icons/tb";
+
+
+
 const initialCards = [
   {
     title: "Analogue Resin Strap",
@@ -101,14 +105,14 @@ export default function Trending() {
                 <div className={styles.overlayContent}>
                   <div className={styles.topLeftButtons}>
                     <button className={`${styles.smallBtn} ${styles.btn1}`}>
-                    <CiHeart className={styles.icon}/>
+                      <CiHeart className={styles.icon} />
                     </button>
                     <button className={`${styles.smallBtn} ${styles.btn2}`}>
-                      ❤️
+                      <TbArrowsCross className={styles.icon} />
                     </button>
                   </div>
                   <div className={styles.centerButtons}>
-                    <button className={styles.btn} data-hover="View Details">
+                    <button className={styles.btn}>
                       Quick View
                     </button>
                     <button className={styles.lightBlueBtn}>Quick Shop</button>
@@ -118,9 +122,9 @@ export default function Trending() {
               </div>
             </div>
             <div className={styles.textContainer}>
-        <h3 className={styles.cardTitle}>{card.title}</h3>
-        <p className={styles.cardPrice}>{card.description}</p>
-      </div>
+              <h3 className={styles.cardTitle}>{card.title}</h3>
+              <p className={styles.cardPrice}>{card.description}</p>
+            </div>
           </div>
         ))}
       </div>

@@ -36,7 +36,10 @@ const Navbar = () => {
     setSearchValue(value); // Set the input value
     setIsFocused(false); // Hide suggestions after selection
   };
-
+  const products = [
+    { id: 1, name: 'Analogue Resin Strap', price: '$30.00', image: '/Resin Strap.jpg' },
+    { id: 2, name: 'Ridley High Waist', price: '$36.00', image: '/images/product2.jpg' }
+  ];
   return (
     <>
       <Headertop />
@@ -182,11 +185,28 @@ const Navbar = () => {
             <li onClick={() => handleSuggestionClick("New")}>New</li>
           </ul>
         </div>
-        <hr/>
+       
         <div className={styles.minisearchTitle}>
         Need some inspiration
         </div>
+        <div className={styles.productList}>
+      <div className={styles.scrollContainer}>
+        {products.map((product) => (
+          <div key={product.id} className={styles.productItem}>
+            <img src={product.image} alt={product.name} className={styles.productImage} />
+            <div className={styles.productInfo}>
+              <p className={styles.productName}>{product.name}</p>
+              <p className={styles.productPrice}>{product.price}</p>
+            </div>
+          </div>
+        ))}
       </div>
+      <div className={styles.viewAll}>
+        <Link href="/products">View All →</Link>
+      </div>
+    </div>
+        </div>
+      
 
       {cartOpen && (
         <div className={styles.overlay} onClick={() => setShowSearch(false)} />

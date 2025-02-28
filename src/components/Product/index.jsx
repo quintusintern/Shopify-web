@@ -20,7 +20,8 @@ const ProductsPage = () => {
           <li className={styles.navItem}><Link className={styles.navLink} href="#">Women</Link></li>
         </ul>
       </nav>
-
+     
+     
       
     </div> 
   );

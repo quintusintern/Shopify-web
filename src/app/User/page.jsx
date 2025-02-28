@@ -6,8 +6,6 @@ import Navbar from "@/components/Navbar";
 
 const User = () => {
     return <>
-    <Headertop/>
-    <Header/>
     <Navbar/>
     <EmptyWishlist/>
     <Footer/>

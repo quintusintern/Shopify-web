@@ -93,6 +93,7 @@
 
 .currencySelect {
   bottom: -12px;
+  cursor: pointer;
 }
 
 .flag {

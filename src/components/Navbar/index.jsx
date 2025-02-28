@@ -13,12 +13,16 @@ import { IoMdClose } from "react-icons/io";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
-  const [searchValue, setSearchValue] = useState(""); // State for input value
-  const [isFocused, setIsFocused] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const [isEmailFocused, setIsEmailFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showLogin, setShowLogin] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
+  const [value, setValue] = useState("");
 
   useEffect(() => {
     const storedCartCount = localStorage.getItem("cartCount");
@@ -109,45 +113,59 @@ const Navbar = () => {
           <span className={styles.loginTitle}>Login</span>
           <X
             className={styles.logincloseIcon}
-            onClick={() => setCartOpen(false)}
+            onClick={() => setShowLogin(false)}
           />
         </div>
         <div className={styles.loginForm}>
           <div className={styles.loginSidebar}>
+            {/* Email Input */}
             <div className={styles.inputContainer}>
+              <label
+                className={`${styles.label} ${
+                  isEmailFocused || email ? styles.shrink : ""
+                }`}
+              >
+                E-mail <span className={styles.mandatory}>*</span>
+              </label>
               <input
                 type="email"
-                placeholder=" "
-                required
-                className={styles.inputEmail}
+                className={styles.input}
+                onFocus={() => setIsEmailFocused(true)}
+                onBlur={() => setIsEmailFocused(email !== "")}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <label>
-                Email <span className={styles.required}>*</span>
-              </label>
             </div>
+
+            {/* Password Input */}
             <div className={styles.inputContainer}>
-              <input
-                type="email"
-                placeholder=" "
-                required
-                className={styles.inputEmail}
-              />
-              <label>
-                Password <span className={styles.required}>*</span>
+              <label
+                className={`${styles.label} ${
+                  isPasswordFocused || password ? styles.shrink : ""
+                }`}
+              >
+                Password <span className={styles.mandatory}>*</span>
               </label>
+              <input
+                type="password"
+                className={styles.input}
+                onFocus={() => setIsPasswordFocused(true)}
+                onBlur={() => setIsPasswordFocused(password !== "")}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
-            <a href="" className={styles.forgotPassword}>
+
+            <a href="#" className={styles.forgotPassword}>
               Forgot your password?
             </a>
             <div className={styles.signInButton}>
               <button className={styles.button}>Sign In</button>
               <a className={styles.customer}>
-                New customer?Create your account
+                New customer? Create your account
               </a>
             </div>
           </div>
-
-          <div></div>
         </div>
       </div>
 

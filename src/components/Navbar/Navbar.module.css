@@ -166,6 +166,11 @@
     color: black;
     transition: color 0.2s ease-in-out;
     width: 50px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .SearchcloseIcon:hover {
+    transform: rotate(180deg);
   }
   
   .Search {
@@ -399,7 +404,7 @@
   position: fixed;
   top: 0;
   right: -350px; /* Initially hidden */
-  width: 300px;
+  width: 340px;
   height: 100vh;
   background: white;
   box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
@@ -435,10 +440,6 @@
   line-height: 27.2px;
   text-transform: uppercase;
   visibility: visible;
-}
-
-.closeIcon {
-  cursor: pointer;
 }
 
 .cartContent p {
@@ -483,7 +484,7 @@
     margin-right: 6px;
     position: absolute;
     transform: translateY(-50%);
-    left: 16px;
+    left: 0px;
   }
 
   .progressBar {
@@ -512,7 +513,7 @@
 
 .emptyCartContainer {
   text-align: center;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
 .shippingContainer {
@@ -542,7 +543,7 @@
 .returnButton {
   margin-top: 20px;
   max-width: 100%;
-  min-width: 180px;
+  min-width: 130px;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 600;
@@ -553,11 +554,12 @@
   text-align: center;
   color: rgb(255, 255, 255);
   background-color: rgb(86, 207, 225);
-
-  border-radius: 15px;
+  border: 2px solid rgb(86, 207, 225);
+  border-radius: 20px;
 }
 .returnButton:hover {
-  background: #1e88e5;
+  background: rgb(67, 186, 204);
+  border: 2px solid rgb(67, 186, 204);
 }
 .overlay {
   position: fixed;
@@ -613,7 +615,7 @@
 }
 
 .closeIcon:hover {
-  transform: rotate(20deg);
+  transform: rotate(180deg);
 }
 
 .loginForm {

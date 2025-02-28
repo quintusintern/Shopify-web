@@ -29,11 +29,7 @@ const Navbar = () => {
     setShowLogin(true);
   };
 
-  const handleOutsideClick = (e) => {
-    if (e.target.classList.contains(styles.popupOverlay)) {
-      setShowLogin(false);
-    }
-  };
+  
 
   // Function to set input value when clicking on a suggestion
   const handleSuggestionClick = (value) => {
@@ -106,34 +102,35 @@ const Navbar = () => {
         </div>
       </div>
 
-      {showLogin && (
-        <div className={styles.popupOverlay} onClick={handleOutsideClick}>
-          <div className={styles.popupRight}>
-            <div className={styles.popupHeader}>
-              <h2>LOGIN</h2>
-              <X
-                className={styles.closeIcon}
-                onClick={() => setShowLogin(false)}
-              />
-            </div>
-            <form className={styles.loginForm}>
-              <label>Email *</label>
-              <input type="email" required />
-              <label>Password *</label>
-              <input type="password" required />
-              <Link href="#" className={styles.forgotPassword}>
-                Forgot your password?
-              </Link>
-              <button type="submit" className={styles.signInButton}>
-                Sign In
-              </button>
-              <Link href="#" className={styles.createAccount}>
-                New customer? Create your account
-              </Link>
-            </form>
+      <div className={`${styles.cartPopup} ${showLogin ? styles.open : ""}`}>
+      <div className={styles.loginHeader}>
+       <span className={styles.loginTitle}>Login</span>
+       <X className={styles.logincloseIcon} onClick={() => setCartOpen(false)} />
+      </div>
+      <div className={styles.loginForm}>
+        <div className={styles.loginSidebar}>
+          <div className={styles.inputContainer}>
+          <input type="email" placeholder=" " required className={styles.inputEmail}/>
+          <label>Email <span className={styles.required}>*</span></label>
+          </div>
+          <div className={styles.inputContainer}>
+          <input type="email" placeholder=" " required className={styles.inputEmail}/>
+          <label>Password <span className={styles.required}>*</span></label>
+          </div>
+          <a href=""className={styles.forgotPassword}>Forgot your password?</a>
+          <div className={styles.signInButton}>
+          <button className={styles.button}>Sign In</button>
+          <a className={styles.customer}>New customer?Create your account</a>
           </div>
         </div>
-      )}
+
+      <div>
+
+      </div>
+      </div>
+
+       
+      </div>
 
       <div className={`${styles.cartPopup} ${showSearch ? styles.open : ""}`}>
         <div className={styles.SearchHeader}>

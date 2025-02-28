@@ -7,13 +7,13 @@ const cardsData = [
   {
     title: "Card 1",
     description: "Description for Card 1",
-    defaultImage: "/slider-01.jpg",
+    defaultImage: "/card01.jpg",
     sizes: "XS, S, M, L",
   },
   {
     title: "Card 2",
     description: "Description for Card 2",
-    defaultImage: "/slider-01.jpg",
+    defaultImage: "/card02.jpg",
     sizes: "S, M, L",
   },
 ];
@@ -27,7 +27,7 @@ export default function TwoCards() {
           <p>MAKE LOVE THIS LOOK</p>
         </div>
         <img
-          src="/slider-01.jpg"
+          src="/card01.jpg"
           alt="slider-01"
           className={styles.imageLeft}
         />
@@ -39,7 +39,7 @@ export default function TwoCards() {
           <h2>UP TO 70%</h2>
         </div>
         <img
-          src="/slider-02.jpg"
+          src="/card02.jpg"
           alt="slider-02"
           className={styles.imageRight}
         />

@@ -569,43 +569,127 @@
   z-index: 999;
 }
 
-/* Login Popup */
-.popupOverlay {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  z-index: 20;
-}
-
-.popupRight {
-  background-color: white;
-  width: 350px;
-  padding: 20px;
-  box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.2);
-  height: 100vh;
-  overflow-y: auto;
-  z-index: 25;
-}
-
-.popupHeader {
+/* login*/
+.loginHeader{
+  padding: 5px 0 5px 20px;
+  border-bottom: solid 1px var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 50px;
+  border-bottom: 1px solid rgba(129, 129, 129, .2);;
 }
 
-.popupHeader h2 {
+.loginTitle{
+ display: block;
+ font-weight: 500;
+ line-height: 1.428;
+ font-size: 16px;
+ color:var(--t4s-dark-color);
+ text-transform: uppercase;
+}
+
+.loginForm{
+  display: flex;
+  flex:1 1 auto;
+}
+.inputContainer{
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.inputEmail {
+ 
+  width:100%;
+  padding: 14px 12px;
+  border-radius: 0;
+  border:1px solid navy;
+  line-height: normal;
+  outline: none;
+  background: transparent;
+}
+
+.inputLabel {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #888;
+  transition: 0.3s ease all;
+  pointer-events: none;
+ 
+}
+
+.inputEmail:focus + .inputLabel,
+.inputEmail:not(:placeholder-shown) + .inputLabel {
+  top: 5px;
+  left: 12px;
+  font-size: 12px;
+  color: black;
+  background: white;
+  padding: 0 4px;
+}
+
+.required{
+  
+  color:red;
+  font-size: 16px;
+  margin-left: 3px;
+}
+
+.forgotPassword{
+  text-decoration: underline;
+  margin-bottom: 30px;
+}
+
+.signInButton{
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.button {
+  margin-top: 30px;
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #44c8f5; /* Light blue color */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #1fa8d6; /* Darker blue on hover */
+}
+
+.customer{
+  margin-top: 20px;
+  text-decoration: underline;
+}
+
+.logincloseIcon{
+  width: 100px;
+ height: 50px;
+ display: flex;
+ justify-content: center;
+}
+
+.loginSidebar{
+  padding:20px;
+  overflow-x: hidden;
+  overflow-y: auto;
   font-size: 14px;
+  font-weight: 400;
+  color:var(--text-color);
+  display: block;
+
 }
 
-.HeadingLogin {
-  font-size: 2px;
-}
 
 .closeIcon {
   cursor: pointer;
@@ -616,38 +700,6 @@
   transform: rotate(20deg);
 }
 
-.loginForm {
-  display: flex;
-  flex-direction: column;
-}
-
-.loginForm label {
-  margin-top: 10px;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.loginForm input {
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  width: 100%;
-  outline: none;
-}
-
-.emailInput {
-  margin-bottom: 15px;
-}
-.forgotPassword {
-  font-size: 15px;
-  margin-top: 10px;
-  color: #878787;
-  text-decoration: underline;
-}
-
-.forgotPassword:hover {
-  color: #00bcd4;
-}
 
 .container h2 {
   font-size: 12px;

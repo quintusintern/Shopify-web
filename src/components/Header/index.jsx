@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import React, { useState } from "react";
 import styles from "./Header.module.css";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
@@ -73,7 +73,9 @@ const Header = () => {
       </div>
       <div className={styles.right}>
         <FaMapMarkerAlt className={styles.icon} />{" "}
-        <span className={styles.location}>Location</span>
+        <span className={styles.location}>
+        <Link href="/Location">Location</Link>
+          </span>
         {/* Language Selector */}
         <span className={styles.language} onClick={toggleLanguageDropdown}>
           {selectedLanguage.name} &#9662;

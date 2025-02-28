@@ -3,15 +3,16 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Headertop from "@/components/Headertop";
 import Navbar from "@/components/Navbar";
+import ProductsPage from "@/components/Product";
 
-const User = () => {
+const Location = () => {
     return <>
     <Headertop/>
     <Header/>
     <Navbar/>
-    <EmptyWishlist/>
+     <ProductsPage/>
     <Footer/>
     </>
   };
   
-  export default User;
+  export default Location;

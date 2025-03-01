@@ -1,10 +1,11 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { CiHeart } from "react-icons/ci";
 import { TbArrowsCross } from "react-icons/tb";
 import styles from "./Product.module.css";
+import QuickShopPopup from "@/components/QuickShopPopup";
 
 const categories = [
   { id: 1, name: "New Arrival", heroImage: "heroImages/Newarrival.jpg" },
@@ -97,11 +98,15 @@ const ProductsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [selectedOption, setSelectedOption] = useState("Alphabetically, A-Z");
   const [cards, setCards] = useState(initialCards);
+  const [selectedCard, setSelectedCard] = useState(null);
+  const [selectedSize, setSelectedSize] = useState("");
 
   const filteredCards = useMemo(() => {
     let filtered = [...initialCards];
     if (selectedCategory && selectedCategory.name !== "All") {
-      filtered = filtered.filter((card) => card.category === selectedCategory.name);
+      filtered = filtered.filter(
+        (card) => card.category === selectedCategory.name
+      );
     }
 
     switch (selectedOption) {
@@ -110,16 +115,27 @@ const ProductsPage = () => {
       case "Alphabetically, Z-A":
         return filtered.sort((a, b) => b.title.localeCompare(a.title));
       case "Price, Low to High":
-        return filtered.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        return filtered.sort(
+          (a, b) => parseFloat(a.price) - parseFloat(b.price)
+        );
       case "Price, High to Low":
-        return filtered.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        return filtered.sort(
+          (a, b) => parseFloat(b.price) - parseFloat(a.price)
+        );
       default:
         return filtered;
     }
   }, [selectedCategory, selectedOption]);
 
+  const handleQuickShop = (card) => {
+    setSelectedCard(card);
+    setSelectedSize(card.sizes.split(", ")[0] || "");
+  };
 
-
+  const closePopup = () => {
+    setSelectedCard(null);
+    setSelectedSize("");
+  };
 
   return (
     <>
@@ -130,7 +146,11 @@ const ProductsPage = () => {
             <li key={category.id}>
               <Link href="#" legacyBehavior>
                 <a
-                  className={selectedCategory && selectedCategory.id === category.id ? styles.active : ""}
+                  className={
+                    selectedCategory && selectedCategory.id === category.id
+                      ? styles.active
+                      : ""
+                  }
                   onClick={() => setSelectedCategory(category)}
                 >
                   {category.name}
@@ -152,55 +172,54 @@ const ProductsPage = () => {
         </div>
       </div>
 
-
-
       {/* Filter & Customise Section */}
       <div className={styles.filterContainer}>
+        {/* resize cards container */}
         <div className={styles.pageContainer}>
           {/* Vertical stacks resize Button */}
           <button className={styles.rearrangeBtn}>
             <div className={styles.innerContainerVer}>
-              <div className={styles.innerSectionVer}></div>
-              <div className={styles.innerSectionVer}></div>
-              <div className={styles.innerSectionVer}></div>
+              <span className={styles.innerSectionVer}></span>
+              <span className={styles.innerSectionVer}></span>
+              <span className={styles.innerSectionVer}></span>
             </div>
           </button>
 
           {/* Two Section resize Button  */}
           <button className={styles.rearrangeBtn}>
             <div className={styles.innerContainer}>
-              <div className={styles.innerSection}></div>
-              <div className={styles.innerSection}></div>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
             </div>
           </button>
 
           {/* Three Section resize Button  */}
           <button className={styles.rearrangeBtn}>
             <div className={styles.innerContainer}>
-              <div className={styles.innerSection}></div>
-              <div className={styles.innerSection}></div>
-              <div className={styles.innerSection}></div>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
             </div>
           </button>
 
           {/* Four Section resize Button  */}
           <button className={styles.rearrangeBtn}>
             <div className={styles.innerContainer}>
-              <div className={styles.innerSection}></div>
-              <div className={styles.innerSection}></div>
-              <div className={styles.innerSection}></div>
-              <div className={styles.innerSection}></div>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
             </div>
           </button>
 
           {/* Five Section resize Button  */}
           <button className={styles.rearrangeBtn}>
             <div className={styles.innerContainer}>
-              <div className={styles.innerSection}></div>
-              <div className={styles.innerSection}></div>
-              <div className={styles.innerSection}></div>
-              <div className={styles.innerSection}></div>
-              <div className={styles.innerSection}></div>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
             </div>
           </button>
         </div>
@@ -217,9 +236,6 @@ const ProductsPage = () => {
           <option value="Price, High to Low">Price, High to Low</option>
         </select>
       </div>
-
-
-
 
       {/* Products Box */}
       <div className={styles.cardsContainer}>
@@ -247,8 +263,18 @@ const ProductsPage = () => {
                     </button>
                   </div>
                   <div className={styles.centerButtons}>
-                    <button className={styles.btn}>Quick View</button>
-                    <button className={styles.lightBlueBtn}>Quick Shop</button>
+                    <button
+                      className={styles.btn}
+                      onClick={() => handleQuickShop(card)}
+                    >
+                      Quick View
+                    </button>
+                    <button
+                      className={styles.lightBlueBtn}
+                      onClick={() => handleQuickShop(card)}
+                    >
+                      Quick Shop
+                    </button>
                   </div>
                   <p className={styles.footerText}>{card.sizes}</p>
                 </div>
@@ -262,6 +288,16 @@ const ProductsPage = () => {
         ))}
       </div>
 
+      <QuickShopPopup
+        isOpen={selectedCard !== null}
+        onClose={closePopup}
+        imageUrl={selectedCard?.defaultImage}
+        title={selectedCard?.title}
+        description={selectedCard?.description}
+        sizes={selectedCard?.sizes}
+        selectedSize={selectedSize}
+        setSelectedSize={setSelectedSize}
+      />
     </>
   );
 };

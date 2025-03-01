@@ -43,3 +43,53 @@
     object-fit: cover;
     z-index: 2;
   }
+
+
+  .container {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar {
+    width: 30%;
+    border-right: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+    padding: 10px;
+    overflow-y: auto;
+  }
+  
+  .locationCard {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .locationCard:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .locationCard h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .locationCard p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .mapContainer {
+    width: 70%;
+    height: 500px;
+  }
+  
+  .mapContainer .leaflet-container {
+    border-left: 1px solid #e0e0e0;
+  }

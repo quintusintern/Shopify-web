@@ -1,83 +1,195 @@
-.container {
-    height:45px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Header Navigation */
-  .navbar {
-    height: 100%;
-    width:100%;
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    margin-right: 20px;
-  }
-  
-  .navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .navbar li {
-    display: inline;
-    list-style: none;
-    width: auto;
-   
-    
-  }
+/* Navbar Styles */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+}
 
-  
-  
-  .navbar a {
-    text-decoration: none;
-    color: rgb(34, 34, 34);
-    font-size: 14px;
-    font-weight: 500;
-    transform: translateX(359px);
-    padding-inline-start: 0;
-    height: 45px;
-    padding-right: 3px;
-    font-family: Poppins;
-    font-size: 14px;
-    font-weight: 400;
-    text-align: center;
-   
-  }
+.menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-  .navbar a:hover {
-    color:rgb(86, 207, 225)
-  }
+.menu li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
 
-  .breadcrumbBackground {
-    background-image: url('/path-to-your-image.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-  }
+.menu li a:hover,
+.menu li a.active {
+  color: #5bc0de; /* Light Blue Color for Active Link */
+}
+
+/* Hero Section */
+.wishlistHero {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Adjust height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.imageContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay {
+  position: absolute;
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.overlay h3 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.overlay p {
+  font-size: 16px;
+}
+
+/* Filter & Sorting Section */
+.filterContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: white;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.layoutContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.layoutButton {
+  background-color: white;
+  border: 2px solid black;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.layoutButton.active {
+  background-color: black;
+  color: white;
+}
+
+.gridOptions {
+  display: flex;
+  gap: 8px;
+}
+
+.gridBox {
+  display: inline-block;
+  width: 30px;
+  height: 20px;
+  background: gray;
+  border: 2px solid transparent;
+}
+
+/* Add border only to the second box */
+.pageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
-  .breadcrumbContent {
-    text-align: center;
-    color: white;
-  }
-  
-  .pageTitle {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .breadcrumbText {
-    font-size: 14px;
-  }
-  
-  
-  
+  background-color: #f8f8f8;
+  gap: 10px;
+}
+
+.outerBox {
+  width: 70px;
+  height: 50px;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+.innerContainer {
+  display: flex;
+  gap: 2px;
+}
+
+.innerSection {
+  background-color: grey;
+  transition: background-color 0.3s ease;
+}
+
+.outerBox:hover .innerSection {
+  background-color: black;
+}
+
+/* Different section widths */
+.oneSection .innerSection {
+  width: 30px;
+  height: 35px;
+}
+
+.twoSection .innerSection {
+  width: 14px;
+  height: 35px;
+}
+
+.threeSection .innerSection {
+  width: 12px;
+  height: 35px;
+}
+
+.fourSection .innerSection {
+  width: 10px;
+  height: 35px;
+}
+
+
+/* Grid Layout */
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Product Box */
+.product {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.product img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.oldPrice {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.newPrice {
+  color: red;
+  font-weight: bold;
+}

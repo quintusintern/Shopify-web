@@ -7,19 +7,20 @@ import { TbArrowsCross } from "react-icons/tb";
 import styles from "./Product.module.css";
 
 const categories = [
-  "New Arrival",
-  "Decor",
-  "Denim",
-  "Dress",
-  "Hats",
-  "Men",
-  "Sale",
-  "Shoes",
-  "Women",
+  { id: 1, name: "New Arrival", heroImage: "heroImages/Newarrival.jpg" },
+  { id: 2, name: "Decor", heroImage: "heroImages/Decor.jpg" },
+  { id: 3, name: "Denim", heroImage: "heroImages/Denim.jpg" },
+  { id: 4, name: "Dress", heroImage: "heroImages/Dress.jpg" },
+  { id: 5, name: "Hats", heroImage: "heroImages/Hats.jpg" },
+  { id: 6, name: "Men", heroImage: "heroImages/Men.jpg" },
+  { id: 7, name: "Sale", heroImage: "heroImages/Sale.jpg" },
+  { id: 8, name: "Shoes", heroImage: "heroImages/Shoes.jpg" },
+  { id: 9, name: "Women", heroImage: "heroImages/Women.jpg" },
 ];
 
 const initialCards = [
   {
+    id: 1,
     title: "Analogue Resin Strap",
     price: "30.00",
     defaultImage: "/Resin Strap.jpg",
@@ -28,6 +29,7 @@ const initialCards = [
     category: "Shoes",
   },
   {
+    id: 2,
     title: "Ridley High Waist",
     price: "36.00",
     defaultImage: "/Ridley01.jpg",
@@ -36,6 +38,7 @@ const initialCards = [
     category: "Denim",
   },
   {
+    id: 3,
     title: "Blush Beanie",
     price: "15.00",
     defaultImage: "/Blush Beanie01.jpg",
@@ -44,6 +47,7 @@ const initialCards = [
     category: "Hats",
   },
   {
+    id: 4,
     title: "Cluse La Baheme Rose Gold",
     price: "45.00",
     defaultImage: "/Gold01.jpg",
@@ -52,6 +56,7 @@ const initialCards = [
     category: "Women",
   },
   {
+    id: 5,
     title: "Mercury Tee",
     price: "68.00",
     defaultImage: "/Mercury01.jpg",
@@ -60,6 +65,7 @@ const initialCards = [
     category: "Men",
   },
   {
+    id: 6,
     title: "La Baheme Rose Gold",
     price: "40.00",
     defaultImage: "/RoseGold01.jpg",
@@ -68,6 +74,7 @@ const initialCards = [
     category: "Sale",
   },
   {
+    id: 7,
     title: "Cream women pants",
     price: "35.00",
     defaultImage: "/Women Pants01.jpg",
@@ -76,6 +83,7 @@ const initialCards = [
     category: "Women",
   },
   {
+    id: 8,
     title: "Black mountain hat",
     price: "35.00",
     defaultImage: "/hat01.jpg",
@@ -86,16 +94,14 @@ const initialCards = [
 ];
 
 const ProductsPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("New Arrival");
+  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [selectedOption, setSelectedOption] = useState("Alphabetically, A-Z");
-  const [activeLayout, setActiveLayout] = useState("list");
-  const [showUI, setShowUI] = useState(false); // Modal State
   const [cards, setCards] = useState(initialCards);
 
   const filteredCards = useMemo(() => {
     let filtered = [...initialCards];
-    if (selectedCategory !== "All") {
-      filtered = filtered.filter((card) => card.category === selectedCategory);
+    if (selectedCategory && selectedCategory.name !== "All") {
+      filtered = filtered.filter((card) => card.category === selectedCategory.name);
     }
 
     switch (selectedOption) {
@@ -113,19 +119,21 @@ const ProductsPage = () => {
   }, [selectedCategory, selectedOption]);
 
 
+
+
   return (
     <>
       {/* Navbar */}
       <nav className={styles.navbar}>
         <ul className={styles.menu}>
           {categories.map((category) => (
-            <li key={category}>
+            <li key={category.id}>
               <Link href="#" legacyBehavior>
                 <a
-                  className={selectedCategory === category ? styles.active : ""}
+                  className={selectedCategory && selectedCategory.id === category.id ? styles.active : ""}
                   onClick={() => setSelectedCategory(category)}
                 >
-                  {category}
+                  {category.name}
                 </a>
               </Link>
             </li>
@@ -136,11 +144,11 @@ const ProductsPage = () => {
       {/* Hero Section */}
       <div className={styles.wishlistHero}>
         <div className={styles.imageContainer}>
-          <img src={"/Newarrival.jpg"} alt={selectedCategory} />
+          <img src={selectedCategory.heroImage} alt={selectedCategory.name} />
         </div>
         <div className={styles.overlay}>
-          <h3>{selectedCategory}</h3>
-          <p>{`Home > ${selectedCategory}`}</p>
+          <h3>{selectedCategory.name}</h3>
+          <p>{`Home > ${selectedCategory.name}`}</p>
         </div>
       </div>
 

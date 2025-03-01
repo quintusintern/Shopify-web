@@ -51,68 +51,69 @@ const ProductsPage = () => {
        
         {/* Layout Switcher (Grid/List) */}
         <div className={styles.pageContainer}>
-      {/* Single Section Box */}
-      <div className={styles.outerBox} onClick={() => setShowUI(true)}>
-        <div className={`${styles.innerContainer} ${styles.oneSection}`}>
-          <div className={styles.innerSection}></div>
+      {/* Section Boxes */}
+      <div className={styles.sectionContainer}>
+        <div className={styles.outerBox} onClick={() => setShowUI(false)}>
+          <div className={`${styles.innerContainer} ${styles.oneSection}`}>
+            <div className={styles.innerSection}></div>
+          </div>
+        </div>
+
+        <div className={styles.outerBox} onClick={() => setShowUI(!showUI)}>
+          <div className={`${styles.innerContainer} ${styles.twoSection}`}>
+            <div className={styles.innerSection}></div>
+            <div className={styles.innerSection}></div>
+          </div>
+        </div>
+
+        <div className={styles.outerBox}>
+          <div className={`${styles.innerContainer} ${styles.threeSection}`}>
+            <div className={styles.innerSection}></div>
+            <div className={styles.innerSection}></div>
+            <div className={styles.innerSection}></div>
+          </div>
+        </div>
+
+        <div className={styles.outerBox}>
+          <div className={`${styles.innerContainer} ${styles.fourSection}`}>
+            <div className={styles.innerSection}></div>
+            <div className={styles.innerSection}></div>
+            <div className={styles.innerSection}></div>
+            <div className={styles.innerSection}></div>
+          </div>
         </div>
       </div>
 
-      {/* Two Section Box */}
-      <div className={styles.outerBox}>
-        <div className={`${styles.innerContainer} ${styles.twoSection}`}>
-          <div className={styles.innerSection}></div>
-          <div className={styles.innerSection}></div>
-        </div>
-      </div>
-   {/* Static Product Grid (Visible on Click) */}
-   {showUI && (
-        <div className={styles.productGrid}>
-          <div className={styles.product}>
-            <img src="/images/product1.jpg" alt="Short Sleeved Hoodie" />
-            <p>Short Sleeved Hoodie</p>
-            <span className={styles.oldPrice}>$45.00</span> <span className={styles.newPrice}>$30.00</span>
+      {/* Product Grid with Enhanced UI */}
+      <div style={{ marginTop: "20px" }}>
+        {showUI && (
+          <div className={styles.gridContainer}>
+            <div className={styles.productCard}>
+              <div className={styles.imageContainer}>
+                <img src="/images/hoodie.png" alt="Combat Hoodie" />
+                <div className={styles.overlayButtons}>
+                  <button className={styles.quickView}>Quick view</button>
+                  <button className={styles.quickShop}>Quick Shop</button>
+                </div>
+              </div>
+              <p>Combat Hoodie</p>
+              <p>$28.00</p>
+            </div>
+            <div className={styles.productCard}>
+              <div className={styles.imageContainer}>
+                <img src="/images/jeans.png" alt="Blue Jean" />
+                <div className={styles.overlayButtons}>
+                  <button className={styles.quickView}>Quick view</button>
+                  <button className={styles.quickShop}>Quick Shop</button>
+                </div>
+              </div>
+              <p>Blue Jean</p>
+              <p>$25.00</p>
+            </div>
           </div>
-          <div className={styles.product}>
-            <img src="/images/product2.jpg" alt="Striped Long Sleeve Top" />
-            <p>Striped Long Sleeve Top</p>
-            <span className={styles.oldPrice}>$45.00</span> <span className={styles.newPrice}>$20.00</span>
-          </div>
-          <div className={styles.product}>
-            <img src="/images/product3.jpg" alt="C'est La Vie T-Shirt" />
-            <p>C'est La Vie T-Shirt</p>
-            <span className={styles.oldPrice}>$40.00</span> <span className={styles.newPrice}>$25.00</span>
-          </div>
-          <div className={styles.product}>
-            <img src="/images/product4.jpg" alt="Soft Sweatpants" />
-            <p>Soft Sweatpants</p>
-            <span className={styles.oldPrice}>$50.00</span> <span className={styles.newPrice}>$35.00</span>
-          </div>
-        </div>
-      )}
-      
-      
-
-      {/* Three Section Box */}
-      <div className={styles.outerBox}>
-        <div className={`${styles.innerContainer} ${styles.threeSection}`}>
-          <div className={styles.innerSection}></div>
-          <div className={styles.innerSection}></div>
-          <div className={styles.innerSection}></div>
-        </div>
-      </div>
-
-      {/* Four Section Box */}
-      <div className={styles.outerBox}>
-        <div className={`${styles.innerContainer} ${styles.fourSection}`}>
-          <div className={styles.innerSection}></div>
-          <div className={styles.innerSection}></div>
-          <div className={styles.innerSection}></div>
-          <div className={styles.innerSection}></div>
-        </div>
+        )}
       </div>
     </div>
-
         {/* Sorting Dropdown */}
         <select
           className={styles.sortDropdown}

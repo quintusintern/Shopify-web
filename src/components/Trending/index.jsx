@@ -128,7 +128,6 @@ export default function Trending() {
           </div>
         ))}
       </div>
-      <div></div>
       <button className={styles.LoadMoreBtn} onClick={loadMoreCards}>
         Load More
       </button>

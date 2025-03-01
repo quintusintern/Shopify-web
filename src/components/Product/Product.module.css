@@ -33,7 +33,7 @@
 .wishlistHero {
   position: relative;
   width: 100%;
-  height: 300px; /* Adjust height as needed */
+  height: 215px; /* Adjust height as needed */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,16 +43,28 @@
 .imageContainer {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 215px;
+  max-height: 215px;
+  overflow: hidden;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .overlay {
   position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   color: white;
   background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 8px;
 }
 
 .overlay h3 {
@@ -116,13 +128,12 @@
   gap: 10px;
 }
 
-.outerBox {
-  width: 70px;
-  height: 50px;
+.rearrangeBtn {
+  width: auto;
+  height: auto;
+  padding: 5px;
   border: 2px solid black;
   display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: white;
   transition: background-color 0.3s ease;
 }
@@ -132,34 +143,40 @@
   gap: 2px;
 }
 
+.innerContainerVer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .innerSection {
   background-color: grey;
   transition: background-color 0.3s ease;
 }
 
-.outerBox:hover .innerSection {
+.innerSectionVer {
+  display: flex;
+  flex-direction: column;
+  background-color: grey;
+  transition: background-color 0.3s ease;
+}
+
+.rearrangeBtn:hover .innerSection {
   background-color: black;
 }
 
-/* Different section widths */
-.oneSection .innerSection {
-  width: 30px;
-  height: 35px;
+.rearrangeBtn:hover .innerSectionVer {
+  background-color: black;
 }
 
-.twoSection .innerSection {
-  width: 14px;
-  height: 35px;
+.innerSectionVer {
+  width: 45px;
+  height: 5px;
 }
 
-.threeSection .innerSection {
-  width: 12px;
-  height: 35px;
-}
-
-.fourSection .innerSection {
-  width: 10px;
-  height: 35px;
+.innerSection {
+  width: 20px;
+  height: 17px;
 }
 
 
@@ -173,23 +190,269 @@
 }
 
 /* Product Box */
-.product {
-  background: #f9f9f9;
-  padding: 10px;
-  border-radius: 10px;
+
+/* Styles for individual product boxes */
+
+.cardsContainer {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1160px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.product img {
-  width: 100%;
+.imgCard {
+  height: 420px;
+  min-width: 250px;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  margin: 10px;
 }
 
-.oldPrice {
-  text-decoration: line-through;
-  color: gray;
+.imageWrapper {
+  position: relative;
+  width: 270px;
+  height: 345px;
+  overflow: hidden;
 }
 
-.newPrice {
-  color: red;
+.imageDefault,
+.imageHover {
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.imageDefault {
+  position: absolute;
+  z-index: 1;
+  opacity: 1;
+}
+
+.imageHover {
+  position: absolute;
+  z-index: 2;
+  opacity: 0;
+}
+
+.imageWrapper:hover .imageDefault {
+  opacity: 0;
+}
+
+.imageWrapper:hover .imageHover {
+  opacity: 1;
+}
+
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 6;
+}
+
+.overlayContent {
+  z-index: 7;
+}
+
+.imageWrapper:hover .cardOverlay {
+  opacity: 1;
+}
+
+/* Top Left Buttons */
+.topLeftButtons {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.icon {
+  font-size: 20px;
+}
+.smallBtn {
+  padding: 5px;
+  border: none;
+  background: transparent;
+  color: aliceblue;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.imageWrapper:hover .btn1 {
+  animation: slideInLeft 0.4s forwards 0.2s;
+  border: none;
+}
+
+.btn1:hover,
+.btn1:focus {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.imageWrapper:hover .btn2 {
+  animation: slideInLeft 0.4s forwards 0.4s;
+}
+
+.btn2:hover,
+.btn2:focus {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Center Buttons */
+.centerButtons {
+  top: 50%;
+  margin: auto;
+  flex-direction: column;
+  transform: translateY(-20px);
+  justify-content: center;
+  z-index: 3;
+  transition: 0.5s ease 0s;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+}
+
+.btn {
+  position: relative;
+  height: 40px;
+  width: 136px;
+  padding: 8px 16px;
+  border: 2px solid white;
+  background: white;
+  color: black;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 20px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background: white;
+  color: black;
+}
+
+/* Light Blue Button */
+.lightBlueBtn {
+  height: 40px;
+  width: 136px;
+  padding: 8px 16px;
+  border: 2px solid transparent;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  background: lightblue;
+  color: black;
+  border-color: lightblue;
+}
+
+.imageWrapper:hover .footerText {
+  animation: slideInTop 0.5s forwards 0.5s;
+}
+
+/* Text container */
+.textContainer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.cardTitle {
+  font-family: Poppins, sans-serif;
   font-weight: bold;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: rgb(34, 34, 34);
+  text-align: left;
+  margin: 0;
 }
+
+.cardPrice {
+  box-sizing: border-box;
+  display: block;
+  height: 23px;
+  width: 270px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-stretch: 100%;
+  font-weight: 400;
+  color: rgb(105, 105, 105);
+}
+
+.smallBtn:hover {
+  background: white;
+  color: black;
+}
+
+.imageWrapper:hover .centerButtons {
+  animation: slideInTop 0.4s forwards 0.2s;
+}
+
+@keyframes slideInTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Footer Text */
+.footerText {
+  position: absolute;
+  bottom: 10px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  justify-self: center;
+  width: 100%;
+}
+

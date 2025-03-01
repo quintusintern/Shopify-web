@@ -271,7 +271,7 @@ const Navbar = () => {
       {showPopup && (
         <div
           className={styles.overlay}
-          onClick={() => setShowPopup(false)} // Close any open popup
+          onClick={() => setShowPopup(false)}
         />
       )}
 

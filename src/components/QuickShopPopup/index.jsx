@@ -1,6 +1,5 @@
-// QuickShopPopup.js
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./shopPopup.module.css";
 import { ShoppingCart, User, Search, Heart, X } from "lucide-react";
 
@@ -13,8 +12,19 @@ const QuickShopPopup = ({
   sizes,
   selectedSize,
   setSelectedSize,
+  addToCart,
 }) => {
   if (!isOpen) return null;
+
+  const handleAddToCart = () => {
+    const item = {
+      imageUrl,
+      title,
+      description,
+      selectedSize,
+    };
+    addToCart(item);
+  };
 
   return (
     <div className={styles.popupOverlay}>
@@ -25,7 +35,7 @@ const QuickShopPopup = ({
         <img src={imageUrl} alt={title} className={styles.popupImage} />
         <h3>{title}</h3>
         <p>{description}</p>
-        {selectedSize && <h4 className={styles.selected}>Size: {selectedSize}</h4>}{" "}
+        {selectedSize && <h4 className={styles.selected}>Size: {selectedSize}</h4>} {" "}
         {sizes && (
           <div className={styles.sizeSelector}>
             {sizes.split(", ").map((size) => (
@@ -41,7 +51,7 @@ const QuickShopPopup = ({
             ))}
           </div>
         )}
-        <button className={styles.addToCartBtn}>Add to Cart</button>
+        <button className={styles.addToCartBtn} onClick={handleAddToCart}>Add to Cart</button>
         <button className={styles.buyNowBtn}>Buy Now</button>
       </div>
     </div>

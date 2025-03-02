@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Headertop from "@/components/Headertop";
 import Image from "next/image";
@@ -11,7 +11,7 @@ import { FiSearch } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import styles from "./Navbar.module.css";
 
-const Navbar = () => {
+const Navbar = ({ cartItems }) => {
   const [searchValue, setSearchValue] = useState("");
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
@@ -269,10 +269,7 @@ const Navbar = () => {
       </div>
 
       {showPopup && (
-        <div
-          className={styles.overlay}
-          onClick={() => setShowPopup(false)}
-        />
+        <div className={styles.overlay} onClick={() => setShowPopup(false)} />
       )}
 
       <div className={`${styles.cartPopup} ${cartOpen ? styles.open : ""}`}>
@@ -291,6 +288,21 @@ const Navbar = () => {
             <FaShippingFast className={styles.truckIcon} />
             <div className={styles.progressBar}></div>
           </div>
+        </div>
+
+        <div>
+          {cartItems.length > 0 && (
+            <div>
+              <h3>Cart Items:</h3>
+              <ul>
+                {cartItems.map((item, index) => (
+                  <li key={index}>
+                    {item.title} - {item.selectedSize}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         <div className={styles.emptyCartContainer}>

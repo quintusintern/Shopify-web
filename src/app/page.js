@@ -1,3 +1,4 @@
+// Parent component (Home.js)
 "use client";
 import React, { useState } from "react";
 import CategoryGrid from "@/components/Category";
@@ -10,6 +11,8 @@ import BlogSection from "@/components/BlogSection";
 import FollowUs from "@/components/FollowUs";
 import Footer from "@/components/Footer";
 import QuickShopPopup from "@/components/QuickShopPopup";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
   const [cartItems, setCartItems] = useState([]);
@@ -19,6 +22,7 @@ export default function Home() {
 
   const addToCart = (item) => {
     setCartItems((prevItems) => [...prevItems, item]);
+    toast.success('Item added to cart');
   };
 
   const openPopup = (product) => {
@@ -31,6 +35,11 @@ export default function Home() {
     setIsPopupOpen(false);
   };
 
+  const handleAddToCartAndClose = (item) => {
+    addToCart(item);
+    closePopup();
+  }
+
   // Function to pass cartItems to Navbar
   const getCartItemsForNavbar = () => {
     return cartItems;
@@ -38,7 +47,7 @@ export default function Home() {
 
   return (
     <>
-      <Navbar cartItems={getCartItemsForNavbar()} /> {/* Pass cartItems to Navbar */}
+      <Navbar cartItems={getCartItemsForNavbar()} />
       <Hero />
       <CategoryGrid />
       <Trending openPopup={openPopup} />
@@ -57,9 +66,10 @@ export default function Home() {
           sizes={selectedProduct.sizes}
           selectedSize={selectedSize}
           setSelectedSize={setSelectedSize}
-          addToCart={addToCart}
+          addToCart={handleAddToCartAndClose} 
         />
       )}
+      <ToastContainer />
     </>
   );
 }

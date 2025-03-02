@@ -76,7 +76,6 @@ const Navbar = ({ cartItems }) => {
     },
   ];
 
-  // Toggle popups
   const toggleSearchPopup = () => {
     setShowSearch(!showSearch);
     setShowPopup(!showSearch); // Toggle the state for overlay
@@ -291,7 +290,7 @@ const Navbar = ({ cartItems }) => {
         </div>
 
         <div>
-          {cartItems.length > 0 && (
+          {cartItems && cartItems.length > 0 && (
             <div>
               <h3>Cart Items:</h3>
               <ul>

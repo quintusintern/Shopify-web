@@ -3,61 +3,61 @@ import React, { useState } from "react";
 import styles from "./Trending.module.css";
 import { CiHeart } from "react-icons/ci";
 import { TbArrowsCross } from "react-icons/tb";
-
-
+import QuickShopPopup from "@/components/QuickShopPopup";
 
 const initialCards = [
   {
     title: "Analogue Resin Strap",
-    description: "$ 30.00",
+    price: "30.00",
     defaultImage: "/Resin Strap.jpg",
     hoverImage: "/Resin Strap02.jpg",
     sizes: "XS, S, M, L",
   },
   {
     title: "Ridley High Waist",
-    description: "$36.00",
+    price: "36.00",
     defaultImage: "/Ridley01.jpg",
     hoverImage: "/Ridley02.jpg",
     sizes: "S, M, L",
   },
   {
     title: "Blush Beanie",
-    description: "$15.00",
+    price: "15.00",
     defaultImage: "/Blush Beanie01.jpg",
     hoverImage: "/Blush Beanie02.jpg",
     sizes: "XS, S, M, L",
   },
   {
     title: "Cluse La Baheme Rose Gold",
-    description: "$45.00",
+    price: "45.00",
     defaultImage: "/Gold01.jpg",
     hoverImage: "/Gold02.jpg",
+    sizes: "",
   },
   {
     title: "Mercury Tee",
-    description: "$68.00",
+    price: "68.00",
     defaultImage: "/Mercury01.jpg",
     hoverImage: "/Mercury02.jpg",
     sizes: "S, M, L, XL, XXL",
   },
   {
     title: "La Baheme Rose Gold",
-    description: "$40.00",
+    price: "40.00",
     defaultImage: "/RoseGold01.jpg",
     hoverImage: "/public/RoseGold02.jpg",
     sizes: "XS, S, M, L",
   },
   {
     title: "Cream women pants",
-    description: "$35.00",
+    price: "35.00",
     defaultImage: "/Women Pants01.jpg",
     hoverImage: "/Women Pants02.jpg",
     sizes: "S, M, L, XL, XXL",
   },
   {
     title: "Black mountain hat",
-    description: "$35.00",
+    price: "35.00",
     defaultImage: "/hat01.jpg",
     hoverImage: "/hat02.jpg",
     sizes: "XS, S, M, L",
@@ -66,6 +66,8 @@ const initialCards = [
 
 export default function Trending() {
   const [cards, setCards] = useState(initialCards);
+  const [selectedCard, setSelectedCard] = useState(null);
+  const [selectedSize, setSelectedSize] = useState("");
 
   const loadMoreCards = () => {
     const newCards = initialCards.map((card, index) => ({
@@ -74,6 +76,16 @@ export default function Trending() {
     }));
 
     setCards((prevCards) => [...prevCards, ...newCards]);
+  };
+
+  const handleQuickShop = (card) => {
+    setSelectedCard(card);
+    setSelectedSize(card.sizes.split(", ")[0] || "");
+  };
+
+  const closePopup = () => {
+    setSelectedCard(null);
+    setSelectedSize("");
   };
 
   return (
@@ -98,7 +110,7 @@ export default function Trending() {
               />
               <img
                 src={card.hoverImage}
-                alt={`${card.title} hover`}
+                alt={`${card.title} second Image`}
                 className={styles.imageHover}
               />
               <div className={styles.overlay}>
@@ -112,10 +124,18 @@ export default function Trending() {
                     </button>
                   </div>
                   <div className={styles.centerButtons}>
-                    <button className={styles.btn}>
+                    <button
+                      className={styles.btn}
+                      onClick={() => handleQuickShop(card)}
+                    >
                       Quick View
                     </button>
-                    <button className={styles.lightBlueBtn}>Quick Shop</button>
+                    <button
+                      className={styles.lightBlueBtn}
+                      onClick={() => handleQuickShop(card)}
+                    >
+                      Quick Shop
+                    </button>
                   </div>
                   <p className={styles.footerText}>{card.sizes}</p>
                 </div>
@@ -123,7 +143,7 @@ export default function Trending() {
             </div>
             <div className={styles.textContainer}>
               <h3 className={styles.cardTitle}>{card.title}</h3>
-              <p className={styles.cardPrice}>{card.description}</p>
+              <p className={styles.cardPrice}>{` $ ${card.price}`}</p>
             </div>
           </div>
         ))}
@@ -131,6 +151,17 @@ export default function Trending() {
       <button className={styles.LoadMoreBtn} onClick={loadMoreCards}>
         Load More
       </button>
+
+      <QuickShopPopup
+        isOpen={selectedCard !== null}
+        onClose={closePopup}
+        imageUrl={selectedCard?.defaultImage}
+        title={selectedCard?.title}
+        description={selectedCard?.description}
+        sizes={selectedCard?.sizes}
+        selectedSize={selectedSize}
+        setSelectedSize={setSelectedSize}
+      />
     </div>
   );
 }

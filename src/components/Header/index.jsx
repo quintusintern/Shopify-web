@@ -29,7 +29,7 @@ const Header = () => {
   const [selectedCurrency, setSelectedCurrency] = useState({
     code: "USD",
     country: "United States",
-    flag: "/us.jpg",
+    flag: "/flags/us.jpg",
   });
 
   const [selectedLanguage, setSelectedLanguage] = useState({

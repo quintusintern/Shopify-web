@@ -1,61 +1,62 @@
 "use client";
-import { useState, React } from "react";
-import styles from "./Bestseller.module.css";
+import React, { useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { TbArrowsCross } from "react-icons/tb";
+import QuickShopPopup from "@/components/QuickShopPopup";
+import styles from "./Bestseller.module.css";
 
 const cardsData = [
   {
     title: "Card 1",
-    description: "Description for Card 1",
+    price: " 1",
     defaultImage: "/Backpack01.jpg",
     hoverImage: "/Backpack02.jpg",
     sizes: "XS, S, M, L",
   },
   {
     title: "Card 2",
-    description: "Description for Card 2",
+    price: " 2",
     defaultImage: "/Women Pants01.jpg",
     hoverImage: "/Women Pants02.jpg",
     sizes: "S, M, L",
   },
   {
     title: "Card 3",
-    description: "Description for Card 3",
+    price: " 3",
     defaultImage: "/Mercury01.jpg",
     hoverImage: "/Mercury02.jpg",
     sizes: "XS, S, M, L",
   },
   {
     title: "Card 4",
-    description: "Description for Card 4",
+    price: " 4",
     defaultImage: "/MenPants01.jpg",
     hoverImage: "/MenPants02.jpg",
   },
   {
     title: "Card 5",
-    description: "Description for Card 5",
+    price: " 5",
     defaultImage: "/Hoodie01.jpg",
     hoverImage: "/Hoodie02.jpg",
     sizes: "S, M, L, XL, XXL",
   },
   {
     title: "Card 6",
-    description: "Description for Card 6",
+    price: " 6",
     defaultImage: "/Ridley01.jpg",
     hoverImage: "/Ridley02.jpg",
     sizes: "XS, S, M, L",
   },
   {
     title: "Card 7",
-    description: "Description for Card 7",
+    price: " 7",
     defaultImage: "/Blush Beanie01.jpg",
     hoverImage: "/Blush Beanie02.jpg",
     sizes: "S, M, L, XL, XXL",
   },
   {
     title: "Card 8",
-    description: "Description for Card 8",
+    price: " 8",
     defaultImage: "/snapback01.jpg",
     hoverImage: "/snapback02.jpg",
     sizes: "XS, S, M, L",
@@ -64,6 +65,18 @@ const cardsData = [
 
 export default function BestSeller() {
   const [cards, setCards] = useState(cardsData);
+  const [selectedCard, setSelectedCard] = useState(null);
+  const [selectedSize, setSelectedSize] = useState("");
+
+  const handleQuickShop = (card) => {
+    setSelectedCard(card);
+    setSelectedSize(card.sizes.split(", ")[0] || "");
+  };
+
+  const closePopup = () => {
+    setSelectedCard(null);
+    setSelectedSize("");
+  };
 
   return (
     <>
@@ -88,7 +101,7 @@ export default function BestSeller() {
                 />
                 <img
                   src={card.hoverImage}
-                  alt={`${card.title} hover`}
+                  alt={`${card.title} second Image`}
                   className={styles.imageHover}
                 />
                 <div className={styles.overlay}>
@@ -102,8 +115,16 @@ export default function BestSeller() {
                       </button>
                     </div>
                     <div className={styles.centerButtons}>
-                      <button className={styles.btn}>Quick View</button>
-                      <button className={styles.lightBlueBtn}>
+                      <button
+                        className={styles.btn}
+                        onClick={() => handleQuickShop(card)}
+                      >
+                        Quick View
+                      </button>
+                      <button
+                        className={styles.lightBlueBtn}
+                        onClick={() => handleQuickShop(card)}
+                      >
                         Quick Shop
                       </button>
                     </div>
@@ -113,12 +134,22 @@ export default function BestSeller() {
               </div>
               <div className={styles.textContainer}>
                 <h3 className={styles.cardTitle}>{card.title}</h3>
-                <p className={styles.cardPrice}>{card.description}</p>
+                <p className={styles.cardPrice}>{card.price}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
+      <QuickShopPopup
+        isOpen={selectedCard !== null}
+        onClose={closePopup}
+        imageUrl={selectedCard?.defaultImage}
+        title={selectedCard?.title}
+        description={selectedCard?.description}
+        sizes={selectedCard?.sizes}
+        selectedSize={selectedSize}
+        setSelectedSize={setSelectedSize}
+      />
     </>
   );
 }

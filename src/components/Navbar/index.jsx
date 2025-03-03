@@ -116,7 +116,7 @@ const Navbar = ({ cartItems }) => {
             <Link href="/Product">Product</Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/Check">
               Sale <span className={styles.saleBadge}>Sale</span>
             </Link>
           </li>
@@ -220,9 +220,8 @@ const Navbar = ({ cartItems }) => {
             {/* Email Input */}
             <div className={styles.inputContainer}>
               <label
-                className={`${styles.label} ${
-                  isEmailFocused || email ? styles.shrink : ""
-                }`}
+                className={`${styles.label} ${isEmailFocused || email ? styles.shrink : ""
+                  }`}
               >
                 E-mail <span className={styles.mandatory}>*</span>
               </label>
@@ -239,9 +238,8 @@ const Navbar = ({ cartItems }) => {
             {/* Password Input */}
             <div className={styles.inputContainer}>
               <label
-                className={`${styles.label} ${
-                  isPasswordFocused || password ? styles.shrink : ""
-                }`}
+                className={`${styles.label} ${isPasswordFocused || password ? styles.shrink : ""
+                  }`}
               >
                 Password <span className={styles.mandatory}>*</span>
               </label>
@@ -302,7 +300,7 @@ const Navbar = ({ cartItems }) => {
               </ul>
             </div>
           )}
-         </div>
+        </div>
 
         <div className={styles.emptyCartContainer}>
           <svg

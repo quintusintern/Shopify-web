@@ -204,27 +204,6 @@
   align-items: center;
 }
 
-.btn {
-  position: relative;
-  height: 40px;
-  width: 136px;
-  padding: 8px 16px;
-  border: 2px solid white;
-  background: white;
-  color: black;
-  font-size: 14px;
-  font-weight: 400;
-  border-radius: 20px;
-  cursor: pointer;
-  overflow: hidden;
-  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-.btn:hover {
-  background: white;
-  color: black;
-}
-
 /* Light Blue Button */
 .lightBlueBtn {
   height: 40px;

@@ -176,132 +176,68 @@ const ProductsPage = ({ openPopup }) => {
       {/* Filter & Customise Section */}
       <div className={styles.filterContainer}>
         {/* resize cards container */}
-        <div className={styles.pageContainer}>
-          {/* Section Boxes */}
-          <div className={styles.sectionContainer}>
-            <div className={styles.outerBox} onClick={() => setShowUI(false)}>
-              <div className={`${styles.innerContainer} ${styles.oneSection}`}>
-                <div className={styles.innerSection}></div>
-              </div>
-            </div>
 
-            <div className={styles.outerBox} onClick={() => setShowUI(!showUI)}>
-              <div className={`${styles.innerContainer} ${styles.twoSection}`}>
-                <div className={styles.innerSection}></div>
-                <div className={styles.innerSection}></div>
-              </div>
+        <div className={styles.rearrangeContainer}>
+          {/* Vertical stacks resize Button */}
+          <button className={styles.rearrangeBtn}>
+            <div className={styles.innerContainerVer}>
+              <span className={styles.innerSectionVer}></span>
+              <span className={styles.innerSectionVer}></span>
+              <span className={styles.innerSectionVer}></span>
             </div>
+          </button>
 
-            <div className={styles.outerBox}>
-              <div
-                className={`${styles.innerContainer} ${styles.threeSection}`}
-              >
-                <div className={styles.innerSection}></div>
-                <div className={styles.innerSection}></div>
-                <div className={styles.innerSection}></div>
-              </div>
+          {/* Two Section resize Button  */}
+          <button className={styles.rearrangeBtn}>
+            <div className={styles.innerContainer}>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
             </div>
+          </button>
 
-            <div className={styles.outerBox}>
-              <div className={`${styles.innerContainer} ${styles.fourSection}`}>
-                <div className={styles.innerSection}></div>
-                <div className={styles.innerSection}></div>
-                <div className={styles.innerSection}></div>
-                <div className={styles.innerSection}></div>
-              </div>
+          {/* Three Section resize Button  */}
+          <button className={styles.rearrangeBtn}>
+            <div className={styles.innerContainer}>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
             </div>
-          </div>
+          </button>
 
-          {/* Product Grid with Enhanced UI */}
-          <div style={{ marginTop: "20px" }}>
-            {showUI && (
-              <div className={styles.gridContainer}>
-                <div className={styles.productCard}>
-                  <div className={styles.imageContainer}>
-                    <img src="/images/hoodie.png" alt="Combat Hoodie" />
-                    <div className={styles.overlayButtons}>
-                      <button className={styles.quickView}>Quick view</button>
-                      <button className={styles.quickShop}>Quick Shop</button>
-                    </div>
-                  </div>
-                  <p>Combat Hoodie</p>
-                  <p>$28.00</p>
-                </div>
-                <div className={styles.productCard}>
-                  <div className={styles.imageContainer}>
-                    <img src="/images/jeans.png" alt="Blue Jean" />
-                    <div className={styles.overlayButtons}>
-                      <button className={styles.quickView}>Quick view</button>
-                      <button className={styles.quickShop}>Quick Shop</button>
-                    </div>
-                  </div>
-                  <p>Blue Jean</p>
-                  <p>$25.00</p>
-                </div>
-              </div>
-            )}
-          </div>
+          {/* Four Section resize Button  */}
+          <button className={styles.rearrangeBtn}>
+            <div className={styles.innerContainer}>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
+            </div>
+          </button>
+
+          {/* Five Section resize Button  */}
+          <button className={styles.rearrangeBtn}>
+            <div className={styles.innerContainer}>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
+              <span className={styles.innerSection}></span>
+            </div>
+          </button>
         </div>
 
-        {/* Vertical stacks resize Button */}
-        <button className={styles.rearrangeBtn}>
-          <div className={styles.innerContainerVer}>
-            <span className={styles.innerSectionVer}></span>
-            <span className={styles.innerSectionVer}></span>
-            <span className={styles.innerSectionVer}></span>
-          </div>
-        </button>
-
-        {/* Two Section resize Button  */}
-        <button className={styles.rearrangeBtn}>
-          <div className={styles.innerContainer}>
-            <span className={styles.innerSection}></span>
-            <span className={styles.innerSection}></span>
-          </div>
-        </button>
-
-        {/* Three Section resize Button  */}
-        <button className={styles.rearrangeBtn}>
-          <div className={styles.innerContainer}>
-            <span className={styles.innerSection}></span>
-            <span className={styles.innerSection}></span>
-            <span className={styles.innerSection}></span>
-          </div>
-        </button>
-
-        {/* Four Section resize Button  */}
-        <button className={styles.rearrangeBtn}>
-          <div className={styles.innerContainer}>
-            <span className={styles.innerSection}></span>
-            <span className={styles.innerSection}></span>
-            <span className={styles.innerSection}></span>
-            <span className={styles.innerSection}></span>
-          </div>
-        </button>
-
-        {/* Five Section resize Button  */}
-        <button className={styles.rearrangeBtn}>
-          <div className={styles.innerContainer}>
-            <span className={styles.innerSection}></span>
-            <span className={styles.innerSection}></span>
-            <span className={styles.innerSection}></span>
-            <span className={styles.innerSection}></span>
-            <span className={styles.innerSection}></span>
-          </div>
-        </button>
+        {/* Sorting Dropdown */}
+        <select
+          className={styles.sortDropdown}
+          value={selectedOption}
+          onChange={(e) => setSelectedOption(e.target.value)}
+        >
+          <option value="Alphabetically, A-Z">Alphabetically, A-Z</option>
+          <option value="Alphabetically, Z-A">Alphabetically, Z-A</option>
+          <option value="Price, Low to High">Price, Low to High</option>
+          <option value="Price, High to Low">Price, High to Low</option>
+        </select>
       </div>
-
-      {/* Sorting Dropdown */}
-      <select
-        className={styles.sortDropdown}
-        value={selectedOption}
-        onChange={(e) => setSelectedOption(e.target.value)}
-      >
-        <option value="Alphabetically, A-Z">Alphabetically, A-Z</option>
-        <option value="Alphabetically, Z-A">Alphabetically, Z-A</option>
-        <option value="Price, Low to High">Price, Low to High</option>
-        <option value="Price, High to Low">Price, High to Low</option>
-      </select>
 
       {/* Products Box */}
       <div className={styles.cardsContainer}>
@@ -331,12 +267,6 @@ const ProductsPage = ({ openPopup }) => {
 
                   <div className={styles.centerButtons}>
                     <button
-                      className={styles.btn}
-                      onClick={() => handleQuickShop(card)}
-                    >
-                      Quick View
-                    </button>
-                    <button
                       className={styles.lightBlueBtn}
                       onClick={() => handleQuickShop(card)}
                     >
@@ -354,6 +284,34 @@ const ProductsPage = ({ openPopup }) => {
           </div>
         ))}
       </div>
+
+      {/* Product Grid with Enhanced UI */}
+      {showUI && (
+        <div className={styles.gridContainer}>
+          <div className={styles.productCard}>
+            <div className={styles.imageContainer}>
+              <img src="/images/hoodie.png" alt="Combat Hoodie" />
+              <div className={styles.overlayButtons}>
+                <button className={styles.quickView}>Quick view</button>
+                <button className={styles.quickShop}>Quick Shop</button>
+              </div>
+            </div>
+            <p>Combat Hoodie</p>
+            <p>$28.00</p>
+          </div>
+          <div className={styles.productCard}>
+            <div className={styles.imageContainer}>
+              <img src="/images/jeans.png" alt="Blue Jean" />
+              <div className={styles.overlayButtons}>
+                <button className={styles.quickView}>Quick view</button>
+                <button className={styles.quickShop}>Quick Shop</button>
+              </div>
+            </div>
+            <p>Blue Jean</p>
+            <p>$25.00</p>
+          </div>
+        </div>
+      )}
 
       <QuickShopPopup
         isOpen={selectedCard !== null}

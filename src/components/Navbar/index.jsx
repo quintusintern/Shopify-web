@@ -8,10 +8,16 @@ import Link from "next/link";
 import { ShoppingCart, User, Search, Heart, X } from "lucide-react";
 import { FaShippingFast } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
-import { IoMdClose } from "react-icons/io";
+import { FiEdit } from "react-icons/fi";
+import { IoClipboardOutline } from "react-icons/io5";
+import { GoGift } from "react-icons/go";
+import { CiShoppingTag } from "react-icons/ci";
+import { BsTruck } from "react-icons/bs";
+import { AiOutlineDelete } from "react-icons/ai";
 import styles from "./Navbar.module.css";
 
 const Navbar = ({ cartItems }) => {
+  const [isChecked, setIsChecked] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
@@ -75,6 +81,26 @@ const Navbar = ({ cartItems }) => {
       image: "/Mercury01.jpg",
     },
   ];
+
+  const cardsData = [
+    { id: 1, title: "Card 1", content: "This is Card 1" },
+    { id: 2, title: "Card 2", content: "This is Card 2" },
+    { id: 3, title: "Card 3", content: "This is Card 3" },
+    { id: 4, title: "Card 4", content: "This is Card 4" },
+    { id: 5, title: "Card 5", content: "This is Card 5" },
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleNext = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % cardsData.length);
+  };
+
+  const handlePrev = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === 0 ? cardsData.length - 1 : prevIndex - 1
+    );
+  };
 
   const toggleSearchPopup = () => {
     setShowSearch(!showSearch);
@@ -277,7 +303,7 @@ const Navbar = ({ cartItems }) => {
           <X className={styles.closeIcon} onClick={toggleCartPopup} />
         </div>
 
-        <div className={styles.card}>
+        <div className={styles.unlockCard}>
           <div className={styles.cartContent}>
             <p>
               Free Shipping for all orders over <span>$100.00</span>
@@ -289,43 +315,182 @@ const Navbar = ({ cartItems }) => {
           </div>
         </div>
 
-        <div>
-          {cartItems && cartItems.length > 0 && (
-            <div>
-              <h3>Cart Items:</h3>
-              <ul>
-                {cartItems.map((item, index) => (
-                  <li key={index}>
-                    {item.title} - {item.selectedSize}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-         </div>
+        {/* Shopping Items in cart */}
+        {/* Default Item */}
 
-        <div className={styles.emptyCartContainer}>
-          <svg
-            id="icon-cart-emty"
-            width="50"
-            height="50"
-            fill="rgb(135, 135, 135)"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 576 512"
+        <div className={styles.cartBadgeContainer}>
+          <div className={styles.cartItem}>
+            <img src={"/Resin Strap.jpg"} alt={"Analogue Resin Strap"} />
+            <div className={styles.cartText}>
+              <h5>{"Analogue Resin Strap"}</h5>
+              <p>{"Size: XL"}</p>
+              <p>{"$ 30.00"}</p>
+              <div className={styles.quantityBtn}>
+                <button>
+                  <AiOutlineDelete />
+                </button>
+                <p>1</p>
+                <button>+</button>
+              </div>
+              <button className={styles.editDeleteBtn}>
+                <FiEdit />
+              </button>
+              <button className={styles.editDeleteBtn}>
+                <AiOutlineDelete />
+              </button>
+            </div>
+
+            {/* Added Items */}
+            {/* 
+  {cartItems && cartItems.length > 0 ? (
+    <div>
+      {cartItems.map((item, index) => (
+        <div key={index} className={styles.cartItem}>
+          <img src={item.imageUrl} alt={item.title} />
+          <div className={styles.cartText}>
+            <h5>{item.title}</h5>
+            <p>{item.selectedSize}</p>
+            <p>{item.price}</p>
+            <div className={styles.quantityBtn}>
+              <button><AiOutlineDelete /></button>
+              <p>1</p>
+              <button>+</button>
+            </div>
+            <FiEdit />
+            <AiOutlineDelete />
+          </div>
+        </div>
+      ))}
+
+      <div className={styles.shopFooter}>
+        <div>
+          <strong>Subtotal:</strong>
+          <strong>$ 25.89</strong>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div className={styles.emptyCartContainer}>
+      <svg
+        id="icon-cart-emty"
+        width="50"
+        height="50"
+        fill="rgb(135, 135, 135)"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 576 512"
+      >
+        <path d="M263.4 103.4C269.7 97.18 279.8 97.18 286.1 103.4L320 137.4L353.9 103.4C360.2 97.18 370.3 97.18 376.6 103.4C382.8 109.7 382.8 119.8 376.6 126.1L342.6 160L376.6 193.9C382.8 200.2 382.8 210.3 376.6 216.6C370.3 222.8 360.2 222.8 353.9 216.6L320 182.6L286.1 216.6C279.8 222.8 269.7 222.8 263.4 216.6C257.2 210.3 257.2 200.2 263.4 193.9L297.4 160L263.4 126.1C257.2 119.8 257.2 109.7 263.4 103.4zM80 0C87.47 0 93.95 5.17 95.6 12.45L100 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H158.2L172.8 352H496C504.8 352 512 359.2 512 368C512 376.8 504.8 384 496 384H160C152.5 384 146.1 378.8 144.4 371.5L67.23 32H16C7.164 32 0 24.84 0 16C0 7.164 7.164 0 16 0H80zM107.3 64L150.1 256H487.8L541.8 64H107.3zM128 456C128 425.1 153.1 400 184 400C214.9 400 240 425.1 240 456C240 486.9 214.9 512 184 512C153.1 512 128 486.9 128 456zM184 480C197.3 480 208 469.3 208 456C208 442.7 197.3 432 184 432C170.7 432 160 442.7 160 456C160 469.3 170.7 480 184 480zM512 456C512 486.9 486.9 512 456 512C425.1 512 400 486.9 400 456C400 425.1 425.1 400 456 400C486.9 400 512 425.1 512 456zM456 432C442.7 432 432 442.7 432 456C432 469.3 442.7 480 456 480C469.3 480 480 469.3 480 456C480 442.7 469.3 432 456 432z"></path>
+      </svg>
+      <p className={styles.emptyText}>Your cart is empty.</p>
+      <button className={styles.returnButton} onClick={toggleCartPopup}>
+        RETURN TO SHOP
+      </button>
+    </div>
+  )} */}
+          </div>
+          <div className={styles.cartItem}>
+            <img src={"/Ridley01.jpg"} alt={"Ridley High Waist"} />
+            <div className={styles.cartText}>
+              <h5>{"Ridley High Waist"}</h5>
+              <p>{"Size: XL"}</p>
+              <p>{"$ 36.00"}</p>
+              <div className={styles.quantityBtn}>
+                <button>
+                  <AiOutlineDelete />
+                </button>
+                <p>1</p>
+                <button>+</button>
+              </div>
+              <button className={styles.editDeleteBtn}>
+                <FiEdit />
+              </button>
+              <button className={styles.editDeleteBtn}>
+                <AiOutlineDelete />
+              </button>
+            </div>
+          </div>
+          <div className={styles.cartXtraBtns}>
+            <button>
+              <IoClipboardOutline />
+            </button>
+            <button>
+              <GoGift />
+            </button>
+            <button>
+              <BsTruck />
+            </button>
+            <button>
+              <CiShoppingTag />
+            </button>
+          </div>
+
+          {/* <div className={styles.carouselContainer}>
+            <button className={styles.leftButton} onClick={handlePrev}>
+              ◀
+            </button>
+
+            <div
+              className={styles.cardWrapper}
+              style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+            >
+              {cardsData.map((card) => (
+                <div key={card.id} className={styles.card}>
+                  <h3>{card.title}</h3>
+                  <p>{card.content}</p>
+                </div>
+              ))}
+            </div>
+
+            <button className={styles.rightButton} onClick={handleNext}>
+              ▶
+            </button>
+
+            <div className={styles.dotsContainer}>
+              {cardsData.map((_, index) => (
+                <span
+                  key={index}
+                  className={`${styles.dot} ${
+                    index === activeIndex ? styles.activeDot : ""
+                  }`}
+                  onClick={() => setActiveIndex(index)}
+                />
+              ))}
+            </div>
+          </div> */}
+
+        </div>
+
+        <div className={styles.shopFooter}>
+          <div className={styles.subTotal}>
+            <strong>Subtotal:</strong>
+            <strong>$ 25.89</strong>
+          </div>
+          <p>Taxes and shipping calculated at checkout</p>
+          <label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <input
+              type="checkbox"
+              checked={isChecked}
+              onChange={() => setIsChecked(!isChecked)}
+            />
+            I agree with the terms and conditions.
+          </label>
+          <button
+            className={styles.signInButton}
+            disabled={!isChecked}
+            style={{
+              cursor: isChecked ? "pointer" : "not-allowed",
+              opacity: isChecked ? 1 : 0.5,
+            }}
           >
-            <path d="M263.4 103.4C269.7 97.18 279.8 97.18 286.1 103.4L320 137.4L353.9 103.4C360.2 97.18 370.3 97.18 376.6 103.4C382.8 109.7 382.8 119.8 376.6 126.1L342.6 160L376.6 193.9C382.8 200.2 382.8 210.3 376.6 216.6C370.3 222.8 360.2 222.8 353.9 216.6L320 182.6L286.1 216.6C279.8 222.8 269.7 222.8 263.4 216.6C257.2 210.3 257.2 200.2 263.4 193.9L297.4 160L263.4 126.1C257.2 119.8 257.2 109.7 263.4 103.4zM80 0C87.47 0 93.95 5.17 95.6 12.45L100 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H158.2L172.8 352H496C504.8 352 512 359.2 512 368C512 376.8 504.8 384 496 384H160C152.5 384 146.1 378.8 144.4 371.5L67.23 32H16C7.164 32 0 24.84 0 16C0 7.164 7.164 0 16 0H80zM107.3 64L150.1 256H487.8L541.8 64H107.3zM128 456C128 425.1 153.1 400 184 400C214.9 400 240 425.1 240 456C240 486.9 214.9 512 184 512C153.1 512 128 486.9 128 456zM184 480C197.3 480 208 469.3 208 456C208 442.7 197.3 432 184 432C170.7 432 160 442.7 160 456C160 469.3 170.7 480 184 480zM512 456C512 486.9 486.9 512 456 512C425.1 512 400 486.9 400 456C400 425.1 425.1 400 456 400C486.9 400 512 425.1 512 456zM456 432C442.7 432 432 442.7 432 456C432 469.3 442.7 480 456 480C469.3 480 480 469.3 480 456C480 442.7 469.3 432 456 432z"></path>
-          </svg>
-          <p className={styles.emptyText}>Your cart is empty.</p>
-          <button className={styles.returnButton}>RETURN TO SHOP</button>
+            CHECK OUT
+          </button>
+          <img src={"/cartFooter.avif"} alt={"Antivirus Softwares"} />
         </div>
       </div>
 
       {/* Overlay (Click to Close) */}
       {showPopup && (
-        <div
-          className={styles.overlay}
-          onClick={() => setShowPopup(false)} // Close any open popup
-        />
+        <div className={styles.overlay} onClick={toggleCartPopup} />
       )}
     </>
   );

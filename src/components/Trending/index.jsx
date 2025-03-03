@@ -34,7 +34,7 @@ const initialCards = [
     price: "45.00",
     defaultImage: "/Gold01.jpg",
     hoverImage: "/Gold02.jpg",
-    sizes: "",
+    sizes: "L",
     description: "Elegant Cluse La Baheme rose gold watch.",
   },
 ];
@@ -52,7 +52,7 @@ export default function Trending({ openPopup }) { // Receive openPopup as prop
   };
 
   const handleQuickShop = (card) => {
-    openPopup(card); // Call openPopup with the card data
+    openPopup(card);
   };
 
   return (
@@ -91,12 +91,6 @@ export default function Trending({ openPopup }) { // Receive openPopup as prop
                     </button>
                   </div>
                   <div className={styles.centerButtons}>
-                    <button
-                      className={styles.btn}
-                      onClick={() => handleQuickShop(card)}
-                    >
-                      Quick View
-                    </button>
                     <button
                       className={styles.lightBlueBtn}
                       onClick={() => handleQuickShop(card)}

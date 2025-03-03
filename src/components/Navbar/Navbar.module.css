@@ -90,7 +90,6 @@
   display: flex;
 }
 
-  
 .Searchlist a {
   font-size: 12px;
   font-weight: 400;
@@ -98,7 +97,7 @@
 }
 
 .Searchlist a:hover {
-  color:rgb(86, 207, 225);
+  color: rgb(86, 207, 225);
   cursor: pointer;
 }
 
@@ -116,7 +115,7 @@
 }
 
 .Searchlist li:hover {
-  color:rgb(86, 207, 225);
+  color: rgb(86, 207, 225);
   cursor: pointer;
 }
 
@@ -172,8 +171,7 @@
 .quickSearch span {
   font-size: 12px;
   font-weight: 400;
-  color: rgb(135, 135, 135)
-  ;
+  color: rgb(135, 135, 135);
 }
 
 .cartPopup {
@@ -314,7 +312,7 @@
   display: flex;
   align-items: center;
 }
-.card {
+.unlockCard {
   box-sizing: border-box;
   display: block;
   padding-bottom: 4px;
@@ -369,6 +367,206 @@
   font-size: 14px;
   color: #666;
   margin-bottom: 16px;
+}
+
+.cartBadgeContainer {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  scroll-snap-type: smooth;
+  padding-bottom: 300px;
+}
+
+.cartItem {
+  width: 100%;
+  height: 200px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #eee;
+}
+
+.cartItem img {
+  width: 120px;
+  height: 150px;
+  margin-right: 20px;
+  object-fit: cover;
+  background-color: #ddd;
+}
+
+.cartText h5 {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(34, 34, 34);
+}
+
+.cartText p {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(105, 105, 105);
+}
+
+.quantityBtn {
+  width: 120px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+  border: 1px solid rgb(34, 34, 34);
+  border-radius: 20px;
+  background-color: white;
+  margin: 15px 0px;
+}
+
+.quantityBtn button {
+  font-size: 20px;
+  font-weight: 500;
+  color: rgb(34, 34, 34);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.editDeleteBtn {
+  font-size: 18px;
+  padding-right: 10px;
+  color: rgb(34, 34, 34);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.cartXtraBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  min-height: 80px;
+  align-items: center;
+  margin-top: 10px;
+  background-color: rgb(245, 245, 245);
+}
+
+.cartXtraBtns button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 50px;
+  width: 50px;
+  border: none;
+  border-radius: 25px;
+  background: rgb(245, 245, 245);
+  box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  color: rgb(34, 34, 34);
+}
+
+.cartXtraBtns button:active {
+  border-radius: 150px;
+  background: linear-gradient(145deg, #cacaca, #f0f0f0);
+  box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+}
+
+.carouselContainer {
+  min-height: 500px;
+  max-height: 500px;
+  width: 340px;
+  overflow: hidden;
+}
+
+.cardWrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.card {
+  width: 300px;
+  height: 160px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+
+.dotsContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+  background-color: #bbb;
+  cursor: pointer;
+}
+
+.activeDot {
+  background-color: #333;
+}
+
+.leftButton,
+.rightButton {
+  position: relative;
+  top: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.leftButton {
+  left: -30px;
+}
+
+.rightButton {
+  right: -30px;
+}
+
+.shopFooter {
+  position: absolute;
+  bottom: 0px;
+  height: auto;
+  width: auto;
+  text-align: left;
+  padding: 20px;
+  background-color: white;
+  background: white;
+  border-top: 1px solid rgb(200, 200, 200);
+  text-align: center;
+  font-weight: bold;
+}
+
+.shopFooter p {
+  color: rgb(135, 135, 135);
+  font-size: 13px;
+  font-weight: 400px;
+  margin-bottom: 5px;
+}
+
+.shopFooter label {
+  color: rgb(135, 135, 135);
+  font-size: 13px;
+  font-weight: 400px;
+  margin-bottom: 5px;
+}
+
+.shopFooter img {
+  height: 40px;
+  width: 300px;
+}
+
+.subTotal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .shippingText {
@@ -594,7 +792,6 @@
   border-radius: 4px;
 }
 
-
 .viewAll {
   position: absolute;
   bottom: 0px;
@@ -614,7 +811,6 @@
   text-decoration: none;
   cursor: pointer;
 }
-
 
 .viewAll a:hover {
   color: rgb(67, 186, 204);
@@ -664,7 +860,7 @@
   border: none;
   background-color: transparent;
   padding: 5px;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .searchIcon {

@@ -486,16 +486,14 @@ const Navbar = ({ cartItems }) => {
             />
             I agree with the terms and conditions.
           </label>
-          <button
+          <Link 
+            href="/Check"
             className={styles.signInButton}
             disabled={!isChecked}
             style={{
               cursor: isChecked ? "pointer" : "not-allowed",
               opacity: isChecked ? 1 : 0.5,
-            }}
-          >
-            CHECK OUT
-          </button>
+            }}>CheckOut</Link>
           <img src={"/cartFooter.avif"} alt={"Antivirus Softwares"} />
         </div>
       </div>

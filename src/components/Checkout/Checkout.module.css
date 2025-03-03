@@ -1,0 +1,382 @@
+.Main {
+    display: flex;
+    flex-direction: row;
+    border-right: 1.25px solid rgb(222, 222, 222);
+    width: 100%;
+    max-width: 1200px; /* Limit the max-width for better centering */
+    margin: 0 auto;    /* Center the container horizontally */
+    padding: 20px;     /* Optional: add some padding for spacing */
+}
+
+.leftSection, .rightSection {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.container {
+    padding: 20px;
+    background-color: #fff;
+    
+    border-radius: 5px;
+    max-width: 1700px;
+  }
+
+  .contactHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+
+  
+  .title {
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 25.2px;
+   
+  }
+  
+  .loginLink {
+    text-align: right;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-decoration-line: underline;
+    color:rgb(23, 115, 176)
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap:8px
+  }
+
+ 
+  
+  .deliveryOptions {
+    border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  }
+
+  .deliveryOption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+  }
+
+  .deliveryOption:last-child {
+    border-bottom: none;
+  }
+
+  .deliveryOption.selected {
+    background-color: #f0f8ff;
+    border: 1px solid #007bff;
+  }
+  
+  .radioOption {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    margin-left: 5px;
+  }
+  .select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .container {
+    margin-top: 20px;
+  }
+  
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .checkbox {
+    margin-right: 5px;
+  }
+  
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .shippingMethod {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    color: #6c757d;
+    font-size: 14px;
+  }
+  
+  .secureText {
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .paymentMethod {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    color: #6c757d;
+    margin-bottom: 20px;
+  }
+  
+  .icon {
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+  
+  .paymentText {
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  .payNowButton {
+    background-color: #e9ecef;
+    color: #6c757d;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+    cursor: not-allowed;
+  }
+  
+  .footerLinks {
+    text-align: center;
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  .footerLinks a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #6c757d;
+  }
+  
+  .footerLinks a:hover {
+    text-decoration: underline;
+  }
+  
+
+
+  
+  .item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-rightpx: 10px;
+  }
+  
+  .info {
+    flex: 1;
+  }
+  
+  .title {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .subTitle {
+    font-size: 12px;
+    color: #6c757d;
+  }
+  
+  .cost {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .discountBox {
+    display: flex;
+    margin: 20px 0;
+  }
+  
+  .codeInput {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ced4da;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .applyBtn {
+    padding: 5px 10px;
+    border: 1px solid #ced4da;
+    background-color: #f1f3f5;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  .summaryBox {
+    border-top: 1px solid #ced4da;
+    padding-top: 15px;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .totalBox {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .currency {
+    font-size: 12px;
+    color: #6c757d;
+  }
+  
+  .links {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #6c757d;
+  }
+  
+  .links a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #6c757d;
+  }
+  
+  .links a:hover {
+    text-decoration: underline;
+  }
+ 
+  .inputRow {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .checkboxRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  
+  .checkbox {
+    margin-right: 5px;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  .sectionTitle {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .infoBox, .paymentBox {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    color: #6c757d;
+    text-align: center;
+  }
+  
+  .paymentError {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .paymentIcon {
+    font-size: 24px;
+  }
+  
+  .secureText {
+    font-size: 12px;
+    color: #6c757d;
+    margin-bottom: 5px;
+  }
+  
+  .payNowButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #e9ecef;
+    color: #6c757d;
+    border: none;
+    border-radius: 5px;
+    cursor: not-allowed;
+    margin-bottom: 20px;
+  }
+  
+  .footerLinks {
+    text-align: center;
+    font-size: 12px;
+    color: #6c757d;
+  }
+  
+  .footerLinks a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #6c757d;
+  }
+  
+  .footerLinks a:hover {
+    text-decoration: underline;
+  }
+  

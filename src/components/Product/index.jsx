@@ -6,7 +6,7 @@ import { CiHeart } from "react-icons/ci";
 import { TbArrowsCross } from "react-icons/tb";
 import styles from "./Product.module.css";
 import QuickShopPopup from "@/components/QuickShopPopup";
-
+import QuickViewModal from "../QuickView";
 const categories = [
   { id: 1, name: "New Arrival", heroImage: "heroImages/Newarrival.jpg" },
   { id: 2, name: "Decor", heroImage: "heroImages/Decor.jpg" },
@@ -94,6 +94,17 @@ const initialCards = [
   },
 ];
 
+const product = {
+  title: "Ridley High Waist",
+  price: 36.0,
+  images: [
+    "/images/product1.jpg",
+    "/images/product2.jpg",
+    "/images/product3.jpg"
+  ],
+  sizes: ["S", "M", "L"]
+};
+
 const ProductsPage = ({ openPopup }) => {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [selectedOption, setSelectedOption] = useState("Alphabetically, A-Z");
@@ -101,6 +112,7 @@ const ProductsPage = ({ openPopup }) => {
   const [showUI, setShowUI] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const filteredCards = useMemo(() => {
     let filtered = [...initialCards];
@@ -137,6 +149,8 @@ const ProductsPage = ({ openPopup }) => {
     setSelectedCard(null);
     setSelectedSize("");
   };
+
+  
 
   return (
     <>

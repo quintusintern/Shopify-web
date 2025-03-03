@@ -163,6 +163,11 @@
   transition: background-color 0.3s ease;
 }
 
+.rearrangeContainer {
+  display: flex;
+  gap: 10px;
+}
+
 .rearrangeBtn:hover .innerSection {
   background-color: black;
 }

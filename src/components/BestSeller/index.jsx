@@ -7,61 +7,71 @@ import styles from "./Bestseller.module.css";
 
 const cardsData = [
   {
-    title: "Card 1",
-    price: " 1",
+    title: "Backpack",
+    price: "36.00",
     defaultImage: "/Backpack01.jpg",
     hoverImage: "/Backpack02.jpg",
     sizes: "XS, S, M, L",
+    description: "A stylish and durable analogue resin strap."
   },
   {
-    title: "Card 2",
-    price: " 2",
+    title: "Women Pants",
+    price: "24.99",
     defaultImage: "/Women Pants01.jpg",
     hoverImage: "/Women Pants02.jpg",
     sizes: "S, M, L",
+    description: "Comfortable and breathable pants perfect for casual and formal wear."
   },
   {
-    title: "Card 3",
-    price: " 3",
+    title: "Mercury Watch",
+    price: "19.50",
     defaultImage: "/Mercury01.jpg",
     hoverImage: "/Mercury02.jpg",
     sizes: "XS, S, M, L",
+    description: "A sleek and modern timepiece with a minimalist design."
   },
   {
-    title: "Card 4",
-    price: " 4",
+    title: "Men Pants",
+    price: "29.99",
     defaultImage: "/MenPants01.jpg",
     hoverImage: "/MenPants02.jpg",
+    description: "Premium quality men’s pants with a relaxed fit and stylish look."
   },
   {
-    title: "Card 5",
-    price: " 5",
+    title: "Hoodie",
+    price: "42.00",
     defaultImage: "/Hoodie01.jpg",
     hoverImage: "/Hoodie02.jpg",
     sizes: "S, M, L, XL, XXL",
+    description: "Cozy and warm hoodie made from soft fleece for maximum comfort."
   },
   {
-    title: "Card 6",
-    price: " 6",
+    title: "Ridley Jacket",
+    price: "18.75",
     defaultImage: "/Ridley01.jpg",
     hoverImage: "/Ridley02.jpg",
     sizes: "XS, S, M, L",
+    description: "A trendy and lightweight jacket perfect for layering."
   },
   {
-    title: "Card 7",
-    price: " 7",
+    title: "Blush Beanie",
+    price: "12.50",
     defaultImage: "/Blush Beanie01.jpg",
     hoverImage: "/Blush Beanie02.jpg",
     sizes: "S, M, L, XL, XXL",
+    description: "Soft knit beanie to keep you warm and stylish in cold weather."
   },
   {
-    title: "Card 8",
-    price: " 8",
+    title: "Snapback Cap",
+    price: "15.99",
     defaultImage: "/snapback01.jpg",
     hoverImage: "/snapback02.jpg",
     sizes: "XS, S, M, L",
-  },
+    description: "Classic snapback cap with an adjustable fit for everyday wear."
+  }
 ];
+
+
 
 export default function BestSeller() {
   const [cards, setCards] = useState(cardsData);
@@ -116,12 +126,6 @@ export default function BestSeller() {
                     </div>
                     <div className={styles.centerButtons}>
                       <button
-                        className={styles.btn}
-                        onClick={() => handleQuickShop(card)}
-                      >
-                        Quick View
-                      </button>
-                      <button
                         className={styles.lightBlueBtn}
                         onClick={() => handleQuickShop(card)}
                       >
@@ -145,6 +149,7 @@ export default function BestSeller() {
         onClose={closePopup}
         imageUrl={selectedCard?.defaultImage}
         title={selectedCard?.title}
+        price={selectedCard?.price} // Add this line
         description={selectedCard?.description}
         sizes={selectedCard?.sizes}
         selectedSize={selectedSize}

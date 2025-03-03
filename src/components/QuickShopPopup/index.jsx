@@ -9,6 +9,7 @@ const QuickShopPopup = ({
   onClose,
   imageUrl,
   title,
+  price,
   description,
   sizes,
   selectedSize,
@@ -21,6 +22,7 @@ const QuickShopPopup = ({
     const item = {
       imageUrl,
       title,
+      price,
       description,
       selectedSize,
     };
@@ -36,6 +38,7 @@ const QuickShopPopup = ({
         <img src={imageUrl} alt={title} className={styles.popupImage} />
         <h3>{title}</h3>
         <p>{description}</p>
+        <p>{`$ ${price}`}</p>
         {selectedSize && <h4 className={styles.selected}>Size: {selectedSize}</h4>}
         {sizes && (
           <div className={styles.sizeSelector}>
@@ -52,7 +55,7 @@ const QuickShopPopup = ({
             ))}
           </div>
         )}
-        <button className={styles.addToCartBtn} onClick={handleAddToCart}>Add to Cart  <ShoppingCart/></button>
+        <button className={styles.addToCartBtn} onClick={handleAddToCart}>Add to Cart</button>
         <button className={styles.buyNowBtn}>Buy Now</button>
       </div>
     </div>

@@ -21,10 +21,15 @@ export default function Home() {
   const [selectedSize, setSelectedSize] = useState(null);
 
   const addToCart = (item) => {
-    setCartItems((prevItems) => [...prevItems, item]);
+    setCartItems((prevItems) => [...prevItems, { 
+      title: item.title, 
+      selectedSize: item.selectedSize || "N/A", 
+      price: item.price || "N/A", 
+      imageUrl: item.imageUrl || "/fallback-image.jpg" 
+    }]);
     toast.success('Item added to cart');
   };
-
+  
   const openPopup = (product) => {
     setSelectedProduct(product);
     setIsPopupOpen(true);

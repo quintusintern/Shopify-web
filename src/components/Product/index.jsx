@@ -1,12 +1,10 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
 import React, { useState, useMemo } from "react";
+import Link from "next/link";
 import { CiHeart } from "react-icons/ci";
 import { TbArrowsCross } from "react-icons/tb";
 import styles from "./Product.module.css";
-import QuickShopPopup from "@/components/QuickShopPopup";
-import QuickViewModal from "../QuickView";
+
 const categories = [
   { id: 1, name: "New Arrival", heroImage: "heroImages/Newarrival.jpg" },
   { id: 2, name: "Decor", heroImage: "heroImages/Decor.jpg" },
@@ -21,102 +19,90 @@ const categories = [
 
 const initialCards = [
   {
-    id: 1,
     title: "Analogue Resin Strap",
     price: "30.00",
     defaultImage: "/Resin Strap.jpg",
     hoverImage: "/Resin Strap02.jpg",
     sizes: "XS, S, M, L",
     category: "Shoes",
+    NewArrival: true,
   },
   {
-    id: 2,
     title: "Ridley High Waist",
     price: "36.00",
     defaultImage: "/Ridley01.jpg",
     hoverImage: "/Ridley02.jpg",
     sizes: "S, M, L",
     category: "Denim",
+    NewArrival: true,
   },
   {
-    id: 3,
     title: "Blush Beanie",
     price: "15.00",
     defaultImage: "/Blush Beanie01.jpg",
     hoverImage: "/Blush Beanie02.jpg",
     sizes: "XS, S, M, L",
     category: "Hats",
+    NewArrival: true,
   },
   {
-    id: 4,
     title: "Cluse La Baheme Rose Gold",
     price: "45.00",
     defaultImage: "/Gold01.jpg",
     hoverImage: "/Gold02.jpg",
     sizes: "One Size",
     category: "Women",
+    NewArrival: true,
   },
   {
-    id: 5,
     title: "Mercury Tee",
     price: "68.00",
     defaultImage: "/Mercury01.jpg",
     hoverImage: "/Mercury02.jpg",
     sizes: "S, M, L, XL, XXL",
     category: "Men",
+    NewArrival: true,
   },
   {
-    id: 6,
     title: "La Baheme Rose Gold",
     price: "40.00",
     defaultImage: "/RoseGold01.jpg",
     hoverImage: "/RoseGold02.jpg",
     sizes: "XS, S, M, L",
     category: "Sale",
+    NewArrival: true,
   },
   {
-    id: 7,
     title: "Cream women pants",
     price: "35.00",
     defaultImage: "/Women Pants01.jpg",
     hoverImage: "/Women Pants02.jpg",
     sizes: "S, M, L, XL, XXL",
     category: "Women",
+    NewArrival: true,
   },
   {
-    id: 8,
     title: "Black mountain hat",
     price: "35.00",
     defaultImage: "/hat01.jpg",
     hoverImage: "/hat02.jpg",
     sizes: "XS, S, M, L",
     category: "Hats",
+    NewArrival: true,
   },
 ];
 
-const product = {
-  title: "Ridley High Waist",
-  price: 36.0,
-  images: [
-    "/images/product1.jpg",
-    "/images/product2.jpg",
-    "/images/product3.jpg"
-  ],
-  sizes: ["S", "M", "L"]
-};
-
-const ProductsPage = ({ openPopup }) => {
+const ProductsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [selectedOption, setSelectedOption] = useState("Alphabetically, A-Z");
-  const [cards, setCards] = useState(initialCards);
-  const [showUI, setShowUI] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null);
-  const [selectedSize, setSelectedSize] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const filteredCards = useMemo(() => {
     let filtered = [...initialCards];
-    if (selectedCategory && selectedCategory.name !== "All") {
+
+    // Apply New Arrival filter first.
+    if (selectedCategory && selectedCategory.name === "New Arrival") {
+      filtered = filtered.filter((card) => card.NewArrival);
+    } else if (selectedCategory && selectedCategory.name !== "All") {
       filtered = filtered.filter(
         (card) => card.category === selectedCategory.name
       );
@@ -140,21 +126,8 @@ const ProductsPage = ({ openPopup }) => {
     }
   }, [selectedCategory, selectedOption]);
 
-  const handleQuickShop = (card) => {
-    setSelectedCard(card);
-    setSelectedSize(card.sizes.split(", ")[0] || "");
-  };
-
-  const closePopup = () => {
-    setSelectedCard(null);
-    setSelectedSize("");
-  };
-
-  
-
   return (
     <>
-      {/* Navbar */}
       <nav className={styles.navbar}>
         <ul className={styles.menu}>
           {categories.map((category) => (
@@ -176,7 +149,6 @@ const ProductsPage = ({ openPopup }) => {
         </ul>
       </nav>
 
-      {/* Hero Section */}
       <div className={styles.wishlistHero}>
         <div className={styles.imageContainer}>
           <img src={selectedCategory.heroImage} alt={selectedCategory.name} />
@@ -187,60 +159,7 @@ const ProductsPage = ({ openPopup }) => {
         </div>
       </div>
 
-      {/* Filter & Customise Section */}
       <div className={styles.filterContainer}>
-        {/* resize cards container */}
-
-        <div className={styles.rearrangeContainer}>
-          {/* Vertical stacks resize Button */}
-          <button className={styles.rearrangeBtn}>
-            <div className={styles.innerContainerVer}>
-              <span className={styles.innerSectionVer}></span>
-              <span className={styles.innerSectionVer}></span>
-              <span className={styles.innerSectionVer}></span>
-            </div>
-          </button>
-
-          {/* Two Section resize Button  */}
-          <button className={styles.rearrangeBtn}>
-            <div className={styles.innerContainer}>
-              <span className={styles.innerSection}></span>
-              <span className={styles.innerSection}></span>
-            </div>
-          </button>
-
-          {/* Three Section resize Button  */}
-          <button className={styles.rearrangeBtn}>
-            <div className={styles.innerContainer}>
-              <span className={styles.innerSection}></span>
-              <span className={styles.innerSection}></span>
-              <span className={styles.innerSection}></span>
-            </div>
-          </button>
-
-          {/* Four Section resize Button  */}
-          <button className={styles.rearrangeBtn}>
-            <div className={styles.innerContainer}>
-              <span className={styles.innerSection}></span>
-              <span className={styles.innerSection}></span>
-              <span className={styles.innerSection}></span>
-              <span className={styles.innerSection}></span>
-            </div>
-          </button>
-
-          {/* Five Section resize Button  */}
-          <button className={styles.rearrangeBtn}>
-            <div className={styles.innerContainer}>
-              <span className={styles.innerSection}></span>
-              <span className={styles.innerSection}></span>
-              <span className={styles.innerSection}></span>
-              <span className={styles.innerSection}></span>
-              <span className={styles.innerSection}></span>
-            </div>
-          </button>
-        </div>
-
-        {/* Sorting Dropdown */}
         <select
           className={styles.sortDropdown}
           value={selectedOption}
@@ -253,9 +172,8 @@ const ProductsPage = ({ openPopup }) => {
         </select>
       </div>
 
-      {/* Products Box */}
       <div className={styles.cardsContainer}>
-        {cards.map((card, index) => (
+        {filteredCards.map((card, index) => (
           <div key={index} className={styles.imgCard}>
             <div className={styles.imageWrapper}>
               <img
@@ -278,14 +196,9 @@ const ProductsPage = ({ openPopup }) => {
                       <TbArrowsCross className={styles.icon} />
                     </button>
                   </div>
-
                   <div className={styles.centerButtons}>
-                    <button
-                      className={styles.lightBlueBtn}
-                      onClick={() => handleQuickShop(card)}
-                    >
-                      Quick Shop
-                    </button>
+                    <button className={styles.addToCartBtn}>Add to Cart</button>
+                    <button className={styles.buyNowBtn}>Buy Now</button>
                   </div>
                   <p className={styles.footerText}>{card.sizes}</p>
                 </div>
@@ -298,45 +211,6 @@ const ProductsPage = ({ openPopup }) => {
           </div>
         ))}
       </div>
-
-      {/* Product Grid with Enhanced UI */}
-      {showUI && (
-        <div className={styles.gridContainer}>
-          <div className={styles.productCard}>
-            <div className={styles.imageContainer}>
-              <img src="/images/hoodie.png" alt="Combat Hoodie" />
-              <div className={styles.overlayButtons}>
-                <button className={styles.quickView}>Quick view</button>
-                <button className={styles.quickShop}>Quick Shop</button>
-              </div>
-            </div>
-            <p>Combat Hoodie</p>
-            <p>$28.00</p>
-          </div>
-          <div className={styles.productCard}>
-            <div className={styles.imageContainer}>
-              <img src="/images/jeans.png" alt="Blue Jean" />
-              <div className={styles.overlayButtons}>
-                <button className={styles.quickView}>Quick view</button>
-                <button className={styles.quickShop}>Quick Shop</button>
-              </div>
-            </div>
-            <p>Blue Jean</p>
-            <p>$25.00</p>
-          </div>
-        </div>
-      )}
-
-      <QuickShopPopup
-        isOpen={selectedCard !== null}
-        onClose={closePopup}
-        imageUrl={selectedCard?.defaultImage}
-        title={selectedCard?.title}
-        description={selectedCard?.description}
-        sizes={selectedCard?.sizes}
-        selectedSize={selectedSize}
-        setSelectedSize={setSelectedSize}
-      />
     </>
   );
 };

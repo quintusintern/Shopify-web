@@ -125,12 +125,8 @@ export default function BestSeller() {
                       </button>
                     </div>
                     <div className={styles.centerButtons}>
-                      <button
-                        className={styles.lightBlueBtn}
-                        onClick={() => handleQuickShop(card)}
-                      >
-                        Quick Shop
-                      </button>
+                    <button className={styles.addToCartBtn}>Add to Cart</button>
+                    <button className={styles.buyNowBtn}>Buy Now</button>
                     </div>
                     <p className={styles.footerText}>{card.sizes}</p>
                   </div>

@@ -1,11 +1,13 @@
 import Checkout from "@/components/Checkout";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 
 const Check = () => {
     return <>
-
-
-        <Checkout />
+    <Navbar/>
+    <Checkout />
+    <Footer/>
     </>
 };
 

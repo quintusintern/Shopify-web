@@ -302,7 +302,7 @@ const Navbar = ({ cartItems }) => {
               </ul>
             </div>
           )}
-        </div>
+         </div>
 
         <div className={styles.emptyCartContainer}>
           <svg

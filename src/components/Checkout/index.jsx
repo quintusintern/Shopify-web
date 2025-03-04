@@ -65,6 +65,10 @@ const Checkout = () => {
 
                     <select className={styles.select}>
                         <option>United States</option>
+                        <option>Canada</option>
+                        <option>United Kingdom</option>
+                        <option>Australia</option>
+                        <option>Germany</option>
                     </select>
 
                     <div className={styles.grid}>

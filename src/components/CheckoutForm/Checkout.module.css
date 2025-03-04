@@ -1,0 +1,55 @@
+.checkoutContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.detailsSection {
+    flex: 2;
+    margin-right: 20px;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.summarySection {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.coupons, .orderSummary {
+    margin-bottom: 20px;
+}
+
+.continueButton {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.continueButton:hover {
+    background-color: #333;
+}

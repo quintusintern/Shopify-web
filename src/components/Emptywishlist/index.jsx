@@ -35,6 +35,8 @@ const EmptyWishlist = () => {
           <a href="/shop">"Shop"</a> page.
         </p>
       </div>
+
+      
     </>
   );
 };

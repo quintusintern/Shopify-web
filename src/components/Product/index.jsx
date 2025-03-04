@@ -92,6 +92,7 @@ const initialCards = [
   },
 ];
 
+
 const ProductsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [selectedOption, setSelectedOption] = useState("Alphabetically, A-Z");
@@ -197,8 +198,30 @@ const ProductsPage = () => {
                     </button>
                   </div>
                   <div className={styles.centerButtons}>
-                    <button className={styles.addToCartBtn}>Add to Cart</button>
-                    <button className={styles.buyNowBtn}>Buy Now</button>
+                    <Link href="/Check">
+                      <button
+                        className={styles.addToCartBtn}
+                        onClick={() => {
+                          const cartItem = {
+                            title: card.title,
+                            price: card.price,
+                            image: card.defaultImage,
+                          };
+                          // take the old cart or create an empty array
+                          const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+                          // add new item
+                          existingCart.push(cartItem);
+                          // save in local storage
+                          localStorage.setItem("cart", JSON.stringify(existingCart));
+                          alert("Item added to cart!");
+                        }}
+                      >
+                        Add to Cart
+                      </button>
+
+                    </Link>
+
+                    <Link href="/Form"><button className={styles.buyNowBtn}>Buy Now</button></Link>
                   </div>
                   <p className={styles.footerText}>{card.sizes}</p>
                 </div>

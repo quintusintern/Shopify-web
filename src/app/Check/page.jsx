@@ -1,12 +1,15 @@
-import Checkout from "@/components/Checkout";
-import Navbar from "@/components/Navbar";
+
+
+import CheckoutUI from "@/components/Continue";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+
 
 
 const Check = () => {
     return <>
         <Navbar />
-        <Checkout />
+        <CheckoutUI />
         <Footer />
     </>
 };

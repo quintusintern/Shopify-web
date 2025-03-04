@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Headertop from "@/components/Headertop";
+import Cart from "@/components/Cart";
 import Image from "next/image";
 import Link from "next/link";
 import { ShoppingCart, User, Search, Heart, X } from "lucide-react";
@@ -301,17 +302,6 @@ const Navbar = ({ cartItems }) => {
           <X className={styles.closeIcon} onClick={toggleCartPopup} />
         </div>
 
-        <div className={styles.unlockCard}>
-          <div className={styles.cartContent}>
-            <p>
-              Free Shipping for all orders over <span>$100.00</span>
-            </p>
-          </div>
-          <div className={styles.progressContainer}>
-            <FaShippingFast className={styles.truckIcon} />
-            <div className={styles.progressBar}></div>
-          </div>
-        </div>
 
         <div>
           {cartItems && cartItems.length > 0 && (
@@ -327,35 +317,7 @@ const Navbar = ({ cartItems }) => {
             </div>
           )}
         </div>
-        {/* Shopping Items in cart */}
-        {/* Default Item */}
-
-
-
-        <div className={styles.shopFooter}>
-          <div className={styles.subTotal}>
-            <strong>Subtotal:</strong>
-            <strong>$ 25.89</strong>
-          </div>
-          <p>Taxes and shipping calculated at checkout</p>
-          <label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <input
-              type="checkbox"
-              checked={isChecked}
-              onChange={() => setIsChecked(!isChecked)}
-            />
-            I agree with the terms and conditions.
-          </label>
-          <Link
-            href="/Check"
-            className={styles.signInButton}
-            disabled={!isChecked}
-            style={{
-              cursor: isChecked ? "pointer" : "not-allowed",
-              opacity: isChecked ? 1 : 0.5,
-            }}>CheckOut</Link>
-          <img src={"/cartFooter.avif"} alt={"Antivirus Softwares"} />
-        </div>
+        <Cart/>
       </div>
 
       {/* Overlay (Click to Close) */}

@@ -92,15 +92,12 @@ const initialCards = [
   },
 ];
 
-
 const ProductsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [selectedOption, setSelectedOption] = useState("Alphabetically, A-Z");
 
   const filteredCards = useMemo(() => {
     let filtered = [...initialCards];
-
-    // Apply New Arrival filter first.
     if (selectedCategory && selectedCategory.name === "New Arrival") {
       filtered = filtered.filter((card) => card.NewArrival);
     } else if (selectedCategory && selectedCategory.name !== "All") {
@@ -208,20 +205,29 @@ const ProductsPage = () => {
                             image: card.defaultImage,
                           };
                           // take the old cart or create an empty array
-                          const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+                          const existingCart =
+                            JSON.parse(localStorage.getItem("cart")) || [];
                           // add new item
                           existingCart.push(cartItem);
                           // save in local storage
-                          localStorage.setItem("cart", JSON.stringify(existingCart));
+                          localStorage.setItem(
+                            "cart",
+                            JSON.stringify(existingCart)
+                          );
                           alert("Item added to cart!");
                         }}
                       >
                         Add to Cart
                       </button>
-
                     </Link>
-
-                    <Link href="/Form"><button className={styles.buyNowBtn}>Buy Now</button></Link>
+                    <Link
+                      href="/ViewItem"
+                      onClick={() =>
+                        localStorage.setItem("viewedItem", JSON.stringify(card))
+                      }
+                    >
+                      <button className={styles.buyNowBtn}>Buy Now</button>
+                    </Link>{" "}
                   </div>
                   <p className={styles.footerText}>{card.sizes}</p>
                 </div>

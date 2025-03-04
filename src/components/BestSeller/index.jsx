@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import { CiHeart } from "react-icons/ci";
 import { TbArrowsCross } from "react-icons/tb";
 import QuickShopPopup from "@/components/QuickShopPopup";
@@ -9,69 +10,72 @@ const cardsData = [
   {
     title: "Backpack",
     price: "36.00",
-    defaultImage: "/Backpack01.jpg",
+    image: "/Backpack01.jpg",
     hoverImage: "/Backpack02.jpg",
     sizes: "XS, S, M, L",
-    description: "A stylish and durable analogue resin strap."
+    description: "A stylish and durable analogue resin strap.",
   },
   {
     title: "Women Pants",
     price: "24.99",
-    defaultImage: "/Women Pants01.jpg",
+    image: "/Women Pants01.jpg",
     hoverImage: "/Women Pants02.jpg",
     sizes: "S, M, L",
-    description: "Comfortable and breathable pants perfect for casual and formal wear."
+    description:
+      "Comfortable and breathable pants perfect for casual and formal wear.",
   },
   {
     title: "Mercury Watch",
     price: "19.50",
-    defaultImage: "/Mercury01.jpg",
+    image: "/Mercury01.jpg",
     hoverImage: "/Mercury02.jpg",
     sizes: "XS, S, M, L",
-    description: "A sleek and modern timepiece with a minimalist design."
+    description: "A sleek and modern timepiece with a minimalist design.",
   },
   {
     title: "Men Pants",
     price: "29.99",
-    defaultImage: "/MenPants01.jpg",
+    image: "/MenPants01.jpg",
     hoverImage: "/MenPants02.jpg",
-    description: "Premium quality men’s pants with a relaxed fit and stylish look."
+    description:
+      "Premium quality men’s pants with a relaxed fit and stylish look.",
   },
   {
     title: "Hoodie",
     price: "42.00",
-    defaultImage: "/Hoodie01.jpg",
+    image: "/Hoodie01.jpg",
     hoverImage: "/Hoodie02.jpg",
     sizes: "S, M, L, XL, XXL",
-    description: "Cozy and warm hoodie made from soft fleece for maximum comfort."
+    description:
+      "Cozy and warm hoodie made from soft fleece for maximum comfort.",
   },
   {
     title: "Ridley Jacket",
     price: "18.75",
-    defaultImage: "/Ridley01.jpg",
+    image: "/Ridley01.jpg",
     hoverImage: "/Ridley02.jpg",
     sizes: "XS, S, M, L",
-    description: "A trendy and lightweight jacket perfect for layering."
+    description: "A trendy and lightweight jacket perfect for layering.",
   },
   {
     title: "Blush Beanie",
     price: "12.50",
-    defaultImage: "/Blush Beanie01.jpg",
+    image: "/Blush Beanie01.jpg",
     hoverImage: "/Blush Beanie02.jpg",
     sizes: "S, M, L, XL, XXL",
-    description: "Soft knit beanie to keep you warm and stylish in cold weather."
+    description:
+      "Soft knit beanie to keep you warm and stylish in cold weather.",
   },
   {
     title: "Snapback Cap",
     price: "15.99",
-    defaultImage: "/snapback01.jpg",
+    image: "/snapback01.jpg",
     hoverImage: "/snapback02.jpg",
     sizes: "XS, S, M, L",
-    description: "Classic snapback cap with an adjustable fit for everyday wear."
-  }
+    description:
+      "Classic snapback cap with an adjustable fit for everyday wear.",
+  },
 ];
-
-
 
 export default function BestSeller() {
   const [cards, setCards] = useState(cardsData);
@@ -105,7 +109,7 @@ export default function BestSeller() {
             <div key={index} className={styles.imgCard}>
               <div className={styles.imageWrapper}>
                 <img
-                  src={card.defaultImage}
+                  src={card.image}
                   alt={card.title}
                   className={styles.imageDefault}
                 />
@@ -125,8 +129,39 @@ export default function BestSeller() {
                       </button>
                     </div>
                     <div className={styles.centerButtons}>
-                    <button className={styles.addToCartBtn}>Add to Cart</button>
-                    <button className={styles.buyNowBtn}>Buy Now</button>
+                      <Link href="/Check">
+                        <button
+                          className={styles.addToCartBtn}
+                          onClick={() => {
+                            const cartItem = {
+                              title: card.title,
+                              price: card.price,
+                              image: card.image,
+                            };
+                            const existingCart =
+                              JSON.parse(localStorage.getItem("cart")) || [];
+                            existingCart.push(cartItem);
+                            localStorage.setItem(
+                              "cart",
+                              JSON.stringify(existingCart)
+                            );
+                            alert("Item added to cart!");
+                          }}
+                        >
+                          Add to Cart
+                        </button>
+                      </Link>
+                      <Link
+                        href="/ViewItem"
+                        onClick={() =>
+                          localStorage.setItem(
+                            "viewedItem",
+                            JSON.stringify(card)
+                          )
+                        }
+                      >
+                        <button className={styles.buyNowBtn}>Buy Now</button>
+                      </Link>{" "}
                     </div>
                     <p className={styles.footerText}>{card.sizes}</p>
                   </div>
@@ -143,9 +178,9 @@ export default function BestSeller() {
       <QuickShopPopup
         isOpen={selectedCard !== null}
         onClose={closePopup}
-        imageUrl={selectedCard?.defaultImage}
+        imageUrl={selectedCard?.image}
         title={selectedCard?.title}
-        price={selectedCard?.price} // Add this line
+        price={selectedCard?.price}
         description={selectedCard?.description}
         sizes={selectedCard?.sizes}
         selectedSize={selectedSize}

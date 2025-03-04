@@ -45,7 +45,6 @@ export default function Home() {
     closePopup();
   }
 
-  // Function to pass cartItems to Navbar
   const getCartItemsForNavbar = () => {
     return cartItems;
   };

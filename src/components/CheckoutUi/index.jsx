@@ -112,24 +112,6 @@ export default function CheckoutUI() {
 
                 </div>
             </div>
-
-
-
-
-            {/*<div className={styles.summarySection}>
-                <div className={styles.coupons}>
-                    <h4>Coupons and offers</h4>
-                    <p>Save more with coupon and offers</p>
-                </div>
-                <div className={styles.orderSummary}>
-                    <h4>Order Summary</h4>
-                    <p>Items total: ₹{total}</p>
-                    <p>Delivery fee: <span>Free</span></p>
-                    <h4>Total cost: ₹{total}/-</h4>
-                    <Link href="/Form"><button className={styles.continueBtn}>Continue</button></Link>
-                </div>
-            </div>
-            */}
         </div>
     );
 }

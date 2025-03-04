@@ -1,13 +1,13 @@
 import Footer from "@/components/Footer";
-import LocationMap from "@/components/Location";
+import ViewItemPage from "@/components/ViewItem";
 import Navbar from "@/components/Navbar";
 
-const Location = () => {
+const ViewItem = () => {
     return <>
     <Navbar/>
-    <LocationMap/>
+    <ViewItemPage/>
     <Footer/>
     </>
   };
   
-  export default Location;
+  export default ViewItem;

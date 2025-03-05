@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import styles from "./Trending.module.css";
 import { CiHeart } from "react-icons/ci";
 import { TbArrowsCross } from "react-icons/tb";
+import styles from "./Trending.module.css";
 
 const initialCards = [
   {
@@ -53,25 +53,6 @@ export default function Trending({ openPopup }) {
     setCards((prevCards) => [...prevCards, ...newCards]);
   };
 
-  const handleAddToCart = (card, index) => {
-    const cartItem = {
-      title: card.title,
-      price: card.price,
-      image: card.image,
-    };
-
-    // Get existing cart from local storage or create an empty array
-    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
-    existingCart.push(cartItem);
-    localStorage.setItem("cart", JSON.stringify(existingCart));
-
-    // Show popup next to clicked button
-    setPopup(index);
-
-    // Hide popup after 2 seconds
-    setTimeout(() => setPopup(null), 2000);
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
@@ -110,7 +91,24 @@ export default function Trending({ openPopup }) {
                   <div className={styles.centerButtons}>
                     <button
                       className={styles.addToCartBtn}
-                      onClick={() => handleAddToCart(card, index)}
+                      onClick={() => {
+                        const cartItem = {
+                          title: card.title,
+                          price: card.price,
+                          image: card.image,
+                        };
+                        // take the old cart or create an empty array
+                        const existingCart =
+                          JSON.parse(localStorage.getItem("cart")) || [];
+                        // add new item
+                        existingCart.push(cartItem);
+                        // save in local storage
+                        localStorage.setItem(
+                          "cart",
+                          JSON.stringify(existingCart)
+                        );
+                        alert("Item added to cart!");
+                      }}
                     >
                       Add to Cart
                     </button>
@@ -121,7 +119,7 @@ export default function Trending({ openPopup }) {
                       }
                     >
                       <button className={styles.buyNowBtn}>Buy Now</button>
-                    </Link>
+                    </Link>{" "}
                   </div>
                   <p className={styles.footerText}>{card.sizes}</p>
                 </div>

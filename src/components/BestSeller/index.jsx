@@ -92,9 +92,20 @@ export default function BestSeller() {
     setSelectedSize("");
   };
 
+  const handleAddToCart = (card) => {
+    const cartItem = {
+      title: card.title,
+      price: card.price,
+      image: card.image,
+    };
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+    existingCart.push(cartItem);
+    localStorage.setItem("cart", JSON.stringify(existingCart));
+    alert("Item added to cart!");
+  };
+
   return (
     <>
-      {" "}
       <div className={styles.container}>
         <div className={styles.titleContainer}>
           <div className={styles.title}>
@@ -129,28 +140,12 @@ export default function BestSeller() {
                       </button>
                     </div>
                     <div className={styles.centerButtons}>
-                      <Link href="/Check">
-                        <button
-                          className={styles.addToCartBtn}
-                          onClick={() => {
-                            const cartItem = {
-                              title: card.title,
-                              price: card.price,
-                              image: card.image,
-                            };
-                            const existingCart =
-                              JSON.parse(localStorage.getItem("cart")) || [];
-                            existingCart.push(cartItem);
-                            localStorage.setItem(
-                              "cart",
-                              JSON.stringify(existingCart)
-                            );
-                            alert("Item added to cart!");
-                          }}
-                        >
-                          Add to Cart
-                        </button>
-                      </Link>
+                      <button
+                        className={styles.addToCartBtn}
+                        onClick={() => handleAddToCart(card)}
+                      >
+                        Add to Cart
+                      </button>
                       <Link
                         href="/ViewItem"
                         onClick={() =>
@@ -161,7 +156,7 @@ export default function BestSeller() {
                         }
                       >
                         <button className={styles.buyNowBtn}>Buy Now</button>
-                      </Link>{" "}
+                      </Link>
                     </div>
                     <p className={styles.footerText}>{card.sizes}</p>
                   </div>

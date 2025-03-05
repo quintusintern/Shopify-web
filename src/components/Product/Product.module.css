@@ -291,7 +291,6 @@
 }
 
 /* Text container */
-/* Text container */
 .textContainer {
   padding: 10px; /* Added padding */
   box-sizing: border-box;
@@ -317,7 +316,7 @@
   box-sizing: border-box;
   display: block;
   height: 23px;
-  width: 100%; /* Changed to 100% */
+  width: 100%;
   font-family: Poppins;
   font-size: 14px;
   font-stretch: 100%;

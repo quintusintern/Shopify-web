@@ -9,6 +9,7 @@ import { FaTumblr } from "react-icons/fa";
 import { BsTelegram } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
 import Tabs from '../ProductInformation';
+import ProductTabs from "../ProductInformation";
 const ViewItemPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("S");
@@ -46,55 +47,56 @@ const ViewItemPage = () => {
         <div className={styles.breadcrumb}>Home &gt; {itemData.title}</div>
         <div className={styles.productContainer}>
           <div className={styles.imagesContainer}>
-          <div className={styles.imageGallery}>
-            <div className={styles.thumbnail}>
-              <img
-                src={itemData.image}
-                alt="Thumbnail 1"
-                onClick={() => handleImageClick(itemData.image)}
-              />
-              <img
-                src={itemData.hoverImage}
-                alt="Thumbnail 2"
-                onClick={() => handleImageClick(itemData.hoverImage)}
-              />
-              <img
-                src={itemData.image}
-                alt="Thumbnail 3"
-                onClick={() => handleImageClick(itemData.image)}
-              />
+            <div className={styles.imageGallery}>
+              <div className={styles.thumbnail}>
+                <img
+                  src={itemData.image}
+                  alt="Thumbnail 1"
+                  onClick={() => handleImageClick(itemData.image)}
+                />
+                <img
+                  src={itemData.hoverImage}
+                  alt="Thumbnail 2"
+                  onClick={() => handleImageClick(itemData.hoverImage)}
+                />
+                <img
+                  src={itemData.image}
+                  alt="Thumbnail 3"
+                  onClick={() => handleImageClick(itemData.image)}
+                />
+              </div>
             </div>
-          </div>
-          <div className={styles.mainImageContainer}
-            onMouseEnter={() => setIsZoomed(true)}
-            onMouseMove={(e) => {
-              if (isZoomed) {
-                const rect = e.target.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                setZoomPosition({ x, y });
-              }
-            }}
-            onMouseLeave={() => setIsZoomed(false)}
-          >
-            <img
-              src={mainImage}
-              alt={itemData.title}
-              className={styles.mainImage}
-            />
-            {isZoomed && (
-              <div
-                className={styles.zoomPopup}
-                style={{
-                  backgroundImage: `url('${mainImage}')`,
-                  backgroundSize: "200%",
-                  backgroundPosition: `-${zoomPosition.x * 2}px -${
-                    zoomPosition.y * 2
-                  }px`,
-                }}
-              ></div>
-            )}
-          </div>
+            <div className={styles.mainImageContainer}
+              onMouseEnter={() => setIsZoomed(true)}
+              onMouseMove={(e) => {
+                if (isZoomed) {
+                  const rect = e.target.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  setZoomPosition({ x, y });
+                }
+              }}
+              onMouseLeave={() => setIsZoomed(false)}
+            >
+
+              <img
+                src={mainImage}
+                alt={itemData.title}
+                className={styles.mainImage}
+              />
+
+              {isZoomed && (
+                <div
+                  className={styles.zoomPopup}
+                  style={{
+                    backgroundImage: `url('${mainImage}')`,
+                    backgroundSize: "200%",
+                    backgroundPosition: `-${zoomPosition.x * 2}px -${zoomPosition.y * 2
+                      }px`,
+                  }}
+                ></div>
+              )}
+            </div>
           </div>
 
           <div className={styles.productDetails}>
@@ -115,9 +117,8 @@ const ViewItemPage = () => {
                 {["S", "M", "L", "XL"].map((size) => (
                   <button
                     key={size}
-                    className={`${styles.sizeButton} ${
-                      selectedSize === size ? styles.activeSize : ""
-                    }`}
+                    className={`${styles.sizeButton} ${selectedSize === size ? styles.activeSize : ""
+                      }`}
                     onClick={() => setSelectedSize(size)}
                   >
                     {size}
@@ -183,9 +184,11 @@ const ViewItemPage = () => {
               <CiMail size={18} />
             </div>
           </div>
+
         </div>
+
       </div>
-      <Tabs />
+      <ProductTabs />
     </div>
   );
 };

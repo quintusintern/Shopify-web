@@ -36,8 +36,8 @@
 }
 
 .mainImage {
-  max-width: 220px;
-  height: auto;
+  max-height: 360px;
+  width: auto;
   position: relative;
   overflow: hidden;
 }
@@ -58,7 +58,7 @@
   z-index: 10; /* Ensures it's above other elements */
 }
 
-.productPage .zoomLens { /* More specific selector */
+.productPage .zoomLens { 
   position: absolute;
   width: 100px;
   height: 100px;
@@ -66,7 +66,7 @@
   pointer-events: none;
 }
 
-.productPage .zoomedImage { /* More specific selector */
+.productPage .zoomedImage {
   position: absolute;
   top: 0;
   left: 100%;

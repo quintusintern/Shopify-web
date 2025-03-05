@@ -73,7 +73,7 @@ export default function Cart() {
         <div className={styles.container}>
           <div className={styles.cardsContainer}>
             {cartItems.map((item, index) => (
-              <div key={item.id} className={styles.cartItem}>
+              <div key={`${item.id}-${index}`} className={styles.cartItem}>
                 <img src={item.image} alt={item.title} />
                 <div className={styles.itemDetails}>
                   <h3>{item.title}</h3>
@@ -103,9 +103,7 @@ export default function Cart() {
               <strong>$ {totalPrice}</strong>
             </div>
             <p>Taxes and shipping calculated at checkout</p>
-            <div
-              className={styles.signInButtonWrapper}
-            >
+            <div className={styles.signInButtonWrapper}>
               <Link href="/Check" className={styles.signInButton}>
                 CheckOut
               </Link>

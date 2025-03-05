@@ -1,7 +1,14 @@
-/* ViewItem.module.css */
+.pageContainer {
+  width: 100%;
+  height: auto;
+}
+
 .productPage {
+  max-width: 1200px;
   font-family: sans-serif;
   padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .breadcrumb {
@@ -13,9 +20,19 @@
   justify-content: space-between;
 }
 
+.imagesContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+}
+
 .imageGallery {
   width: auto;
-  padding-right: 20px;
+  padding-right: 10px;
 }
 
 .thumbnail {
@@ -36,8 +53,8 @@
 }
 
 .mainImage {
-  max-height: 360px;
-  width: auto;
+  max-width: 480px;
+  height: auto;
   position: relative;
   overflow: hidden;
 }
@@ -50,12 +67,12 @@
 
 .zoomPopup {
   position: absolute;
-  right: 350px;
-  width: 350px; /* or desired size */
-  height: 350px; /* or desired size */
-  overflow: hidden; /* prevents image from going outside the div */
-  pointer-events: none; /* allows mouse events to pass through */
-  z-index: 10; /* Ensures it's above other elements */
+  right: 300px;
+  width: 500px;
+  height: 500px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 10;
 }
 
 .productPage .zoomLens { 
@@ -96,7 +113,7 @@
   
 }
 
-.productRating{
+.productRating {
   display: flex;
   align-items: center;
   gap:5px;
@@ -117,13 +134,13 @@
   margin: 15px 0;
 }
 
-.productsizes{
+.productsizes {
 display: flex;
 gap:10px;
 margin-top: 10px;
 }
 
-.sizeButton{
+.sizeButton {
  padding:10px;
  border-radius: 40%;
  background-color: white;
@@ -133,7 +150,7 @@ margin-top: 10px;
   cursor: pointer;
 }
 
-.sizeButton:hover{
+.sizeButton:hover {
  background-color:black;
  color: #eee;
 }
@@ -167,7 +184,7 @@ margin-top: 10px;
   padding: 5px 10px;
 }
 
-.quantityButton:hover{
+.quantityButton:hover {
   color: aqua;
 }
 

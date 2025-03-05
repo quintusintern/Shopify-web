@@ -2,7 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import Link from "next/link";
 import styles from './ViewItem.module.css';
-
+import { CiFacebook } from "react-icons/ci";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaPinterestP } from "react-icons/fa";
+import { FaTumblr } from "react-icons/fa";
+import { BsTelegram } from "react-icons/bs";
+import { CiMail } from "react-icons/ci";
 const ViewItemPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState('S');
@@ -123,6 +128,32 @@ const ViewItemPage = () => {
                 Add to Cart
               </button>
             </Link>
+          </div>
+          <div className={styles.securityBadges}>
+            <img src="/addtocart.jpg" className={styles.securityIcon} />
+          </div>
+          <div className={styles.links}>
+            <span>Delivery & Return</span>
+            <span>Ask a Question</span>
+          </div>
+          {/* Product Info */}
+          <p className={styles.availability}>
+            <strong>Availability:</strong> In Stock
+          </p>
+          <p className={styles.categories}>
+            <strong>Categories:</strong> Fashion
+          </p>
+          <p className={styles.tags}>
+            <strong>Tags:</strong> Price $50-$150, Vendor Kalles, women
+          </p>
+          {/* Social Icons */}
+          <div className={styles.socialIcons}>
+            <CiFacebook size={18} />
+            <FaXTwitter size={18} />
+            <FaPinterestP size={18} />
+            <FaTumblr size={18} />
+            <BsTelegram size={18} />
+            <CiMail size={18} />
           </div>
         </div>
       </div>

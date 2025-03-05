@@ -3,21 +3,36 @@ import Link from 'next/link';
 import { useState, useEffect } from "react";
 import styles from "./Continue.module.css";
 
-
 export default function CheckoutUI() {
-    //  cartItems 
+    // Cart items state
     const [cartItems, setCartItems] = useState([]);
-
-    //  quantities 
+    
+    // Quantities state
     const [quantities, setQuantities] = useState([]);
 
-    // useEffect 
+    // Load cart from local storage
     useEffect(() => {
         const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-        setCartItems(storedCart);
-
-        setQuantities(storedCart.map(() => 1));
+        const mergedCart = mergeCartItems(storedCart);
+        setCartItems(mergedCart.items);
+        setQuantities(mergedCart.quantities);
     }, []);
+
+    // Function to merge duplicate items
+    const mergeCartItems = (items) => {
+        const merged = {};
+        items.forEach(item => {
+            if (merged[item.title]) {
+                merged[item.title].quantity += 1;
+            } else {
+                merged[item.title] = { ...item, quantity: 1 };
+            }
+        });
+        return {
+            items: Object.values(merged),
+            quantities: Object.values(merged).map(item => item.quantity)
+        };
+    };
 
     // Remove item from cart
     const handleRemoveItem = (index) => {
@@ -25,8 +40,9 @@ export default function CheckoutUI() {
         const updatedQuantities = quantities.filter((_, i) => i !== index);
         setCartItems(updatedCart);
         setQuantities(updatedQuantities);
-        localStorage.setItem("cart", JSON.stringify(updatedCart)); // Local storage update
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
     };
+
     // Increment quantity
     const handleIncrement = (index) => {
         setQuantities((prev) =>
@@ -46,13 +62,17 @@ export default function CheckoutUI() {
         (sum, item, index) => sum + item.price * quantities[index],
         0
     );
+
+    // Calculate total number of items including quantities
+    const totalItems = quantities.reduce((sum, qty) => sum + qty, 0);
+
     return (
         <div className={styles.container}>
             <div className={styles.cartSection}>
                 <div className={styles.cartTitle}>
                     <h2>My cart</h2>
                     <div className={styles.cartItem}>
-                        <span>{cartItems.length} items</span>
+                        <span>{totalItems} items</span>
                     </div>
                 </div>
 
@@ -64,7 +84,6 @@ export default function CheckoutUI() {
                                 <h3>{item.title}</h3>
                                 <p>₹{item.price * quantities[index]}</p>
                             </div>
-                            {/* Remove Button - Right Side Upar */}
                             <button
                                 className={styles.removeBtn}
                                 onClick={() => handleRemoveItem(index)}
@@ -82,7 +101,6 @@ export default function CheckoutUI() {
                     <p>Your cart is empty.</p>
                 )}
 
-                {/* Total Price */}
                 <div className={styles.totalPrice}>
                     <h3>Total: ₹{totalPrice}</h3>
                 </div>
@@ -101,7 +119,6 @@ export default function CheckoutUI() {
                         <button
                             className={styles.continueBtn}
                             onClick={() => {
-                                // Save cart and quantities to local storage for the checkout page
                                 localStorage.setItem("selectedCart", JSON.stringify(cartItems));
                                 localStorage.setItem("selectedQuantities", JSON.stringify(quantities));
                             }}
@@ -109,7 +126,6 @@ export default function CheckoutUI() {
                             Continue
                         </button>
                     </Link>
-
                 </div>
             </div>
         </div>

@@ -1,90 +1,37 @@
-.navbar {
-  height: 70px;
+.empty {
+  height: auto;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background-color: white;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.menu {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-.menu li {
-  position: relative;
-}
-
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.menu li a {
-  text-decoration: none;
-  color: #222222;
-  font-size: 14px;
-  font-weight: 400;
-  transition: color 0.3s ease;
-}
-
-.menu li a:hover,
-.menu li a:focus {
-  color: #00bcd4;
-}
-
-.newBadge,
-.saleBadge {
-  position: absolute;
-  top: -15px;
-  right: -20px;
-  background-color: #00bcd4;
-  color: white;
-  font-size: 10px;
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 10px;
-}
-
-.saleBadge {
-  background-color: #ff9800;
-}
-
-.icons {
-  display: flex;
-  gap: 15px;
-}
-
-.icon {
-  position: relative;
-  font-size: 30px;
-}
-
-.iconHover:hover {
-  color: #00bcd4;
-}
-
-.heartContainer {
-  position: relative;
-  display: inline-block;
-}
-
-.heartBadge {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: black;
-  color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
+  margin-top: 40px;
+}
+
+.empty p {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(135, 135, 135);
+  margin: 20px 0px;
+}
+
+.returnToShop {
+  height: 40px;
+  width: 180px;
+  display: block;
+  background-color: rgb(86, 207, 225);
+  text-transform: uppercase;
+  padding: 5px 25px;
+  color:  white;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.returnToShop:hover {
+  background-color: rgb(35, 178, 199);
 }
 
 .cartContainer {
@@ -134,7 +81,6 @@
   padding-top: 10px;
   visibility: visible;
   background-color: #fff;
-  border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -196,38 +142,6 @@
   transition: width 0.3s ease-in-out;
 }
 
-.shopFooter {
-  position: absolute;
-  bottom: 0px;
-  height: auto;
-  width: auto;
-  text-align: left;
-  padding: 20px;
-  background-color: white;
-  background: white;
-  border-top: 1px solid rgb(200, 200, 200);
-  text-align: center;
-  font-weight: bold;
-}
-
-.shopFooter p {
-  color: rgb(135, 135, 135);
-  font-size: 13px;
-  font-weight: 400px;
-  margin-bottom: 5px;
-}
-
-.shopFooter label {
-  color: rgb(135, 135, 135);
-  font-size: 13px;
-  font-weight: 400px;
-  margin-bottom: 5px;
-}
-
-.shopFooter img {
-  height: 40px;
-  width: 300px;
-}
 
 .subTotal {
   width: 100%;
@@ -259,50 +173,39 @@
 }
 
 .container {
+  height: 100%;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 20px;
+  flex-direction: column;
   background-color: #f9f9f9;
 }
 
-.cartSection {
+.cardsContainer {
   width: 100%;
-}
-
-.cartTitle {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.cartTitle h2 {
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.cartTitle .cartItem span {
-  font-size: 16px;
-  color: #333;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  padding-top: 10px;
+  padding-bottom: 400px;
 }
 
 .cartItem {
   max-width: 340px;
+  min-height: 200px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px;
+  padding: 20px;
   border-bottom: 1px solid #eee;
   position: relative;
   background-color: #fff;
-  border-radius: 8px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
 }
 
 .cartItem img {
-  width: 80px;
-  border-radius: 5px;
+  height: 150px;
+  width: 120px;
+  margin-right: 20px;
 }
 
 .cartItem h3 {
@@ -322,30 +225,42 @@
 }
 
 .itemDetails {
-  flex: 1;
-  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .quantityControl {
+  height: 40px;
+  width: 120px;
   display: flex;
   align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 2px 6px;
+  justify-content: space-between;
+  border: 1px solid rgb(34, 34, 34);
+  border-radius: 60px;
+  padding: 2px 15px;
+  margin: 15px 0px;
 }
 
 .quantityControl button {
   border: none;
   background: transparent;
   cursor: pointer;
-  padding: 2px 6px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .quantityControl span {
-  padding: 2px 6px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin: 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.editDelete {
+  border: none;
+  background-color: transparent !important;
+  height: 28px;
+  width: 20px;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 .removeBtn {
@@ -363,4 +278,72 @@
 .removeBtn:hover {
   color: #ff1a1a;
   text-decoration: underline;
+}
+
+
+.cartXtraBtns {
+  height: 80px;
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+  background-color: rgb(245, 245, 245);
+}
+
+.neuMorphBtn {
+  height: 50px;
+  width: 50px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(245, 245, 245);
+  border-radius: 50%;
+  background: rgb(245, 245, 245);
+  box-shadow:  20px 20px 60px #bebebe,
+               -20px -20px 60px #ffffff;
+  cursor: pointer;
+}
+
+.neuMorphBtn:hover {
+  border-radius: 50%;
+  background: linear-gradient(145deg, #cacaca, #f0f0f0);
+  box-shadow:  20px 20px 60px #bebebe,
+               -20px -20px 60px #ffffff;
+}
+
+
+
+
+
+.shopFooter {
+  position: absolute;
+  bottom: 0px;
+  height: auto;
+  width: auto;
+  text-align: left;
+  padding: 20px;
+  background-color: white;
+  background: white;
+  border-top: 1px solid rgb(200, 200, 200);
+  text-align: center;
+  font-weight: bold;
+}
+
+.shopFooter p {
+  color: rgb(135, 135, 135);
+  font-size: 13px;
+  font-weight: 400px;
+  margin-bottom: 5px;
+}
+
+.shopFooter label {
+  color: rgb(135, 135, 135);
+  font-size: 13px;
+  font-weight: 400px;
+  margin-bottom: 5px;
+}
+
+.shopFooter img {
+  height: 40px;
+  width: 300px;
 }

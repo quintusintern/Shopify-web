@@ -41,8 +41,8 @@ const initialCards = [
 ];
 
 export default function Trending({ openPopup }) {
-  // Receive openPopup as prop
   const [cards, setCards] = useState(initialCards);
+  const [popup, setPopup] = useState(null); // Track which item is added
 
   const loadMoreCards = () => {
     const newCards = initialCards.map((card, index) => ({
@@ -53,8 +53,23 @@ export default function Trending({ openPopup }) {
     setCards((prevCards) => [...prevCards, ...newCards]);
   };
 
-  const handleQuickShop = (card) => {
-    openPopup(card);
+  const handleAddToCart = (card, index) => {
+    const cartItem = {
+      title: card.title,
+      price: card.price,
+      image: card.image,
+    };
+
+    // Get existing cart from local storage or create an empty array
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+    existingCart.push(cartItem);
+    localStorage.setItem("cart", JSON.stringify(existingCart));
+
+    // Show popup next to clicked button
+    setPopup(index);
+
+    // Hide popup after 2 seconds
+    setTimeout(() => setPopup(null), 2000);
   };
 
   return (
@@ -93,31 +108,12 @@ export default function Trending({ openPopup }) {
                     </button>
                   </div>
                   <div className={styles.centerButtons}>
-                    <Link href="/Check">
-                      <button
-                        className={styles.addToCartBtn}
-                        onClick={() => {
-                          const cartItem = {
-                            title: card.title,
-                            price: card.price,
-                            image: card.image,
-                          };
-                          // take the old cart or create an empty array
-                          const existingCart =
-                            JSON.parse(localStorage.getItem("cart")) || [];
-                          // add new item
-                          existingCart.push(cartItem);
-                          // save in local storage
-                          localStorage.setItem(
-                            "cart",
-                            JSON.stringify(existingCart)
-                          );
-                          alert("Item added to cart!");
-                        }}
-                      >
-                        Add to Cart
-                      </button>
-                    </Link>
+                    <button
+                      className={styles.addToCartBtn}
+                      onClick={() => handleAddToCart(card, index)}
+                    >
+                      Add to Cart
+                    </button>
                     <Link
                       href="/ViewItem"
                       onClick={() =>
@@ -135,6 +131,9 @@ export default function Trending({ openPopup }) {
               <h3 className={styles.cardTitle}>{card.title}</h3>
               <p className={styles.cardPrice}>{` $ ${card.price}`}</p>
             </div>
+            {popup === index && (
+              <div className={styles.popup}>Added to cart!</div>
+            )}
           </div>
         ))}
       </div>

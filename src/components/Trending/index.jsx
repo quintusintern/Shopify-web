@@ -37,6 +37,7 @@ const initialCards = [
     hoverImage: "/Gold02.jpg",
     sizes: "L",
     description: "Elegant Cluse La Baheme rose gold watch.",
+    rating: "3.7",
   },
 ];
 

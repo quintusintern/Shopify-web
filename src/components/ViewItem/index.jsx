@@ -9,7 +9,9 @@ const ViewItemPage = () => {
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   const [itemData, setItemData] = useState(null); // State to hold item data
-
+  const [count, setCount] = useState(1);
+  const increase = () => setCount(count + 1);
+  const decrease = () => count > 1 && setCount(count - 1);
   useEffect(() => {
     // Retrieve item data from local storage or URL parameters
     const storedItem = localStorage.getItem('viewedItem');
@@ -75,55 +77,56 @@ const ViewItemPage = () => {
             <img src={itemData.image} alt="Thumbnail 3" />
           </div>
         </div>
-        
+
         <div
-            className={styles.mainImage}
-            onMouseEnter={handleMouseEnter}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-          >
-            <img src={itemData.hoverImage} alt={itemData.title} />
-            {isZoomed && (
-              <div
-                className={styles.zoomLens}
-                style={{
-                  left: `${zoomPosition.x - 50}px`,
-                  top: `${zoomPosition.y - 50}px`,
-                }}
-              ></div>
-            )}
-            {isZoomed && (
-              <div
-                className={styles.zoomedImage}
-                style={{
-                  backgroundImage: `url('${itemData.hoverImage}')`,
-                  backgroundPosition: `-${zoomPosition.x * 2 - 100}px -${zoomPosition.y * 2 - 100}px`,
-                }}
-              ></div>
-            )}
-          </div>
+          className={styles.mainImage}
+          onMouseEnter={handleMouseEnter}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        >
+          <img src={itemData.hoverImage} alt={itemData.title} />
+          {isZoomed && (
+            <div
+              className={styles.zoomLens}
+              style={{
+                left: `${zoomPosition.x - 50}px`,
+                top: `${zoomPosition.y - 50}px`,
+              }}
+            ></div>
+          )}
+          {isZoomed && (
+            <div
+              className={styles.zoomedImage}
+              style={{
+                backgroundImage: `url('${itemData.hoverImage}')`,
+                backgroundPosition: `-${zoomPosition.x * 2 - 100}px -${zoomPosition.y * 2 - 100}px`,
+              }}
+            ></div>
+          )}
+        </div>
 
         <div className={styles.productDetails}>
           <h1 className={styles.productTitle}>{itemData.title}</h1>
-          <div className={styles.productPrice}>{`£${itemData.price}`}</div>
+          <div className={styles.productPrice}>{`$${itemData.price}`}</div>
           <div className={styles.productRating}>
-            <span role="img" aria-label="star">
-              ⭐️⭐️⭐️⭐️⭐️
-            </span>
-            (4 reviews)
+            <span className={styles.star}>⭐</span>
+            <span className={styles.star}>⭐</span>
+            <span className={styles.star}>⭐</span>
+            <span className={styles.star}>⭐</span>
+            <span className={styles.reviewText}>(4 reviews)</span>
           </div>
           <p className={styles.productDescription}>
             {itemData.description}
           </p>
 
-          <div className={styles.sizeSelection}>
-            SIZE: {selectedSize}
-            <div className={styles.sizeOptions}>
-              {itemData.sizes.split(', ').map((size) => (
+          <div>
+            <strong>SIZE: {selectedSize}</strong> {/* Show selected size */}
+            <div className={styles.productsizes}>
+              {["S", "M", "L", "XL"].map((size) => (
                 <button
                   key={size}
-                  className={selectedSize === size ? styles.selectedSize : ''}
-                  onClick={() => handleSizeChange(size)}
+                  className={`${styles.sizeButton} ${selectedSize === size ? styles.activeSize : ""}`}
+                  onClick={() => setSelectedSize(size)}
                 >
                   {size}
                 </button>
@@ -131,50 +134,50 @@ const ViewItemPage = () => {
             </div>
           </div>
 
-          <div className={styles.quantityControl}>
-            <button onClick={handleDecrement}>-</button>
-            <span>{quantity}</span>
-            <button onClick={handleIncrement}>+</button>
-          </div>
+          <div className={styles.actions}>
+            <div className={styles.quantityContainer}>
+              <button className={styles.quantityButton} onClick={decrease}>-</button>
+              <span className={styles.count}>{count}</span>
+              <button className={styles.quantityButton} onClick={increase}>+</button>
+            </div>
+            <Link href="/Check">
+              <button
+                className={styles.addToCart}
+                onClick={() => {
+                  const cartItem = {
+                    title: itemData.title,
+                    price: itemData.price,
+                    image: itemData.image,
+                  };
+                  const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+                  existingCart.push(cartItem);
+                  localStorage.setItem("cart", JSON.stringify(existingCart));
+                  alert("Item added to cart!");
+                }}
+              >
+                Add to Cart
+              </button>
+            </Link>
 
-          <Link href="/Check">
-            <button
-              className={styles.addToCart}
-              onClick={() => {
-                const cartItem = {
-                  title: itemData.title,
-                  price: itemData.price,
-                  image: itemData.image,
-                };
-                const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
-                existingCart.push(cartItem);
-                localStorage.setItem("cart", JSON.stringify(existingCart));
-                alert("Item added to cart!");
-              }}
-            >
-              Add to Cart
-            </button>
-          </Link>
-          <button className={styles.wishlist}>♡</button>
-
-          <div className={styles.trustBadges}>
-            {/* ... (trust badges) */}
           </div>
-
-          <div className={styles.deliveryReturn}>
-            Delivery & Return
+          <div className={styles.securityBadges}>
+            <img src="/addtocart.jpg" className={styles.securityIcon} />
           </div>
-          <div className={styles.askQuestion}>Ask a Question</div>
-
-          <div className={styles.availability}>Availability: In Stock</div>
-          <div className={styles.categories}>Categories: Fashion</div>
-          <div className={styles.tags}>
-            Tags: Price $50-$150, Vendor Kalles, women
+          <div className={styles.links}>
+            <span>Delivery & Return</span>
+            <span>Ask a Question</span>
           </div>
+          {/* Product Info */}
+          <p className={styles.availability}>
+            <strong>Availability:</strong> In Stock
+          </p>
+          <p className={styles.categories}>
+            <strong>Categories:</strong> Fashion
+          </p>
+          <p className={styles.tags}>
+            <strong>Tags:</strong> Price $50-$150, Vendor Kalles, women
+          </p>
 
-          <div className={styles.socialIcons}>
-            {/* ... (social icons) */}
-          </div>
         </div>
       </div>
     </div>

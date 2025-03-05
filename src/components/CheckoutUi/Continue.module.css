@@ -1,8 +1,17 @@
+.mainContainer{
+  height: auto;
+  width: 100%;
+  display: flex;
+  background-color: #f9f9f9;
+
+}
 .container {
     display: flex;
-    justify-content: space-between;
+    max-width: 1000px;
+    justify-content: space-around;
     padding: 20px;
-    background-color: #f9f9f9;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .cartSection {
@@ -156,7 +165,7 @@
     margin: 5px 0;
   }
 
-  
+
   .orderSummary p {
     font-size: 14px;
     color: #333;
@@ -180,9 +189,10 @@
 
   
   .cartItem {
+    max-width: 550px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 8px;
     border-bottom: 1px solid #eee;
     position: relative; /* Relative position to align Remove button */

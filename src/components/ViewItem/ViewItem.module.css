@@ -30,8 +30,13 @@
   cursor: pointer;
 }
 
+.mainImageContainer {
+  display: flex;
+  flex-direction: row;
+}
+
 .mainImage {
-  max-width: 600px;
+  max-width: 220px;
   height: auto;
   position: relative;
   overflow: hidden;
@@ -40,7 +45,17 @@
 .mainImage img {
   width: 100%;
   height: auto;
-  object-fit: contain;
+  object-fit: cover;
+}
+
+.zoomPopup {
+  position: absolute;
+  right: 350px;
+  width: 350px; /* or desired size */
+  height: 350px; /* or desired size */
+  overflow: hidden; /* prevents image from going outside the div */
+  pointer-events: none; /* allows mouse events to pass through */
+  z-index: 10; /* Ensures it's above other elements */
 }
 
 .productPage .zoomLens { /* More specific selector */

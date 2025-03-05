@@ -13,98 +13,65 @@ const ViewItemPage = () => {
   const [selectedSize, setSelectedSize] = useState('S');
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
-  const [itemData, setItemData] = useState(null); // State to hold item data
+  const [itemData, setItemData] = useState(null);
   const [count, setCount] = useState(1);
+  const [mainImage, setMainImage] = useState('');
+
   const increase = () => setCount(count + 1);
   const decrease = () => count > 1 && setCount(count - 1);
+
   useEffect(() => {
-    // Retrieve item data from local storage or URL parameters
     const storedItem = localStorage.getItem('viewedItem');
     if (storedItem) {
-      setItemData(JSON.parse(storedItem));
+      const parsedItem = JSON.parse(storedItem);
+      setItemData(parsedItem);
+      setMainImage(parsedItem.hoverImage);
     } else {
-      // Handle the case where no item data is found (e.g., show an error)
       console.error("No item data found in local storage.");
     }
   }, []);
 
   if (!itemData) {
-    return <div>Loading...</div>; // Or display an error message
+    return <div>Loading...</div>;
   }
 
-  const handleIncrement = () => {
-    setQuantity(quantity + 1);
-  };
-
-  const handleDecrement = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
-
-  const handleSizeChange = (size) => {
-    setSelectedSize(size);
-  };
-
-  const handleMouseEnter = (e) => {
-    setIsZoomed(true);
-    updateZoomPosition(e);
-  };
-
-  const handleMouseMove = (e) => {
-    if (isZoomed) {
-      updateZoomPosition(e);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setIsZoomed(false);
-  };
-
-  const updateZoomPosition = (e) => {
-    const rect = e.target.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    setZoomPosition({ x, y });
+  const handleImageClick = (image) => {
+    setMainImage(image);
   };
 
   return (
     <div className={styles.productPage}>
-      <div className={styles.breadcrumb}>
-        Home &gt; {itemData.title}
-      </div>
-
+      <div className={styles.breadcrumb}>Home &gt; {itemData.title}</div>
       <div className={styles.productContainer}>
         <div className={styles.imageGallery}>
           <div className={styles.thumbnail}>
-            <img src={itemData.image} alt="Thumbnail 1" />
-            <img src={itemData.hoverImage} alt="Thumbnail 2" />
-            <img src={itemData.image} alt="Thumbnail 3" />
+            <img src={itemData.image} alt="Thumbnail 1" onClick={() => handleImageClick(itemData.image)} />
+            <img src={itemData.hoverImage} alt="Thumbnail 2" onClick={() => handleImageClick(itemData.hoverImage)} />
+            <img src={itemData.image} alt="Thumbnail 3" onClick={() => handleImageClick(itemData.image)} />
           </div>
         </div>
 
         <div
-          className={styles.mainImage}
-          onMouseEnter={handleMouseEnter}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
+          className={styles.mainImageContainer}
+          onMouseEnter={() => setIsZoomed(true)}
+          onMouseMove={(e) => {
+            if (isZoomed) {
+              const rect = e.target.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              setZoomPosition({ x, y });
+            }
+          }}
+          onMouseLeave={() => setIsZoomed(false)}
         >
-          <img src={itemData.hoverImage} alt={itemData.title} />
+          <img src={mainImage} alt={itemData.title} className={styles.mainImage} />
           {isZoomed && (
             <div
-              className={styles.zoomLens}
+              className={styles.zoomPopup}
               style={{
-                left: `${zoomPosition.x - 100}px`,
-                top: `${zoomPosition.y - 100}px`,
-              }}
-            ></div>
-          )}
-          {isZoomed && (
-            <div
-              className={styles.zoomedImage}
-              style={{
-                backgroundImage: `url('${itemData.hoverImage}')`,
-                backgroundPosition: `-${zoomPosition.x * 2 - 100}px -${zoomPosition.y * 2 - 100}px`,
+                backgroundImage: `url('${mainImage}')`,
+                backgroundSize: '200%',
+                backgroundPosition: `-${zoomPosition.x * 2}px -${zoomPosition.y * 2}px`,
               }}
             ></div>
           )}
@@ -120,17 +87,15 @@ const ViewItemPage = () => {
             <span className={styles.star}>⭐</span>
             <span className={styles.reviewText}>(4 reviews)</span>
           </div>
-          <p className={styles.productDescription}>
-            {itemData.description}
-          </p>
+          <p className={styles.productDescription}>{itemData.description}</p>
 
           <div>
-            <strong>SIZE: {selectedSize}</strong> {/* Show selected size */}
+            <strong>SIZE: {selectedSize}</strong>
             <div className={styles.productsizes}>
-              {["S", "M", "L", "XL"].map((size) => (
+              {['S', 'M', 'L', 'XL'].map((size) => (
                 <button
                   key={size}
-                  className={`${styles.sizeButton} ${selectedSize === size ? styles.activeSize : ""}`}
+                  className={`${styles.sizeButton} ${selectedSize === size ? styles.activeSize : ''}`}
                   onClick={() => setSelectedSize(size)}
                 >
                   {size}
@@ -163,7 +128,6 @@ const ViewItemPage = () => {
                 Add to Cart
               </button>
             </Link>
-
           </div>
           <div className={styles.securityBadges}>
             <img src="/addtocart.jpg" className={styles.securityIcon} />

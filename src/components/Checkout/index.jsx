@@ -19,8 +19,40 @@ const Checkout = () => {
                             <h2 className={styles.title}>Contact</h2>
                             <a href="#" className={styles.loginLink}>Log in</a>
                         </div>
-                        <input type="text" placeholder="Email or mobile phone number" className={styles.input} />
-                        <label className={styles.checkboxLabel}>
+                        <div className={styles.deliveryOption}>
+                            <label className={styles.radioOption}>
+                                <input type="radio" name="delivery" />
+                                Pickup in store
+                            </label>
+                            <FaStore className={styles.icon} />
+                        </div>
+                    </div>
+
+                    <select className={styles.select}>
+                        <option>United States</option>
+                        <option>Canada</option>
+                        <option>United Kingdom</option>
+                        <option>Australia</option>
+                        <option>Germany</option>
+                    </select>
+
+                    <div className={styles.grid}>
+                        <input type="text" placeholder="First name (optional)" className={styles.input} />
+                        <input type="text" placeholder="Last name" className={styles.input} />
+                    </div>
+
+                    <input type="text" placeholder="Address" className={styles.input} />
+                    <input type="text" placeholder="Apartment, suite, etc. (optional)" className={styles.input} />
+
+                    <div className={styles.addressSection}>
+                        <div className={styles.inputRow}>
+                            <input type="text" placeholder="City" className={styles.input} />
+                            <select className={styles.input}>
+                                <option>State</option>
+                            </select>
+                            <input type="text" placeholder="ZIP code" className={styles.input} />
+                        </div>
+                        <label className={styles.checkboxRow}>
                             <input type="checkbox" className={styles.checkbox} />
                             Email me with news and offers
                         </label>

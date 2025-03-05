@@ -34,7 +34,7 @@ export default function TwoCards() {
       </div>
 
       <div className={styles.rightImageWrapper}>
-      <div className={styles.overlay}>
+        <div className={styles.overlay}>
           <p>SUMMER SALE</p>
           <h2>UP TO 70%</h2>
         </div>

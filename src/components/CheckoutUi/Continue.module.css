@@ -1,0 +1,190 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .cartSection {
+    width: 65%;
+  }
+  
+  .cartTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .cartTitle h2 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  .cartTitle .cartItem span {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .cartItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cartItem img {
+    width: 80px;
+    border-radius: 5px;
+  }
+  
+  .cartItem h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  
+  .cartItem p {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .cartItem p span {
+    font-weight: 600;
+    color: #222;
+  }
+  
+  .quantityControl {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantityControl button {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .removeBtn {
+    background-color: transparent;
+    color: #f44336;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .summarySection {
+    width: 30%;
+  }
+  
+  .coupons {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .coupons h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .coupons p {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .orderSummary {
+    width:100%;  
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .orderSummary h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .orderSummary p {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .orderSummary span {
+    color: #f44336;
+  }
+  
+  .continueBtn {
+    background-color: #000;
+    color: #fff;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  
+  .cartItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    position: relative; /* Relative position to align Remove button */
+}
+
+.itemDetails {
+    flex: 1;
+    margin-left: 8px;
+}
+
+.quantityControl {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 2px 6px;
+}
+
+.quantityControl button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 2px 6px;
+}
+
+.quantityControl span {
+    padding: 2px 6px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 0 4px;
+}
+
+.removeBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    color: #cc0000;
+    border: none;
+    cursor: pointer;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+.removeBtn:hover {
+    color: #ff1a1a;
+    text-decoration: underline;
+}

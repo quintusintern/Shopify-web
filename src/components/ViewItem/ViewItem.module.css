@@ -1,0 +1,148 @@
+/* ViewItem.module.css */
+.productPage {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.breadcrumb {
+  margin-bottom: 20px;
+}
+
+.productContainer {
+  display: flex;
+}
+
+.imageGallery {
+  width: 50%;
+  padding-right: 20px;
+}
+
+.thumbnail {
+  display: flex;
+  flex-direction: column;
+}
+
+.thumbnail img {
+  width: 80px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.mainImage {
+  position: relative;
+  overflow: hidden;
+}
+
+.mainImage img {
+  width: 100%;
+  display: block;
+}
+
+.productPage .zoomLens { /* More specific selector */
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 2px solid #ccc;
+  pointer-events: none;
+}
+
+.productPage .zoomedImage { /* More specific selector */
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 400px;
+  height: 400px;
+  background-size: 200%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.productDetails {
+  width: 50%;
+  padding-left: 20px;
+}
+
+.productTitle {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.productPrice {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.productRating {
+  margin-bottom: 10px;
+}
+
+.productDescription {
+  margin-bottom: 20px;
+}
+
+.sizeSelection {
+  margin-bottom: 20px;
+}
+
+.sizeOptions button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.selectedSize {
+  background-color: #eee;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.quantityControl button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.addToCart {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.wishlist {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.trustBadges img {
+  width: 50px;
+  margin-right: 5px;
+}
+
+.deliveryReturn,
+.askQuestion,
+.availability,
+.categories,
+.tags {
+  margin-bottom: 10px; 
+}
+
+.socialIcons {
+  margin-top: 20px;
+}
+
+.socialIcons a {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 1.2em;
+  color: #333; 
+  text-decoration: none; 
+}

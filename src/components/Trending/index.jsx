@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import styles from "./Trending.module.css";
 import { CiHeart } from "react-icons/ci";
 import { TbArrowsCross } from "react-icons/tb";
@@ -8,7 +9,7 @@ const initialCards = [
   {
     title: "Analogue Resin Strap",
     price: "30.00",
-    defaultImage: "/Resin Strap.jpg",
+    image: "/Resin Strap.jpg",
     hoverImage: "/Resin Strap02.jpg",
     sizes: "XS, S, M, L",
     description: "A stylish and durable analogue resin strap.",
@@ -16,7 +17,7 @@ const initialCards = [
   {
     title: "Ridley High Waist",
     price: "36.00",
-    defaultImage: "/Ridley01.jpg",
+    image: "/Ridley01.jpg",
     hoverImage: "/Ridley02.jpg",
     sizes: "S, M, L",
     description: "Comfortable and fashionable high waist jeans.",
@@ -24,7 +25,7 @@ const initialCards = [
   {
     title: "Blush Beanie",
     price: "15.00",
-    defaultImage: "/Blush Beanie01.jpg",
+    image: "/Blush Beanie01.jpg",
     hoverImage: "/Blush Beanie02.jpg",
     sizes: "XS, S, M, L",
     description: "A warm and cozy blush beanie for winter.",
@@ -32,14 +33,15 @@ const initialCards = [
   {
     title: "Cluse La Baheme Rose Gold",
     price: "45.00",
-    defaultImage: "/Gold01.jpg",
+    image: "/Gold01.jpg",
     hoverImage: "/Gold02.jpg",
     sizes: "L",
     description: "Elegant Cluse La Baheme rose gold watch.",
   },
 ];
 
-export default function Trending({ openPopup }) { // Receive openPopup as prop
+export default function Trending({ openPopup }) {
+  // Receive openPopup as prop
   const [cards, setCards] = useState(initialCards);
 
   const loadMoreCards = () => {
@@ -71,7 +73,7 @@ export default function Trending({ openPopup }) { // Receive openPopup as prop
           <div key={index} className={styles.imgCard}>
             <div className={styles.imageWrapper}>
               <img
-                src={card.defaultImage}
+                src={card.image}
                 alt={card.title}
                 className={styles.imageDefault}
               />
@@ -91,12 +93,39 @@ export default function Trending({ openPopup }) { // Receive openPopup as prop
                     </button>
                   </div>
                   <div className={styles.centerButtons}>
-                    <button
-                      className={styles.lightBlueBtn}
-                      onClick={() => handleQuickShop(card)}
+                    <Link href="/Check">
+                      <button
+                        className={styles.addToCartBtn}
+                        onClick={() => {
+                          const cartItem = {
+                            title: card.title,
+                            price: card.price,
+                            image: card.image,
+                          };
+                          // take the old cart or create an empty array
+                          const existingCart =
+                            JSON.parse(localStorage.getItem("cart")) || [];
+                          // add new item
+                          existingCart.push(cartItem);
+                          // save in local storage
+                          localStorage.setItem(
+                            "cart",
+                            JSON.stringify(existingCart)
+                          );
+                          alert("Item added to cart!");
+                        }}
+                      >
+                        Add to Cart
+                      </button>
+                    </Link>
+                    <Link
+                      href="/ViewItem"
+                      onClick={() =>
+                        localStorage.setItem("viewedItem", JSON.stringify(card))
+                      }
                     >
-                      Quick Shop
-                    </button>
+                      <button className={styles.buyNowBtn}>Buy Now</button>
+                    </Link>
                   </div>
                   <p className={styles.footerText}>{card.sizes}</p>
                 </div>

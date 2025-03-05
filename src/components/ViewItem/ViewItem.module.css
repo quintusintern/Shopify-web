@@ -213,14 +213,15 @@ margin-top: 10px;
   color: black;
 }
 
-.socialIcons {
-  margin-top: 20px;
+.socialIcons{
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
 }
-
-.socialIcons a {
-  display: inline-block;
-  margin-right: 10px;
-  font-size: 1.2em;
-  color: #333; 
-  text-decoration: none; 
+.socialIcons svg {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.socialIcons svg:hover {
+  transform: scale(1.2);
 }

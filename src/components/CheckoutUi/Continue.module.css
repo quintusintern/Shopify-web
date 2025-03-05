@@ -101,7 +101,9 @@
   }
   
   .orderSummary {
+    padding: 15px;
     width:100%;  
+    border: 1px solid #ccc;
     background-color: #fff;
     padding: 10px;
     border-radius: 8px;
@@ -112,6 +114,31 @@
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 10px;
+    
+  }
+
+  .orderHeading{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+
+  .free {
+    color: red;
+    font-weight: bold;
   }
   
   .orderSummary p {

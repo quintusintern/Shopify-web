@@ -6,7 +6,7 @@ import styles from "./Continue.module.css";
 export default function CheckoutUI() {
     // Cart items state
     const [cartItems, setCartItems] = useState([]);
-    
+
     // Quantities state
     const [quantities, setQuantities] = useState([]);
 
@@ -111,9 +111,16 @@ export default function CheckoutUI() {
                     <p>Save more with coupon and offers</p>
                 </div>
                 <div className={styles.orderSummary}>
-                    <h4>Order Summary</h4>
-                    <p>Items total: ₹{totalPrice}</p>
-                    <p>Delivery fee: <span>Free</span></p>
+                    <h4 className={styles.orderHeading}>Order Summary</h4>
+                    <hr className={styles.divider} />
+                    <div className={styles.row}>
+                        <p>Items total </p>
+                        <p> ₹{totalPrice}</p>
+                    </div>
+                    <div className={styles.row}>
+                        <p>Delivery fee: <span className={styles.free}>Free</span></p>
+                    </div>
+                    <hr className={styles.divider} />
                     <h4>Total cost: ₹{totalPrice}/-</h4>
                     <Link href="/Form">
                         <button

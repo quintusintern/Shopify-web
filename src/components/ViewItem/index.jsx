@@ -89,8 +89,8 @@ const ViewItemPage = () => {
             <div
               className={styles.zoomLens}
               style={{
-                left: `${zoomPosition.x - 50}px`,
-                top: `${zoomPosition.y - 50}px`,
+                left: `${zoomPosition.x - 100}px`,
+                top: `${zoomPosition.y - 100}px`,
               }}
             ></div>
           )}

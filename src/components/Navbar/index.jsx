@@ -7,14 +7,7 @@ import Cart from "@/components/Cart";
 import Image from "next/image";
 import Link from "next/link";
 import { ShoppingCart, User, Search, Heart, X } from "lucide-react";
-import { FaShippingFast } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
-import { FiEdit } from "react-icons/fi";
-import { IoClipboardOutline } from "react-icons/io5";
-import { GoGift } from "react-icons/go";
-import { CiShoppingTag } from "react-icons/ci";
-import { BsTruck } from "react-icons/bs";
-import { AiOutlineDelete } from "react-icons/ai";
 import styles from "./Navbar.module.css";
 
 const Navbar = ({ cartItems }) => {
@@ -24,32 +17,25 @@ const Navbar = ({ cartItems }) => {
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showLogin, setShowLogin] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
-  const [value, setValue] = useState("");
-  const [showPopup, setShowPopup] = useState(false);
+  const [localCartItems, setLocalCartItems] = useState([]);
 
+  // Fetch cart data from localStorage when cartOpen changes
   useEffect(() => {
-    const storedCartCount = localStorage.getItem("cartCount");
-    if (storedCartCount) {
-      setCartCount(parseInt(storedCartCount));
+    if (cartOpen) {
+      const storedCart = JSON.parse(localStorage.getItem("cartItems")) || [];
+      setLocalCartItems(storedCart);
+      const storedCartCount = localStorage.getItem("cartCount");
+      if (storedCartCount) {
+        setCartCount(parseInt(storedCartCount));
+      }
     }
-  }, []);
+  }, [cartOpen]);
 
-  const handleUserClick = () => {
-    setShowLogin(true);
-    setShowPopup(true); // Any popup open
-  };
-
-  // Function to set input value when clicking on a suggestion
-  const handleSuggestionClick = (value) => {
-    setSearchValue(value); // Set the input value
-    setShowSearch(false); // Hide suggestions after selection
-    setShowPopup(true); // Any popup open
-  };
-
+  
   const products = [
     {
       id: 1,
@@ -83,39 +69,25 @@ const Navbar = ({ cartItems }) => {
     },
   ];
 
-  const cardsData = [
-    { id: 1, title: "Card 1", content: "This is Card 1" },
-    { id: 2, title: "Card 2", content: "This is Card 2" },
-    { id: 3, title: "Card 3", content: "This is Card 3" },
-    { id: 4, title: "Card 4", content: "This is Card 4" },
-    { id: 5, title: "Card 5", content: "This is Card 5" },
-  ];
-
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const handleNext = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % cardsData.length);
-  };
-
-  const handlePrev = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === 0 ? cardsData.length - 1 : prevIndex - 1
-    );
-  };
-
   const toggleSearchPopup = () => {
     setShowSearch(!showSearch);
-    setShowPopup(!showSearch); // Toggle the state for overlay
-  };
-
-  const toggleCartPopup = () => {
-    setCartOpen(!cartOpen);
-    setShowPopup(!cartOpen); // Toggle the state for overlay
   };
 
   const toggleLoginPopup = () => {
     setShowLogin(!showLogin);
-    setShowPopup(!showLogin); // Toggle the state for overlay
+  };
+
+  const toggleCartPopup = () => {
+    setCartOpen(!cartOpen);
+  };
+
+  const handleUserClick = () => {
+    setShowLogin(true);
+  };
+
+  const handleSuggestionClick = (value) => {
+    setSearchValue(value);
+    setShowSearch(false);
   };
 
   return (
@@ -134,15 +106,15 @@ const Navbar = ({ cartItems }) => {
           <li>
             <Link href="/">Demo</Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/">
               Shop <span className={styles.newBadge}>New</span>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link href="/Product">Product</Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/Check">
               Sale <span className={styles.saleBadge}>Sale</span>
             </Link>
@@ -158,7 +130,7 @@ const Navbar = ({ cartItems }) => {
           </li>
           <li>
             <Link href="/">Buy Theme</Link>
-          </li>
+          </li> */}
         </ul>
         <div className={styles.icons}>
           <div onClick={toggleSearchPopup}>
@@ -167,14 +139,14 @@ const Navbar = ({ cartItems }) => {
           <div onClick={toggleLoginPopup}>
             <User className={`${styles.icon} ${styles.iconHover}`} />
           </div>
-          <div className={styles.heartContainer}>
+          {/* <div className={styles.heartContainer}>
             <Link href="/User">
               <div className={styles.heartContainer}>
                 <Heart className={`${styles.icon} ${styles.iconHover}`} />
                 <span className={styles.heartBadge}>0</span>
               </div>
             </Link>
-          </div>
+          </div> */}
           <div className={styles.cartContainer} onClick={toggleCartPopup}>
             <ShoppingCart className={`${styles.icon} ${styles.iconHover}`} />
             <span className={styles.cartBadge}>{cartCount}</span>
@@ -182,6 +154,7 @@ const Navbar = ({ cartItems }) => {
         </div>
       </div>
 
+      {/* Search Popup */}
       <div className={`${styles.cartPopup} ${showSearch ? styles.open : ""}`}>
         <div className={styles.theHeader}>
           <span className={styles.theTitle}>Search our site</span>
@@ -196,8 +169,6 @@ const Navbar = ({ cartItems }) => {
               className={styles.searchBar}
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setTimeout(() => setIsFocused(false), 200)}
             />
             <button className={styles.searchButton}>
               <FiSearch className={styles.searchIcon} />
@@ -237,11 +208,13 @@ const Navbar = ({ cartItems }) => {
         </div>
       </div>
 
+      {/* Login Popup */}
       <div className={`${styles.cartPopup} ${showLogin ? styles.open : ""}`}>
         <div className={styles.theHeader}>
           <span className={styles.theTitle}>Login</span>
           <X className={styles.closeIcon} onClick={toggleLoginPopup} />
         </div>
+        
         <div className={styles.loginForm}>
           <div className={styles.sidebarContainer}>
             {/* Email Input */}
@@ -292,23 +265,18 @@ const Navbar = ({ cartItems }) => {
         </div>
       </div>
 
-      {showPopup && (
-        <div className={styles.overlay} onClick={() => setShowPopup(false)} />
-      )}
-
+      {/* Cart Popup */}
       <div className={`${styles.cartPopup} ${cartOpen ? styles.open : ""}`}>
         <div className={styles.theHeader}>
           <span>SHOPPING CART</span>
           <X className={styles.closeIcon} onClick={toggleCartPopup} />
         </div>
-
-
         <div>
-          {cartItems && cartItems.length > 0 && (
+          {localCartItems && localCartItems.length > 0 && (
             <div>
               <h3>Cart Items:</h3>
               <ul>
-                {cartItems.map((item, index) => (
+                {localCartItems.map((item, index) => (
                   <li key={index}>
                     {item.title} - {item.selectedSize}
                   </li>
@@ -317,12 +285,19 @@ const Navbar = ({ cartItems }) => {
             </div>
           )}
         </div>
-        <Cart/>
+        <Cart cartItems={localCartItems} />
       </div>
 
-      {/* Overlay (Click to Close) */}
-      {showPopup && (
-        <div className={styles.overlay} onClick={toggleCartPopup} />
+      {/* Overlay for Closing Popups */}
+      {(showSearch || showLogin || cartOpen) && (
+        <div
+          className={styles.overlay}
+          onClick={() => {
+            setShowSearch(false);
+            setShowLogin(false);
+            setCartOpen(false);
+          }}
+        />
       )}
     </>
   );

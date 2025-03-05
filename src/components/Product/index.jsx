@@ -195,31 +195,26 @@ const ProductsPage = () => {
                     </button>
                   </div>
                   <div className={styles.centerButtons}>
-                    <Link href="/Check">
-                      <button
-                        className={styles.addToCartBtn}
-                        onClick={() => {
-                          const cartItem = {
-                            title: card.title,
-                            price: card.price,
-                            image: card.defaultImage,
-                          };
-                          // take the old cart or create an empty array
-                          const existingCart =
-                            JSON.parse(localStorage.getItem("cart")) || [];
-                          // add new item
-                          existingCart.push(cartItem);
-                          // save in local storage
-                          localStorage.setItem(
-                            "cart",
-                            JSON.stringify(existingCart)
-                          );
-                          alert("Item added to cart!");
-                        }}
-                      >
-                        Add to Cart
-                      </button>
-                    </Link>
+                    <button
+                      className={styles.addToCartBtn}
+                      onClick={() => {
+                        const cartItem = {
+                          title: card.title,
+                          price: card.price,
+                          image: card.defaultImage,
+                        };
+                        const existingCart =
+                          JSON.parse(localStorage.getItem("cart")) || [];
+                        existingCart.push(cartItem);
+                        localStorage.setItem(
+                          "cart",
+                          JSON.stringify(existingCart)
+                        );
+                        alert("Item added to cart!");
+                      }}
+                    >
+                      Add to Cart
+                    </button>
                     <Link
                       href="/ViewItem"
                       onClick={() =>

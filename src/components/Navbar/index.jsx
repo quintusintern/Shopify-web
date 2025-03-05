@@ -188,7 +188,7 @@ const Navbar = ({ cartItems }) => {
           <X className={styles.closeIcon} onClick={toggleSearchPopup} />
         </div>
         <hr className={styles.SearchDivider} />
-        <div className={styles.sidebarContainer}>
+        <div className={styles.searchContainer}>
           <div className={styles.search}>
             <input
               type="text"

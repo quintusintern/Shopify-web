@@ -10,14 +10,16 @@
 
 .productContainer {
   display: flex;
+  justify-content: space-between;
 }
 
 .imageGallery {
-  width: 50%;
+  width: auto;
   padding-right: 20px;
 }
 
 .thumbnail {
+  max-width: 100px;
   display: flex;
   flex-direction: column;
 }
@@ -29,13 +31,16 @@
 }
 
 .mainImage {
+  max-width: 600px;
+  height: auto;
   position: relative;
   overflow: hidden;
 }
 
 .mainImage img {
   width: 100%;
-  display: block;
+  height: auto;
+  object-fit: contain;
 }
 
 .productPage .zoomLens { /* More specific selector */

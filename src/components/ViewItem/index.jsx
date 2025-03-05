@@ -74,8 +74,9 @@ const ViewItemPage = () => {
             <img src={itemData.hoverImage} alt="Thumbnail 2" />
             <img src={itemData.image} alt="Thumbnail 3" />
           </div>
-
-          <div
+        </div>
+        
+        <div
             className={styles.mainImage}
             onMouseEnter={handleMouseEnter}
             onMouseMove={handleMouseMove}
@@ -101,7 +102,6 @@ const ViewItemPage = () => {
               ></div>
             )}
           </div>
-        </div>
 
         <div className={styles.productDetails}>
           <h1 className={styles.productTitle}>{itemData.title}</h1>

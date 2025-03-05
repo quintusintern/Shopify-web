@@ -23,7 +23,6 @@
   font-weight: bold;
 }
 
-<<<<<<< Updated upstream
 .productList {
   width: 100%;
   max-width: 400px;
@@ -653,10 +652,19 @@
   color: var(--text-color);
 }
 
+.searchContainer {
+  width: 100%;
+  padding: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-color);
+}
+
 .inputContainer {
   position: relative;
   width: 100%;
   margin-bottom: 20px;
+  border: 1px solid rgb(135, 135, 135);
 }
 
 .label {
@@ -685,12 +693,11 @@
   padding: 8px;
   font-size: 13px;
   color: rgb(135, 135, 135);
-  border: 2px solid #ccc;
   outline: none;
   transition: border-color 0.3s ease-in-out;
 }
 
-.input:focus {
+.input:focus .inputContainer{
   border-color: black;
 }
 
@@ -868,7 +875,6 @@
   font-size: 20px;
   color: #333;
 }
-=======
   .createAccount:hover{
     color: #00bcd4;
   }
@@ -951,14 +957,6 @@
     outline: none;
   }
   
-  .searchButton {
-    background: #000;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-  }
-  
   .quickSearch {
     font-size: 14px;
     margin-bottom: 15px;
@@ -981,17 +979,7 @@
     height: 50px;
     object-fit: cover;
   }
-  
-  .viewAll {
-    background: #000;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    text-align: center;
-    margin-top: 15px;
-  }
+
   
 
 

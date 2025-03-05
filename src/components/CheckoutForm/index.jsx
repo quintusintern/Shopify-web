@@ -53,13 +53,24 @@ const CheckoutForm = () => {
                 <div className={styles.coupons}>
                     <h4>Coupons and offers</h4>
                     <p>Save more with coupon and offers</p>
+                    <input type="text" placeholder="Enter coupen code" className={styles.input} />
+                    <button className={styles.applyButton}>Apply</button>
+
                 </div>
                 <div className={styles.orderSummary}>
                     <h3>Order Summary</h3>
-                    <div className={styles.summaryItem}><span>Items</span><span>{totalItems}</span></div>
-                    <div className={styles.summaryItem}><span>Items total</span><span>₹{totalPrice}</span></div>
-                    <div className={styles.summaryItem}><span>Delivery fee</span><span className={styles.free}>Free</span></div>
-                    <div className={styles.totalCost}><span>Total cost</span><span>₹{totalPrice}/-</span></div>
+                    <hr className={styles.divider} />
+                    <div className={styles.row}>
+                        <span>Items</span>
+                        <span>1</span>
+                    </div>
+                    <div className={styles.row}>
+                        <span className={styles.summaryItem}>Items total</span>
+                        <div className={styles.summaryItem}>{` ₹${totalPrice}`}</div>
+                    </div>
+
+                    <div className={styles.summaryItem}>Delivery fee:- <span className={styles.free}>Free</span></div>
+                    <div className={styles.totalCost}>{`Total cost:-  ₹${totalPrice} /-`}</div>
                     <Link href="/Pay">
                         <button className={styles.continueButton}>Continue</button>
                     </Link>

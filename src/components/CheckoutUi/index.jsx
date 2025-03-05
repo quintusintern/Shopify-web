@@ -118,10 +118,15 @@ export default function CheckoutUI() {
                         <p> ₹{totalPrice}</p>
                     </div>
                     <div className={styles.row}>
-                        <p>Delivery fee: <span className={styles.free}>Free</span></p>
+                        <span>Delivery fee</span>
+                        <span className={styles.free}>Free</span>
                     </div>
                     <hr className={styles.divider} />
-                    <h4>Total cost: ₹{totalPrice}/-</h4>
+                    <div className={styles.totalRow}>
+                        <h4>Total cost: </h4>
+                        <span>₹{totalPrice}/-</span>
+                    </div>
+                    <p className={styles.taxInfo}>Inclusive of all taxes</p>
                     <Link href="/Form">
                         <button
                             className={styles.continueBtn}

@@ -8,6 +8,7 @@ import { FaPinterestP } from "react-icons/fa";
 import { FaTumblr } from "react-icons/fa";
 import { BsTelegram } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
+import Tabs from '../ProductInformation';
 const ViewItemPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState('S');
@@ -157,6 +158,7 @@ const ViewItemPage = () => {
           </div>
         </div>
       </div>
+      <Tabs />
     </div>
   );
 };

@@ -224,7 +224,7 @@ const ViewItemPage = () => {
         <span>Ask a Question</span>
       </div>
       <div className={styles.details}>
-        <p>Availability: <span className={styles.inStock}>In Stock</span></p>
+        <p className={styles.textHeading}>Availability: <span className={styles.inStock}>In Stock</span></p>
         <p><strong>Categories:</strong> <span className={styles.category}>Fashion</span></p>
         <p><strong>Tags:</strong> <span className={styles.tags}>Price $50-$150, Vendor Kalles, women</span></p>
       </div>

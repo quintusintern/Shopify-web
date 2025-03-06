@@ -1,44 +1,70 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import ProductTabs from "@/components/ProductInformation";
 import styles from "./ViewItem.module.css";
-import { CiFacebook } from "react-icons/ci";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaPinterestP } from "react-icons/fa";
-import { FaTumblr } from "react-icons/fa";
+import { CiFacebook, CiMail } from "react-icons/ci";
+import { FaXTwitter, FaPinterestP, FaTumblr } from "react-icons/fa";
 import { BsTelegram } from "react-icons/bs";
-import { CiMail } from "react-icons/ci";
-import Tabs from '../ProductInformation';
-import ProductTabs from "../ProductInformation";
+
 const ViewItemPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("S");
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   const [itemData, setItemData] = useState(null);
-  const [count, setCount] = useState(1);
   const [mainImage, setMainImage] = useState("");
-
-  const increase = () => setCount(count + 1);
-  const decrease = () => count > 1 && setCount(count - 1);
+  const mainImageRef = useRef(null);
+  const images = useRef([]); // Store all the images
 
   useEffect(() => {
-    const storedItem = localStorage.getItem("viewedItem");
-    if (storedItem) {
-      const parsedItem = JSON.parse(storedItem);
-      setItemData(parsedItem);
-      setMainImage(parsedItem.hoverImage);
-    } else {
-      console.error("No item data found in local storage.");
+    try {
+      const storedItem = localStorage.getItem("viewedItem");
+      if (storedItem) {
+        const parsedItem = JSON.parse(storedItem);
+        setItemData(parsedItem);
+        setMainImage(parsedItem.hoverImage);
+        images.current = [parsedItem.image, parsedItem.hoverImage, parsedItem.image]; //populate images array
+      } else {
+        console.error("No item data found in local storage.");
+      }
+    } catch (error) {
+      console.error("Error parsing item data:", error);
     }
   }, []);
 
-  if (!itemData) {
-    return <div>Loading...</div>;
-  }
+  if (!itemData) return <div>Loading...</div>;
 
   const handleImageClick = (image) => {
     setMainImage(image);
+  };
+
+  const handleMouseMove = (e) => {
+    if (isZoomed && mainImageRef.current) {
+      const rect = mainImageRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const maxX = rect.width - 300;
+      const maxY = rect.height - 300;
+
+      setZoomPosition({
+        x: Math.max(0, Math.min(maxX, x - 150)),
+        y: Math.max(0, Math.min(maxY, y - 150)),
+      });
+    }
+  };
+
+  const handlePrevImage = () => {
+    const currentIndex = images.current.indexOf(mainImage);
+    const prevIndex = (currentIndex - 1 + images.current.length) % images.current.length;
+    setMainImage(images.current[prevIndex]);
+  };
+
+  const handleNextImage = () => {
+    const currentIndex = images.current.indexOf(mainImage);
+    const nextIndex = (currentIndex + 1) % images.current.length;
+    setMainImage(images.current[nextIndex]);
   };
 
   return (
@@ -49,55 +75,59 @@ const ViewItemPage = () => {
           <div className={styles.imagesContainer}>
             <div className={styles.imageGallery}>
               <div className={styles.thumbnail}>
-                <img
-                  src={itemData.image}
-                  alt="Thumbnail 1"
-                  onClick={() => handleImageClick(itemData.image)}
-                />
-                <img
-                  src={itemData.hoverImage}
-                  alt="Thumbnail 2"
-                  onClick={() => handleImageClick(itemData.hoverImage)}
-                />
-                <img
-                  src={itemData.image}
-                  alt="Thumbnail 3"
-                  onClick={() => handleImageClick(itemData.image)}
-                />
+                {images.current.map((img, index) => (
+                  <img
+                    key={index}
+                    src={img}
+                    alt={`Thumbnail ${index + 1}`}
+                    onClick={() => handleImageClick(img)}
+                  />
+                ))}
               </div>
             </div>
-            <div className={styles.mainImageContainer}
+
+            <div
+              className={styles.mainImageContainer}
               onMouseEnter={() => setIsZoomed(true)}
-              onMouseMove={(e) => {
-                if (isZoomed) {
-                  const rect = e.target.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-                  setZoomPosition({ x, y });
-                }
-              }}
+              onMouseMove={handleMouseMove}
               onMouseLeave={() => setIsZoomed(false)}
             >
+              <button className={styles.imageSwitchButtonLeft} onClick={handlePrevImage}>
+                &lt;
+              </button>
               <img
+                ref={mainImageRef}
                 src={mainImage}
                 alt={itemData.title}
                 className={styles.mainImage}
               />
+              <button className={styles.imageSwitchButtonRight} onClick={handleNextImage}>
+                &gt;
+              </button>
 
               {isZoomed && (
-                <div
-                  className={styles.zoomPopup}
-                  style={{
-                    backgroundImage: `url('${mainImage}')`,
-                    backgroundSize: "200%",
-                    backgroundPosition: `-${zoomPosition.x * 2}px -${zoomPosition.y * 2
-                      }px`,
-                  }}
-                ></div>
+                <>
+                  <div
+                    className={styles.zoomHighlightBox}
+                    style={{
+                      left: `${zoomPosition.x}px`,
+                      top: `${zoomPosition.y}px`,
+                    }}
+                  ></div>
+                  <div
+                    className={styles.zoomPopup}
+                    style={{
+                      backgroundImage: `url('${mainImage}')`,
+                      backgroundSize: "200%",
+                      backgroundPosition: `${-(zoomPosition.x * 2)}px ${-(
+                        zoomPosition.y * 2
+                      )}px`,
+                    }}
+                  ></div>
+                </>
               )}
             </div>
           </div>
-
           <div className={styles.productDetails}>
             <h1 className={styles.productTitle}>{itemData.title}</h1>
             <div className={styles.productPrice}>{`$${itemData.price}`}</div>
@@ -116,8 +146,9 @@ const ViewItemPage = () => {
                 {["S", "M", "L", "XL"].map((size) => (
                   <button
                     key={size}
-                    className={`${styles.sizeButton} ${selectedSize === size ? styles.activeSize : ""
-                      }`}
+                    className={`${styles.sizeButton} ${
+                      selectedSize === size ? styles.activeSize : ""
+                    }`}
                     onClick={() => setSelectedSize(size)}
                   >
                     {size}
@@ -125,16 +156,25 @@ const ViewItemPage = () => {
                 ))}
               </div>
             </div>
+
+            {/* Quantity & Add to Cart */}
             <div className={styles.actions}>
               <div className={styles.quantityContainer}>
-                <button className={styles.quantityButton} onClick={decrease}>
+                <button
+                  className={styles.quantityButton}
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                >
                   -
                 </button>
-                <span className={styles.count}>{count}</span>
-                <button className={styles.quantityButton} onClick={increase}>
+                <span className={styles.count}>{quantity}</span>
+                <button
+                  className={styles.quantityButton}
+                  onClick={() => setQuantity(quantity + 1)}
+                >
                   +
                 </button>
               </div>
+
               <Link href="/Check">
                 <button
                   className={styles.addToCart}
@@ -143,6 +183,7 @@ const ViewItemPage = () => {
                       title: itemData.title,
                       price: itemData.price,
                       image: itemData.image,
+                      quantity,
                     };
                     const existingCart =
                       JSON.parse(localStorage.getItem("cart")) || [];
@@ -155,22 +196,41 @@ const ViewItemPage = () => {
                 </button>
               </Link>
             </div>
-            <div className={styles.socialIcons}>
-              <CiFacebook size={18} />
-              <FaXTwitter size={18} />
-              <FaPinterestP size={18} />
-              <FaTumblr size={18} />
-              <BsTelegram size={18} />
-              <CiMail size={18} />
-            </div>
           </div>
-
         </div>
-
       </div>
       <ProductTabs />
     </div>
   );
 };
 
+
 export default ViewItemPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -108,10 +108,19 @@
   border: 2px solid rgb(86, 207, 225);
 }
 
+
+.activeThumbnail {
+  opacity: 1;
+}
+
+.inactiveThumbnail {
+  opacity: 0.6;
+}
+
 .zoomHighlightBox {
   position: absolute;
-  width: 300px; /* Changed width */
-  height: 300px; /* Changed height */
+  width: 300px;
+  height: 300px;
   background: rgba(255, 255, 255, 0.1);
   pointer-events: none;
   border: 1px solid gray;
@@ -120,7 +129,7 @@
 
 .zoomPopup {
   position: absolute;
-  right: -520px; /* 20px from main image + 500px zoomPopup width */
+  right: -520px;
   width: 500px;
   height: 500px;
   overflow: hidden;

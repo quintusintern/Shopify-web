@@ -15,7 +15,7 @@ const ViewItemPage = () => {
   const [itemData, setItemData] = useState(null);
   const [mainImage, setMainImage] = useState("");
   const mainImageRef = useRef(null);
-  const images = useRef([]); // Store all the images
+  const images = useRef([]);
 
   useEffect(() => {
     try {
@@ -24,7 +24,7 @@ const ViewItemPage = () => {
         const parsedItem = JSON.parse(storedItem);
         setItemData(parsedItem);
         setMainImage(parsedItem.hoverImage);
-        images.current = [parsedItem.image, parsedItem.hoverImage, parsedItem.image]; //populate images array
+        images.current = [parsedItem.image, parsedItem.hoverImage, parsedItem.image];
       } else {
         console.error("No item data found in local storage.");
       }
@@ -81,6 +81,7 @@ const ViewItemPage = () => {
                     src={img}
                     alt={`Thumbnail ${index + 1}`}
                     onClick={() => handleImageClick(img)}
+                    className={mainImage === img ? styles.activeThumbnail : styles.inactiveThumbnail}
                   />
                 ))}
               </div>
@@ -128,6 +129,8 @@ const ViewItemPage = () => {
               )}
             </div>
           </div>
+
+
           <div className={styles.productDetails}>
             <h1 className={styles.productTitle}>{itemData.title}</h1>
             <div className={styles.productPrice}>{`$${itemData.price}`}</div>
@@ -203,7 +206,6 @@ const ViewItemPage = () => {
     </div>
   );
 };
-
 
 export default ViewItemPage;
 

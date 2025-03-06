@@ -3,10 +3,13 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import ProductTabs from "@/components/ProductInformation";
 import styles from "./ViewItem.module.css";
-import { CiFacebook, CiMail } from "react-icons/ci";
-import { FaXTwitter, FaPinterestP, FaTumblr } from "react-icons/fa";
-import { BsTelegram } from "react-icons/bs";
-
+import { FaFacebookF } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaPinterestP } from "react-icons/fa";
+import { RiTelegramFill } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
+import { Heart } from "lucide-react";
+import { TbArrowsCross } from "react-icons/tb";
 const ViewItemPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("S");
@@ -142,9 +145,9 @@ const ViewItemPage = () => {
               <span className={styles.reviewText}>(4 reviews)</span>
             </div>
             <p className={styles.productDescription}>{itemData.description}</p>
-
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus architecto porro cum officiis maiores in, quia iure commodi obcaecati aliquam placeat, quas veritatis facere rerum
             <div>
-              <strong>SIZE: {selectedSize}</strong>
+              <h4 className={styles.productTitle}>SIZE: {selectedSize}</h4>
               <div className={styles.productsizes}>
                 {["S", "M", "L", "XL"].map((size) => (
                   <button
@@ -197,9 +200,42 @@ const ViewItemPage = () => {
                 >
                   Add to Cart
                 </button>
+
+                {/* Wishlist Button with Icon Inside a Circle */}
+     
+     
               </Link>
+             
+             {/* Wishlist & Compare Buttons */}
+      <button className={styles.iconButton}>
+        <Heart size={20} />
+      </button>
+      <button className={styles.iconButton}>
+        <TbArrowsCross size={20} />
+      </button>
+              
             </div>
-          </div>
+            <div className={styles.security}>
+        <img src="/addtocart.jpg" alt="McAfee Secure" />
+       
+      </div>
+      <div className={styles.links}>
+        <span>Delivery & Return</span>
+        <span>Ask a Question</span>
+      </div>
+      <div className={styles.details}>
+        <p>Availability: <span className={styles.inStock}>In Stock</span></p>
+        <p><strong>Categories:</strong> <span className={styles.category}>Fashion</span></p>
+        <p><strong>Tags:</strong> <span className={styles.tags}>Price $50-$150, Vendor Kalles, women</span></p>
+      </div>
+      <div className={styles.icons}>
+      <FaFacebookF size={18}/>
+        <FaXTwitter size={18} />
+        <FaPinterestP size={18} />
+        <RiTelegramFill  size={18} />
+        <MdEmail size={18} />
+      </div>
+      </div>
         </div>
       </div>
       <ProductTabs />

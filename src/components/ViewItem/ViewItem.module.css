@@ -164,15 +164,16 @@
 }
 
 .productTitle {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 600;
   margin-bottom: 10px;
   margin-top: -8px;
 }
 
 .productPrice {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 22px;
+  font-weight: 400;
+  color: #696969;
 }
 
 .productRating {
@@ -193,13 +194,26 @@
 .productDescription {
   font-size: 14px;
   color: #333;
-  margin: 15px 0;
+ margin-bottom: 20px;
+}
+
+.productTitle{
+  font-size: 14px;
+  text-transform:uppercase;
+  font-weight: 700;
+  margin-top: 10px;
 }
 
 .productsizes {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
+  margin: 10px -5px 0;
+  padding:5px;
+  display:inline-block;
+  min-width: 30px;
+ min-height: 30px;
+ line-height: 18px;
+ border-radius: 40px;
+ text-align: center;
+ color:#878787;
 }
 
 .sizeButton {
@@ -279,17 +293,90 @@
   transition: background 0.3s ease;
 }
 
-.securityBadges {
+.info {
+  font-size: 14px;
+  margin-top: 10px;
+}
+.infoContainer {
   display: flex;
-  gap: 10px;
-  margin: 20px 0;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
 }
 
+.link {
+  cursor: pointer;
+  white-space: nowrap;
+  gap:20px;
+}
+
+.separator {
+  margin: 0 8px; /* Adjust spacing to match the exact UI */
+  color: #333;
+}
+
+.security {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.details{
+  margin-bottom: 20px;
+}
 .links {
   display: flex;
   gap: 20px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+.details p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.inStock {
+  margin-bottom: 5px;
+  color: rgb(135, 135, 135);
+}
+
+.category {
+  color: gray;
+}
+
+.tags {
+  color: #666;
+}
+
+.icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.icons svg {
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.icons svg:hover {
+  transform: translateY(-5px);
+  color: blue;
+}
+
+
+.iconButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
 }
 
 .availability,

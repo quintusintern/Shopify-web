@@ -222,6 +222,91 @@
   outline: none !important;
 }
 
+.stickerContainer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10; 
+}
+.discountBadge {
+  background-color: #ff5722; 
+  height:60px;
+  border-radius: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center; 
+  min-width: 60px;
+  min-height: 24px;
+  margin-bottom: 5px;
+  padding: 0 5px;
+  line-height: 1;
+  color:white;
+}
+
+.soldOutBadge {
+  background-color: #d1d1d1; 
+  height:60px;
+  border-radius: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center; 
+  min-width: 60px;
+  min-height: 24px;
+  font-size: 14px;
+}
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.image {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.imageHover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.imageWrapper:hover .imageHover {
+  opacity: 1;
+}
+
+.imageWrapper:hover .imageDefault {
+  opacity: 0;
+}
+
+.newSticker{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10; 
+}
+
+.newBadge {
+  background-color: #00A500; 
+  height:60px;
+  border-radius: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center; 
+  min-width: 60px;
+  min-height: 24px;
+  margin-bottom: 5px;
+  padding: 0 5px;
+  line-height: 1;
+  color:white;
+  
+}
 @keyframes slideInLeft {
   from {
     opacity: 0;

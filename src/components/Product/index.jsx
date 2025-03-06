@@ -26,6 +26,9 @@ const initialCards = [
     sizes: "XS, S, M, L",
     category: "Shoes",
     NewArrival: true,
+    discount: 30,
+    soldOut:true,
+    
   },
   {
     title: "Ridley High Waist",
@@ -53,6 +56,7 @@ const initialCards = [
     sizes: "One Size",
     category: "Women",
     NewArrival: true,
+    isNew:true,
   },
   {
     title: "Mercury Tee",
@@ -174,6 +178,52 @@ const ProductsPage = () => {
         {filteredCards.map((card, index) => (
           <div key={index} className={styles.imgCard}>
             <div className={styles.imageWrapper}>
+           {/* ✅ Conditionally Render Sticker for "Analogue Resin Strap" */}
+        {card.title === "Analogue Resin Strap" && (
+          <div className={styles.stickerContainer}>
+             <div className={styles.discountBadge}>-{card.discount}%</div>
+            <div className={styles.soldOutBadge}>Sold out</div>
+          </div>
+        )}
+
+         {/* ✅ Default Image */}
+         <img
+          src={card.defaultImage}
+          alt={card.title}
+          className={`${styles.imageDefault} ${styles.image}`}
+        />
+
+         {/* ✅ Hover Image */}
+         <img
+          src={card.hoverImage}
+          alt={`${card.title} hover`}
+          className={`${styles.imageHover} ${styles.image}`}
+        />
+
+
+
+        {/* ✅ Show Sticker ONLY for "Cluse La Baheme Rose Gold" */}
+        {card.title === "Cluse La Baheme Rose Gold" && (
+          <div className={styles.newSticker}>
+            <div className={styles.newBadge}>New</div>
+          </div>
+        )}
+
+        {/* ✅ Default Image */}
+        <img
+          src={card.defaultImage}
+          alt={card.title}
+          className={`${styles.imageDefault} ${styles.image}`}
+        />
+
+         {/* ✅ Hover Image */}
+         <img
+          src={card.hoverImage}
+          alt={`${card.title} hover`}
+          className={`${styles.imageHover} ${styles.image}`}
+        />
+
+
               <img
                 src={card.defaultImage}
                 alt={card.title}

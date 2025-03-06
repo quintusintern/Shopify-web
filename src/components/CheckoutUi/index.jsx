@@ -67,6 +67,7 @@ export default function CheckoutUI() {
     const totalItems = quantities.reduce((sum, qty) => sum + qty, 0);
 
     return (
+        <div className={styles.mainContainer}>
         <div className={styles.container}>
             <div className={styles.cartSection}>
                 <div className={styles.cartTitle}>
@@ -141,5 +142,6 @@ export default function CheckoutUI() {
                 </div>
             </div>
         </div>
+       </div>
     );
 }

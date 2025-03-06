@@ -48,8 +48,8 @@
 }
 
 .mainImageContainer {
+  position: relative;
   display: flex;
-  flex-direction: row;
 }
 
 .mainImage {
@@ -57,6 +57,7 @@
   height: auto;
   position: relative;
   overflow: hidden;
+  cursor: grab;
 }
 
 .mainImage img {
@@ -65,17 +66,79 @@
   object-fit: cover;
 }
 
+
+.imageSwitchButtonLeft,
+.imageSwitchButtonRight {
+  position: absolute;
+  top: 50%;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  background: transparent;
+  color: rgb(34, 34, 34);
+  border: 2px solid rgb(34, 34, 34);
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 11;
+  font-size: 28px;
+  transition: background-color  0.5s ease-in-out;
+  transition: border  0.5s ease-in-out;
+}
+
+.imageSwitchButtonLeft {
+  left: 10px;
+}
+
+.imageSwitchButtonRight {
+  right: 10px;
+}
+
+.imageSwitchButtonLeft:hover {
+  background: rgb(86, 207, 225);
+  color: white;
+  border: 2px solid rgb(86, 207, 225);
+}
+
+.imageSwitchButtonRight:hover {
+  background: rgb(86, 207, 225);
+  color: white;
+  border: 2px solid rgb(86, 207, 225);
+}
+
+
+.activeThumbnail {
+  opacity: 1;
+}
+
+.inactiveThumbnail {
+  opacity: 0.6;
+}
+
+.zoomHighlightBox {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  border: 1px solid gray;
+  z-index: 10;
+}
+
 .zoomPopup {
   position: absolute;
-  right: 300px;
+  right: -520px;
   width: 500px;
   height: 500px;
   overflow: hidden;
   pointer-events: none;
   z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.productPage .zoomLens { 
+.productPage .zoomLens {
   position: absolute;
   width: 100px;
   height: 100px;
@@ -104,22 +167,21 @@
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
-  margin-top:-8px;
+  margin-top: -8px;
 }
 
 .productPrice {
   font-size: 20px;
   font-weight: bold;
-  
 }
 
 .productRating {
   display: flex;
   align-items: center;
-  gap:5px;
+  gap: 5px;
 }
 
-.star{
+.star {
   color: red;
 }
 
@@ -130,29 +192,29 @@
 
 .productDescription {
   font-size: 14px;
-  color:#333;
+  color: #333;
   margin: 15px 0;
 }
 
 .productsizes {
-display: flex;
-gap:10px;
-margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .sizeButton {
- padding:10px;
- border-radius: 40%;
- background-color: white;
- color:#333;
+  padding: 10px;
+  border-radius: 40%;
+  background-color: white;
+  color: #333;
   margin-right: 5px;
   border: 1px solid #ccc;
   cursor: pointer;
 }
 
 .sizeButton:hover {
- background-color:black;
- color: #eee;
+  background-color: black;
+  color: #eee;
 }
 
 .activeSize {
@@ -194,8 +256,6 @@ margin-top: 10px;
   font-weight: bold;
 }
 
-
-
 .quantityControl {
   display: flex;
   align-items: center;
@@ -208,9 +268,9 @@ margin-top: 10px;
 }
 
 .addToCart {
-  padding:10px 20px;
+  padding: 10px 20px;
   border-radius: 25px;
-  background-color:skyblue;
+  background-color: skyblue;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -218,7 +278,6 @@ margin-top: 10px;
   margin-right: 10px;
   transition: background 0.3s ease;
 }
-
 
 .securityBadges {
   display: flex;
@@ -233,7 +292,6 @@ margin-top: 10px;
   margin-bottom: 10px;
 }
 
-
 .availability,
 .categories,
 .tags {
@@ -245,17 +303,17 @@ margin-top: 10px;
   color: black;
 }
 
-.socialIcons{
+.socialIcons {
   display: flex;
   gap: 10px;
   margin-top: 10px;
 }
+
 .socialIcons svg {
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
+
 .socialIcons svg:hover {
   transform: scale(1.2);
 }
-
-
